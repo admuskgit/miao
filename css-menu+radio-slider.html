@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>css menu and radio slider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+body {font-size: 0%;
+    }
+ul.menu {padding: 0; margin: 0; background: #ccc;}
+li {display: block;}
+ul.menu > li {
+    display: inline-block;
+    font-size: 16px;
+    position: relative;
+    padding: 0em;
+    margin-right: 5px;
+}
+ul.menu li > ul{
+    display: none;
+    position: absolute;
+    font-size: 16px;
+    top: 100%;
+    left: 0;
+    padding: 0em;
+}
+ul.menu li:hover > ul {  
+    display: block;
+     
+}
+ul.menu li {
+    position: relative;
+}
+ul.menu li ul li ul{
+    display: none;
+    position: absolute;
+    font-size: 16px;
+    top: 0;
+    left: 100%;
+}
+ul.menu li ul li:hover > ul {
+    display: block;
+}
+ul.menu li ul li:hover {
+    background: red;
+}
+ul.menu li ul li {
+    border: #ccc 1px solid; 
+}
+input:checked + * + * + img {
+    display: block;
+}
+img {
+    width: 150px;
+    height: 100px;
+    display: none;
+}
+    </style>
+</head>
+<body>
+    <input type="radio" name="h" id="r1" checked>
+    <input type="radio" name="h" id="r2">
+    <input type="radio" name="h" id="r3">
+    <img id="img1" src="http://puui.qpic.cn/vcover_hz_pic/0/79npj83isb0ylvq1657870718714/810" alt="">
+    <img id="img2" src="https://vmmp.qpic.cn/vmedia/xh/mulpic/mzc00200py587r5_1280_720_1757601901775/0?imageView2/2/w/700" alt="">
+    <img id="img3" src="http://vmmp.qpic.cn/vmedia/xh/mulpic/mzc00200wk4wxlp/1631527627960/0?imageView2/2/w/700" alt="">
+   <ul class="menu">
+        <li>文件
+            <ul>
+                <li>01
+                    <ul>
+                    <li>a</li>
+                    <li>b</li>
+                    <li>c</li>
+                    </ul>
+                </li>
+                <li>02
+                    <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    </ul>
+                </li>
+                <li>03
+                    <ul>
+                    <li>i</li>
+                    <li>ii</li>
+                    <li>iii</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>编辑
+            <ul>
+                <li>1111
+                 <ul>
+                    <li>a</li>
+                    <li>b</li>
+                    <li>c</li>
+                    </ul>   
+                </li>
+                <li>1222
+                    <ul>
+                    <li>aa</li>
+                    <li>ba</li>
+                    <li>ca</li>
+                    </ul>
+                </li>
+                <li>1333
+                    <ul>
+                    <li>ac</li>
+                    <li>bc</li>
+                    <li>cc</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>选择
+            <ul>
+                <li>21111
+                    <ul>
+                    <li>ac</li>
+                    <li>bcc</li>
+                    <li>ccc</li>
+                    </ul>
+                </li>
+                <li>2222
+                    <ul>
+                    <li>aw</li>
+                    <li>bq</li>
+                    <li>cf</li>
+                    </ul>
+                </li>
+                <li>2333
+                    <ul>
+                    <li>ajh</li>
+                    <li>bgh</li>
+                    <li>ctt</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>
