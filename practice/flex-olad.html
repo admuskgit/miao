@@ -5,45 +5,46 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Document</title>
     <style>
-        * {
+        *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        body {
+        .A{
             display: flex;
-            flex-direction: row;
-            min-height: 100vh;
+            height: 100vh;
         }
-        aside {
-            flex: 1 1 200px;
-            padding: 1rem;
-            background: #f0f0f0;
-            border: 1px solid #ccc;
+        .a{
+            flex: 1;
+            background-color: lightblue;
+            overflow: auto;
         }
-        .a {
-            order: -1;
-        }
-        .b {
-            order: 1;
-        }
-        .c {
-            order: 2;
-        }
-        div {
-            flex: 3 1 400px;
+        .B{
+            flex: 3;
             display: flex;
             flex-direction: column;
-            border: 1px solid #ccc;
+            background-color: lightgreen;
+            overflow: auto;
         }
-        header, main {
-            padding: 1rem;
-            background: #e0e0e0;
-            border-bottom: 1px solid #ccc;
-            flex: 1 1 auto;
+        .header{
+            flex: 1;
+            background-color: lightcoral;
+            overflow: auto;
         }
-        main {
-            border-bottom: none;
+        .main{
+            flex: 3;
+            background-color: lightgoldenrodyellow;
+            overflow: auto;
+        }
+        .b{
+            flex: 1;
+            background-color: lightpink;
+            overflow: auto;
+        }
+        .c{
+            flex: 1;
+            background-color: lightgray;
+            overflow: auto;
         }
     </style>
 </head>
