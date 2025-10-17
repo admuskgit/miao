@@ -4,19 +4,65 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<title>mi.com/shop</title>
-	<!-- 使用 Tailwind CDN，移除 styles.css -->
 	<script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 	<header>
-		<div>
+		<div class="flex max-w-4xl mx-auto items-center justify-between p-4">
+				<img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202508191637_897738d7140afbfb03d411f222341d56.png?thumb=1&w=250&h=250&f=webp&q=90" alt="" width="100" height="100"/>
 				<ul class="flex gap-10 text-2xl font-bold text-center items-center p-4 ">
-					<img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202508191637_897738d7140afbfb03d411f222341d56.png?thumb=1&w=250&h=250&f=webp&q=90" alt="" width="100" height="100"/>
-					<li>Xiaomi手机</li>
-					<li>redmi手机</li>
-					<li>电视</li>
-					<li>笔记本</li>
-					<li>平板</li>
+					<li class="relative group ">Xiaomi手机
+						<div class="absolute top-full hidden group-hover:block text-xl bg-white shadow-lg w-48">
+							<ul>
+								<li class="py-2 px-4 hover:bg-gray-100">xiaomi 18</li>
+								<li class="py-2 px-4 hover:bg-gray-100">xiaomi 19</li>
+								<li class="py-2 px-4 hover:bg-gray-100">xiaomi 20</li>
+							</ul>
+						</div>
+					</li>
+					<li class="relative group ">redmi手机
+						<div class="absolute top-full hidden group-hover:block text-xl bg-white shadow-lg w-48">
+							<ul>
+								<li class="py-2 px-4 hover:bg-gray-100">redmi k90</li>
+								<li class="py-2 px-4 hover:bg-gray-100">redmi k100</li>
+								<li class="py-2 px-4 hover:bg-gray-100">redmi k110</li>
+							</ul>
+						</div>
+					</li><li class="relative group ">电视
+						<div class="absolute top-full hidden group-hover:block text-xl bg-white shadow-lg w-48">
+							<ul>
+								<li class="py-2 px-4 hover:bg-gray-100">xiaomi 18</li>
+								<li class="py-2 px-4 hover:bg-gray-100">xiaomi 19</li>
+								<li class="py-2 px-4 hover:bg-gray-100">xiaomi 20</li>
+							</ul>
+						</div>
+					</li><li class="relative group ">电脑
+						<div class="absolute top-full hidden group-hover:block text-xl bg-white shadow-lg w-48">
+							<ul>
+								<li class="py-2 px-4 hover:bg-gray-100">电脑 18</li>
+								<li class="py-2 px-4 hover:bg-gray-100">电脑 19</li>
+								<li class="py-2 px-4 hover:bg-gray-100">电脑 20</li>
+							</ul>
+						</div>
+					</li>
+					<li class="relative group ">智能家居
+						<div class="absolute top-full hidden group-hover:block text-xl bg-white shadow-lg w-48">
+							<ul>
+								<li class="py-2 px-4 hover:bg-gray-100">智能家居 18</li>
+								<li class="py-2 px-4 hover:bg-gray-100">智能家居 19</li>
+								<li class="py-2 px-4 hover:bg-gray-100">智能家居 20</li>
+							</ul>
+						</div>
+					</li>
+					<li class="relative group ">平板
+						<div class="absolute top-full hidden group-hover:block text-xl bg-white shadow-lg w-48">
+							<ul>
+								<li class="py-2 px-4 hover:bg-gray-100">xiaomi 18</li>
+								<li class="py-2 px-4 hover:bg-gray-100">xiaomi 19</li>
+								<li class="py-2 px-4 hover:bg-gray-100">xiaomi 20</li>
+							</ul>
+						</div>
+					</li>
 				</ul>
 		</div>	
 	</header>		
