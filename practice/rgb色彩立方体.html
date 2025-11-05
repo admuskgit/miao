@@ -3,18 +3,81 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<title>xiaomi产品列表</title>
+	<title>rgb立方体</title>
 	<script src="https://cdn.tailwindcss.com"></script>
 <style>
-	span { width: 100px; 
-			display: inline-block;
+/* ---------- body 样式 ---------- */
+body {
+  background: pink;               /* 页面背景黑色 */
+  height: 100vh;                  /* 高度占满整个窗口 */
+  display: flex;                  /* 设置为 flex 容器 */
+  justify-content: center;        /* 水平居中子元素 */
+  align-items: center;            /* 垂直居中子元素 */
+  perspective: 1000px;             /* 透视距离，让 3D 有立体感 */
+}
+/* ---------- 立方体容器 ---------- */
+.cube {
+  position: relative;             /* 相对定位，作为子元素绝对定位基准 */
+  width: 150px;                   /* 立方体边长 */
+  height: 150px;                  /* 立方体边长 */
+  transform-style: preserve-3d;   /* 保持子元素三维效果 */
+  animation: rotate 0.8s infinite linear; /* 添加旋转动画，6秒一圈，匀速，循环 */
+}
+/* ---------- 立方体六个面 ---------- */
+.face {
+  position: absolute;             /* 绝对定位在 .cube 内 */
+  width: 150px;                   /* 面的宽度 */
+  height: 150px;                  /* 面的高度 */
+  opacity: 0.9;                   /* 半透明，让重叠面有层次感 */
+  border: 2px solid #111;         /* 给每个面加边框，方便看出立体结构 */
+}
+/* 每个面设置颜色并放到正确位置 */
+/* 前面 */
+.front  { 
+  background: red;                /* 红色 */
+  transform: translateZ(75px);    /* 向屏幕外推半个立方体深度 */
+}
+/* 后面 */
+.back   { 
+  background: cyan;               /* 青色 */
+  transform: rotateY(180deg) translateZ(75px); /* 先旋转180度再推远 */
+}
+/* 右面 */
+.right  { 
+  background: green;              /* 绿色 */
+  transform: rotateY(90deg) translateZ(75px); /* 绕Y轴旋转90度，再推到右边 */
+}
+/* 左面 */
+.left   { 
+  background: magenta;            /* 品红 */
+  transform: rotateY(-90deg) translateZ(75px); /* 绕Y轴旋转-90度，再推到左边 */
+}
+/* 上面 */
+.top    { 
+  background: blue;               /* 蓝色 */
+  transform: rotateX(90deg) translateZ(75px); /* 绕X轴旋转90度，推到上方 */
+}
+/* 下面 */
+.bottom { 
+  background: yellow;             /* 黄色 */
+  transform: rotateX(-90deg) translateZ(75px); /* 绕X轴旋转-90度，推到下方 */
+}
 
-	 }
+/* ---------- 旋转动画 ---------- */
+@keyframes rotate {
+  0%   { transform: rotateX(0deg) rotateY(0deg); }     /* 起始角度 */
+  100% { transform: rotateX(360deg) rotateY(360deg); } /* 转一整圈 */
+}
 </style>
 </head>
 <body>
-	<div>
-
-	</div>		
+<div class="cube">
+  <div class="face front"></div>
+  <div class="face back"></div>
+  <div class="face right"></div>
+  <div class="face left"></div>
+  <div class="face top"></div>
+  <div class="face bottom"></div>
+</div>	
 </body>
 </html>
