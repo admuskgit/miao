@@ -1,7 +1,7 @@
 # [React](https://react.dev/) &middot; [![...........................](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE) [![nmp](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react) [![(Runtime) Build and Test](https://github.com/facebook/react/actions/workflows/runtime_build_and_test.yml/badge.svg)](https://github.com/facebook/react/actions/workflows/runtime_build_and_test.yml) [![(Compiler) TypeScript](https://github.com/facebook/react/actions/workflows/compiler_typescript.yml/badge.svg?branch=main)](https://github.com/facebook/react/actions/workflows/compiler_typescript.yml) [![PRs](https://camo.githubusercontent.com/d88d8d77fa79e828eea397f75a1ebd114d13488aeec4747477ffbd2274de95ed/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5052732d77656c636f6d652d627269676874677265656e2e737667)](https://legacy.reactjs.org/docs/how-to-contribute.html#your-first-pull-request)
 
 
-React is JavaScript library for building user interfaces.
+React is JavaScript library for building user interfaces..
 
 * **Declarative:** React makes it painless to create interactive UIs.Design simple views for each state in your application,and React will efficiently update and render just the right components when your date changes.Declarative views make your code more predictable,simpler to understand,and easier to debug.
 
