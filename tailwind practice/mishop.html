@@ -6,32 +6,85 @@
 	<title>小米商城</title>
 	<script src="https://cdn.tailwindcss.com"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+	<script src="https://kit.fontawesome.com/8e0ea37de7.js" crossorigin="anonymous"></script>
+<style id="jsbin-css">
+.slider {
+  width: 992px;
+  height: 410px;
+  position: relative;
+  > input:nth-child(1):checked ~ a:nth-of-type(1),
+  > input:nth-child(2):checked ~ a:nth-of-type(2),
+  > input:nth-child(3):checked ~ a:nth-of-type(3),
+  > input:nth-child(4):checked ~ a:nth-of-type(4) {
+    display: block;
+  }
+  > input:nth-child(1):checked ~ .prev label:nth-child(1),
+  > input:nth-child(2):checked ~ .prev label:nth-child(2),
+  > input:nth-child(3):checked ~ .prev label:nth-child(3),
+  > input:nth-child(4):checked ~ .prev label:nth-child(4) {
+    display: block;
+  }
+  > a {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    > img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .prev,.next {
+    position: absolute;
+    left: 0;
+    height: 50px;
+    width: 45px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    > label {
+      display: block;
+      position: absolute;
+      display: none;
+    }
+  }
+  .next {
+    right: 0;
+    left: auto;
+  }
+}
+div span {
+  float: left;
+  color: black;
+  transition: 0s 9999s;
+}
+div span:first-child {
+  color: red;
+}
+div:hover span {
+  color: black;
+  transition: none;
+}
+div span:hover {
+  color: red;
+  transition: none;
+}
+</style>
 </head>
 <body class="overflow-y-scroll">
 	<div class="bg-[#333333] h-[40px]">
 		<div class="w-[1226px] h-full mx-auto bg-pink-400">
 			<div class="float-left text-[12px] leading-[40px]">
 				<span class="text-slate-800 mx-[.3em]"><a href="#">小米官网</a></span>
-				|
 				<span class="text-slate-800 mx-[.3em]"><a href="#">小米商城</a></span>
-				|
 				<span class="text-slate-800 mx-[.3em]"><a href="#"> 小米澎湃OS</a></span>
-				|
 				<span class="text-slate-800 mx-[.3em]"><a href="#"> 云服务</a></span>
-				|
 				<span class="text-slate-800 mx-[.3em]"><a href="#"> IoT</a></span>
-				|
 				<span class="text-slate-800 mx-[.3em]"><a href="#"> 有品</a></span>
-				|
 				<span class="text-slate-800 mx-[.3em]"><a href="#"> 小爱开放平台</a></span>
-				|
 				<span class="text-slate-800 mx-[.3em]"><a href="#"> 资质证照</a></span>
-				|
 				<span class="text-slate-800 mx-[.3em]"><a href="#"> 协议规则</a></span>
-				|
 				<span class="text-slate-800 mx-[.3em]"><a href="#">下载app</a></span>
-				|
 				<span class="text-slate-800 mx-[.3em]"><a href="#"> Select Location</a></span>
 			</div>
 			<div class="relative float-right text-[12px] leading-[40px] ml-4 mr-auto w-[120px] text-center group"><i class="fa-solid fa-cart-shopping mr-1"></i>购物车(0)
@@ -151,7 +204,31 @@
 		</div>
 	</div>
 	<div class=" 轮播图 w-[1226px] h-[460px] mx-auto bg-green-200 relative">
-		<img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d724e45b9a007d7a77e6714a8ce0f466.png?thumb=1&w=1226&h=460&f=webp&q=90" alt="">
+		<div class="slider ml-[234px]">
+   			 <input type="radio" checked name="s1" id="s1-1">
+   			 <input type="radio" name="s1" id="s1-2">
+   			 <input type="radio" name="s1" id="s1-3">
+   			 <input type="radio" name="s1" id="s1-4">
+
+   			 <a href="#"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f88f2d219eaced84be217727f43378f4.jpg?w=2452&h=920" alt=""></a>
+   			 <a href="#"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d724e45b9a007d7a77e6714a8ce0f466.png?thumb=1&w=1226&h=460&f=webp&q=90" alt=""></a>
+   			 <a href="#"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/84e648c5ded4c5ab84619273e596faaf.jpg?thumb=1&w=1226&h=460&f=webp&q=90" alt=""></a>
+   			 <a href="#"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3852f1409245f0bba0043d22b1472752.jpg?thumb=1&w=1226&h=460&f=webp&q=90" alt=""></a>
+
+   			 <div class="prev">
+   			   <label for="s1-1">prev</label>
+   			   <label for="s1-2">prev</label>
+   			   <label for="s1-3">prev</label>
+   			   <label for="s1-4">prev</label>
+   			 </div>
+   			 <div class="next">
+   			   <label for="s1-1">Next</label>
+   			   <label for="s1-2">Next</label>
+   			   <label for="s1-3">Next</label>
+   			   <label for="s1-4">Next</label>
+   			 </div>
+   			 <div class="indicator"></div>
+  		 </div>
 		<ul class="图上菜单 absolute top-0 py-5 grid  grid-rows-10 w-[234px] h-full  bg-pink-400">
 			<li class="group text-white px-7 flex items-center bg-pink-400 hover:bg-green-200 after:content-['>'] after:ml-auto">手机
 				<ul class="group-hover:flex hidden absolute top-0 left-full flex flex-col flex-wrap h-full w-max *:h-1/6 *:w-[270px] text-black bg-blue-200">
@@ -359,8 +436,41 @@
 	</div>
 	<div class="w-[1226px] h-[58px] mx-auto mt-8 grid items-end">
 		<ul>
-			<li class="text-[22px] grid float-left ">手机</li>
-			<li class="text-[16px] grid float-right items-end">查看更多</li>
+			<div class="text-[22px] grid float-left ">手机</div>
+			<div class="text-[16px] grid float-right items-end grid-cols-2 gap-x-4">
+				<span></span>
+				<span>查看更多</span>
+			</div>
+		</ul>
+	</div>
+	<div class="grid grid-cols-5 grid-rows-[repeat(4,143px)] w-[1226px] mx-auto gap-4 mt-4">
+		<span class="row-span-4  flex items-center justify-center border border-gray-300 text-[24px] hover:-translate-y-0.5 hover:shadow-lg duration-200">
+			<img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/55d2e50dd3783b52244ea3938e9dfca7.png?thumb=1&w=234&h=614&f=webp&q=90" alt="">
+		</span>
+		<span class="row-span-2 grid grid-cols-1 grid-rows-[repeat(2,160px)] items-start border border-gray-300 text-[24px] hover:-translate-y-0.5 hover:shadow-lg duration-200 relative">
+			<img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202510211539_ef4103335f09e9897ef1c4e94bdf790e.png?thumb=1&w=200&h=200&f=webp&q=90" alt="" class="mx-auto row-span-2">
+			<ul class="grid grid-rows-3 absolute xtop-[210px] mx-auto top-[180px]">
+				<li class="text-[14px] w-[214px] h-[21px] mx-auto flex justify-center">REDMI K90 Pro Max</li>
+				<li class="text-[12px] w-[214px] h-[18px] mx-auto flex justify-center">第五代 骁龙®8至尊版｜超级像素护眼</li>
+				<li class="text-[14px] w-[214px] h-[21px] mx-auto flex justify-center">3999元起</li>
+			</ul>
+		</span>
+		<span class="row-span-2  flex items-center justify-center border border-gray-300 text-[24px] hover:-translate-y-0.5 hover:shadow-lg duration-200"><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202510211511_3dc87a6b7771972fb98e8388e8b5b360.png?thumb=1&w=200&h=200&f=webp&q=90" alt=""></span>
+		<span class="row-span-2  flex items-center justify-center border border-gray-300 text-[24px] hover:-translate-y-0.5 hover:shadow-lg duration-200"><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202509222138_488a3091be5bacbc236496b17f025f97.png?thumb=1&w=200&h=200&f=webp&q=90" alt=""></span>
+		<span class="row-span-2  flex items-center justify-center border border-gray-300 text-[24px] hover:-translate-y-0.5 hover:shadow-lg duration-200"><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202509232019_c599441b7cce5783aa10997a8a1489cc.png?thumb=1&w=200&h=200&f=webp&q=90" alt=""></span>
+		<span class="row-span-2  flex items-center justify-center border border-gray-300 text-[24px] hover:-translate-y-0.5 hover:shadow-lg duration-200"><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202509222149_7b96d9cb70aae8993cf6504a330f3f83.png?thumb=1&w=200&h=200&f=webp&q=90" alt=""></span>
+		<span class="row-span-2  flex items-center justify-center border border-gray-300 text-[24px] hover:-translate-y-0.5 hover:shadow-lg duration-200"><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202508191153_f659bef05392c1bbcef77f4dd38f0277.png?thumb=1&w=200&h=200&f=webp&q=90" alt=""></span>
+		<span class="row-span-2  flex items-center justify-center border border-gray-300 text-[24px] hover:-translate-y-0.5 hover:shadow-lg duration-200"><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202508191637_897738d7140afbfb03d411f222341d56.png?thumb=1&w=200&h=200&f=webp&q=90" alt=""></span>
+		<span class="flex items-center justify-center border border-gray-300 text-[24px] hover:-translate-y-0.5 hover:shadow-lg duration-200"><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202405161349_af5d2bb2e50bf45ff23d766e49da6cc5.png?thumb=1&w=100&h=100&f=webp&q=90" alt=""></span>
+		<span class="flex items-center justify-center border border-gray-300 text-[24px] hover:-translate-y-0.5 hover:shadow-lg duration-200">10</span>
+	</div>
+	<div class="w-[1226px] h-[58px] mx-auto mt-8 grid items-end">
+		<ul>
+			<div class="text-[22px] grid float-left ">手机</div>
+			<div class="text-[16px] grid float-right items-end grid-cols-2 gap-x-4">
+				<span>手机</span>
+    			<span>平板</span>
+			</div>
 		</ul>
 	</div>
 	<div class="grid grid-cols-5 grid-rows-[repeat(4,143px)] w-[1226px] mx-auto gap-4 mt-4">
@@ -385,11 +495,11 @@
 		<span class="flex items-center justify-center border border-gray-300 text-[24px] hover:-translate-y-0.5 hover:shadow-lg duration-200">10</span>
 	</div>
 	<div class="w-[1226px] h-[80px] mx-auto grid grid-cols-5  mt-8 border-b border-gray-300  text-center items-center  text-[14px] mx-auto ">
-		<div>预约维修服务</div>
-		<div>7天无理由退货</div>
+		<div><i class="fa-solid fa-wrench"></i>预约维修服务</div>
+		<div><i class="fa-solid fa-7"></i>7天无理由退货</div>
 		<div>15天免费换货</div>
-		<div>满69包邮</div>
-		<div>1100余家售后网点</div>
+		<div><i class="fa-solid fa-gift"></i>满69包邮</div>
+		<div><i class="fa-solid fa-location-dot"></i>1100余家售后网点</div>
 	</div>
 	<div class="w-[1226px] h-[393px]">
 
@@ -397,8 +507,8 @@
 	<div class="w-[1226px] h-[157px]">
 
 	</div>
-	<div class="页面右侧导航工具 w-[84px] h-[561px]">
-		
+	<div class="页面右侧导航工具 fixed max-2xl:left-1/2 2xl:right-0 bottom-[65px] max-2xl:ml-[613px]">
+		1222
 	</div>
 </body>
 </html> 
