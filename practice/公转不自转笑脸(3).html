@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>example</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+<style>
+	/* 方案一：公转不自转 */
+	@keyframes zhengzhuan {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+	@keyframes fanzhuan {
+		from {
+			transform: rotate(360deg);
+		}
+		to {
+			transform: rotate(0deg);
+		}
+	}
+	.a {
+		animation: zhengzhuan 2s linear infinite;
+		width: 200px;
+		height: 10px;
+		margin-left: 50px;
+		border: 1px solid green;
+		margin-top: 100px;
+		border: 1px solid red;
+	}
+	
+	.a span {
+		display: inline-block;
+		animation: fanzhuan 2s linear infinite;
+	}
+	/* 方案二：公转不自转 */
+		@keyframes b {
+		from {
+			transform: rotate(0deg) translateX(60px) rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg) translateX(60px) rotate(-360deg);
+		}
+	}
+	.b {
+		animation: b 2s linear infinite;
+		width: 100px;
+		height: 10px;
+		margin-left: 400px;
+		border: 1px solid green;
+		margin-top: 20px;
+		border: 1px solid blue;
+	}
+	.b span {
+		display: inline-block;
+		animation: b 2s linear infinite;
+	}
+	/* 方案三：公转不自转 */
+		@keyframes c {
+		from {
+			transform: rotate(0deg) translateX(60px) rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg) translateX(60px) rotate(-360deg);
+		}
+	}
+	.c {
+		animation: c 2s linear infinite;
+		width: 100px;
+		height: 10px;
+		margin-left: 700px;
+		border: 1px solid green;
+		margin-top: 20px;
+		border: 1px solid orange;
+	}
+	.c span {
+		display: inline-block;
+		animation: c 2s linear infinite;
+	}
+</style>
+</head>
+<body>
+	<div class="a text-[15px] text-red-400">
+		<span>哈1</span>	
+	</div>	
+	<div class="b">
+		<span>哈2</span>
+	</div>	
+	<div class="c">
+		<span>哈3</span>
+	</div>
+</body>
+</html>
