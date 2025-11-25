@@ -3,18 +3,41 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<title>xiaomi产品列表</title>
+	<title>example</title>
 	<script src="https://cdn.tailwindcss.com"></script>
 <style>
-	span { width: 100px; 
-			display: inline-block;
-
-	 }
+	@keyframes zhengzhuan {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+	@keyframes fanzhuan {
+		from {
+			transform: rotate(360deg);
+		}
+		to {
+			transform: rotate(0deg);
+		}
+	}
+	div {
+		animation: zhengzhuan 5s linear infinite;
+		width: 0px;
+		height: 300px;
+		margin-left: 150px;
+		border: 1px solid green;
+	}
+	div span {
+		display: inline-block;
+		animation: fanzhuan 5s linear infinite;
+	}
 </style>
 </head>
 <body>
-	<div>
-
+	<div class="text-[15px] text-red-400">
+		<span>笑</span>
 	</div>		
 </body>
 </html>
