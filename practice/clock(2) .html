@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>example</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .circle {
+    width: 200px;
+    height: 200px;
+    margin-left: 150px;
+    margin-top: 20px;
+    position: relative;
+    border: 1px solid red;
+    border-radius: 50%;
+  }
+  .circle span {
+    position: absolute;
+	/* 把span的左上角拉到父元素中心，这里的50%相对于父元素 */
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid green;
+    transform:translate(-50%,-50%) rotate(var(--i)) translateY(-80px) rotate(calc(-1 * var(--i)));
+  }
+  span:nth-child(1) { --i: 0deg; }
+  span:nth-child(2) { --i: 30deg; }
+  span:nth-child(3) { --i: 60deg; }
+  span:nth-child(4) { --i: 90deg; }
+  span:nth-child(5) { --i: 120deg; }
+  span:nth-child(6) { --i: 150deg; }
+  span:nth-child(7) { --i: 180deg; }
+  span:nth-child(8) { --i: 210deg; }
+  span:nth-child(9) { --i: 240deg; }
+  span:nth-child(10) { --i: 270deg; }
+  span:nth-child(11) { --i: 300deg; }
+  span:nth-child(12) { --i: 330deg;}
+</style>
+</head>
+<body>
+  <div class="circle text-[20px] text-red-400">
+    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+</body>
+</html>
