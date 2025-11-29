@@ -1,0 +1,21 @@
+解:一元一次方程组
+var a = 1
+var b = 4
+var c = 4
+var delta = b * b - 4 * a * c
+var x1 =(( - b ) + (delta ** 0.5)) / (2 * a)
+var x2 =(( - b ) -  (delta ** 0.5)) /( 2 * a)
+console.log('x1=' + x1)
+console.log('x2=' + x2)
+解:二元一次方程组
+var a = 5
+var b = 4
+var c = 5
+var d = 19
+var e = 4
+var f = 6
+var y =((a * f - d * c) / (a * e - d * b))
+var x =((b * f - e * c) / (b * d - e * a))
+console.log('x = ' + x)
+console.log('y = ' + y)
+

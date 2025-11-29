@@ -1,0 +1,164 @@
+<script id="ch0103/01">
+var a = Number(prompt('请输入A'))
+var b = Number(prompt('请输入B'))
+var c = a + b
+console.log(c)
+</script>
+
+<script id="ch0103/02">
+var a = Number(prompt('请输入A'))
+var b = Number(prompt('请输入B'))
+var c = Number(prompt('请输入C'))
+var d =( a + b ) * c
+console.log(d)
+</script>
+
+<script id="ch0103/03">
+var a = Number(prompt('请输入A'))
+var b = Number(prompt('请输入B'))
+var c = Number(prompt('请输入C'))
+var d =( a + b ) / c
+console.log(d)
+</script>
+
+<script id="ch0103/04">
+var a = Number(prompt('请输入A'))
+var b = Number(prompt('请输入B'))
+var d =( a - ( a % b)) / b
+var e = a % b
+console.log(d,e)
+</script>
+
+<script id="ch0103/05">
+var a = Number(prompt('请输入A'))
+var b = Number(prompt('请输入B'))
+var c = a  / b
+console.log(c.toFixed(9))
+</script>
+
+<script id="ch0103/06">
+var a = Number(prompt('请输入A'))
+var b = Number(prompt('请输入B'))
+var c =( b / a ) * 100
+console.log(c.toFixed(3) + "%")
+</script>
+
+<script id="ch0103/07">
+var x = Number(prompt('请输入x'))
+var a = Number(prompt('请输入a'))
+var b = Number(prompt('请输入b'))
+var c = Number(prompt('请输入c'))
+var d = Number(prompt('请输入d'))
+var e = a * x * x * x + b * x * x + c * x + d 
+console.log(e.toFixed(7))
+</script>
+
+<script id="ch0103/08">
+var x = Number(prompt('请输入x'))
+var e = 5 * (x - 32) / 9
+console.log(e.toFixed(5))
+</script>
+
+<script id="ch0103/09">
+var r = Number(prompt('请输入r'))
+var pi = 3.14159
+var d = 2 * r
+var l = 2 * r * pi
+var s = pi * r * r
+console.log(d.toFixed(4))
+console.log(l.toFixed(4))
+console.log(s.toFixed(4))
+</script>
+
+<script id="ch0103/10">
+var r1 = Number(prompt('请输入r1'))
+var r2 = Number(prompt('请输入r2'))
+var r = 1 / (1 / r1 + 1 / r2)
+console.log(r.toFixed(2))
+</script>
+
+<script id="ch0103/11">
+var r1 = Number(prompt('请输入r1'))
+var r2 = Number(prompt('请输入r2'))
+var x = r1 % r2
+console.log( x )
+</script>
+
+<script id="ch0103/12">
+var r1 = Number(prompt('请输入r1'))
+var pi = 3.14 
+var v = ((4 * pi * r1 * r1 * r1 ) / 3)
+console.log(v.toFixed(2))
+</script>
+
+<script id="ch0103/13">
+var r1 = Number(prompt('请输入r1'))
+var v1 = r1 % 10
+var v2 = ((r1- r1 % 10) / 10 % 10)
+var v3 = ((r1- r1 % 100) / 100)
+console.log("" + v1 + v2 + v3)
+</script>
+
+<script id="ch0103/14">
+var h = Number(prompt('请输入h'))
+var r = Number(prompt('请输入r'))
+var Pi = 3.14159
+var v =Pi * r * r * h 
+var n = (20 * 1000) / v
+console.log(Math.ceil(n))
+</script>
+
+<script id="ch0103/15">
+var n = Number(prompt('请输入n'))
+var x = Number(prompt('请输入x'))
+var y = Number(prompt('请输入y'))
+var z = n - y / x
+console.log(Math.floor(z))
+</script>
+
+<script id="ch0103/16">
+var a = Number(prompt('请输入xa'))
+var b = Number(prompt('请输入ya'))
+var c = Number(prompt('请输入xb'))
+var d = Number(prompt('请输入yb'))
+var z = ((a - c) ** 2 + (b - d) ** 2) ** 0.5
+console.log(z.toFixed(3))
+</script>
+
+<script id="ch0103/17">
+var a = Number(prompt('请输入x1'))
+var b = Number(prompt('请输入y1'))
+var c = Number(prompt('请输入x2'))
+var d = Number(prompt('请输入y2'))
+var e = Number(prompt('请输入x3'))
+var f = Number(prompt('请输入y3'))
+var z = ((a - c) ** 2 + (b - d) ** 2) ** 0.5
+var A = (b - d) / (a - c)
+var B = (- 1)
+var C = b - A * a
+var h = (Math.abs(A * e + B * f + C)) / (A * A + B * B) ** 0.5
+var l = z * h / 2
+console.log(l.toFixed(2))
+</script>
+
+<script id="ch0103/18">
+var a1 = Number(prompt('请输入a1'))
+var a2 = Number(prompt('请输入a2'))
+var n = Number(prompt('请输入n'))
+var d = a2 - a1
+var z = a1 + (n - 1) * d
+console.log(z)
+</script>
+
+<script id="ch0103/19">
+var a1 = Number(prompt('请输入a1'))
+var a2 = Number(prompt('请输入a2'))
+var d = a2 * a1
+console.log(d)
+</script>
+
+<script id="ch0103/20">
+var n = Number(prompt('请输入n'))
+var d = 2 ** n
+console.log(d)
+</script>
