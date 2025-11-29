@@ -162,3 +162,142 @@ var n = Number(prompt('请输入n'))
 var d = 2 ** n
 console.log(d)
 </script>
+
+<script id="ch0104/01">
+var n = Number(prompt('请输入n'))
+if (n > 0) {console.log("positive")}
+else if (n == 0) {console.log("zero")}
+else  {console.log("negative")}
+</script>
+
+<script id="ch0104/02">
+var n = Number(prompt('请输入n'))
+var z = Math.abs(n)
+console.log(z.toFixed(2))
+</script>
+
+<script id="ch0104/03">
+var n = Number(prompt('请输入n'))
+console.log(n % 2 == 0 ? "even" : "odd")
+</script>
+
+<script id="ch0104/04">
+let ch = prompt('请输入一个字符')
+let ascii = ch.charCodeAt(0);
+console.log(ascii % 2 == 0 ? "NO" : "YES")
+</script>
+
+<script id="ch0104/05">
+var x = Number(prompt('请输入x'))
+var y = Number(prompt('请输入y'))
+console.log(x > y ? ">" : x = y ? "=" : "<")
+</script>
+
+<script id="ch0104/06">
+var x = Number(prompt('请输入x'))
+console.log(x > 10 && x < 100  ? "1" : "0")
+</script>
+
+<script id="ch0104/07">
+var x = Number(prompt('请输入x'))
+var y = Number(prompt('请输入y'))
+console.log(x > 9 || y > 19  ? "1" : "0")
+</script>
+
+<script id="ch0104/08">
+var x = Number(prompt('请输入n'))
+console.log(x % 3 == 0 && x % 5 == 0  ? "YES" : "NO")
+</script>
+
+<script id="ch0104/09">
+var x = Number(prompt('请输入n'))
+console.log(x % 3 == 0 && x % 5 == 0 && x % 7 == 0 ? "3 5 7 " :
+ x % 3 == 0 && x % 5 == 0 ? "3 5" : 
+x % 3 == 0 &&  x % 7 == 0 ? "3 7" : 
+ x % 5 == 0 && x % 7 == 0 ? "5 7" : 
+x % 3 == 0  ? "3"
+ : x % 5 == 0  ? " 5 " : 
+ x % 7 == 0 ? " 7 " :
+ "n"
+)
+</script>
+
+<script id="ch0104/10">
+var x = Number(prompt('请输入语文成绩'))
+var y = Number(prompt('请输入数学成绩'))
+console.log(x > 59 && y > 59 ? "0" : x < 60 && y < 60 ? "0" : "1")
+</script>
+
+<script id="ch0104/11">
+var x = Number(prompt('请输入邀请日期'))
+console.log(x == 1 || x == 3 || x == 5 ? "NO" : "YES")
+</script>
+
+<script id="ch0104/12">
+var x = Number(prompt('请输入距离'))
+var b = x / 3 + 27+ 23
+var w = x / 1.2
+console.log(b > w ? "Walk" : b < w ? "Bike" : "All")
+</script>
+
+<script id="ch0104/13">
+var x = Number(prompt('请输入数值'))
+var a = (- x + 2.5)
+var b = (2 - 1.5 * (x - 3) * (x - 3))
+var c =( x / 2 - 1.5)
+console.log(x >= 0 && x < 5 ? a.toFixed(3) : x >= 5 && x < 10 ? b.toFixed(3) : x >= 10 && x < 20 ? c.toFixed(3) :"超出计算范围" )
+</script>
+
+<script id="ch0104/14">
+var n = Number(prompt('请输入数值'))
+let or = prompt('是否加急')
+var a = 8
+var b = 8 + Math.ceil((n - 1000) / 500) * 4
+var c = 8 + 5
+var d = 8 + Math.ceil((n - 1000) / 500) * 4 + 5
+console.log(n <= 1000 && or == 'y' ? c : n <= 1000 && or == 'x' ? a : n > 1000 && or == 'y' ? d : n > 1000 && or == 'x' ? b : "输入错误")
+</script>
+
+<script id="ch0104/15">
+var a = Number(prompt('请输入数值'))
+var b = Number(prompt('请输入数值'))
+var c = Number(prompt('请输入数值'))
+console.log(a >= b && a >= c ? a : b >= a && b >= c ? b : c >= a && c >= b ? c : "输入错误")
+</script>
+
+<script id="ch0104/16">
+var a = Number(prompt('请输入数值'))
+var b = Number(prompt('请输入数值'))
+var c = Number(prompt('请输入数值'))
+console.log(a + b > c ? "yes" : a + c > b ? "yes" : b + c > a ? "yes" : "no")
+</script>
+
+<script id="ch0104/17">
+var a = Number(prompt('请输入数值'))
+console.log(a % 400 == 0 ? "Y" : a % 4 == 0 && a % 100 !== 0 ? "Y" : "N")
+</script>
+
+<script id="ch0104/18">
+var x = Number(prompt('请输入数值'))
+var y = Number(prompt('请输入数值'))
+console.log(x >= -1 && x <= 1&& y >= -1 && y <= 1 ? "yes" : "no")
+</script>
+
+<script id="ch0104/19">
+var x = Number(prompt('请输入数值'))
+var y = Number(prompt('请输入数值'))
+let f = prompt('输入操作符')
+var z = 
+  f == '+' ? x + y :
+  f == '-' ? x - y :
+  f == '*' ? x * y :
+  f == '/' ? x / y : null
+console.log(y == 0 && f == '/' ? "Divide by zero!" : f  != '+' && f  != '-' && f  != '*' && f  != '/' ? "Invalid operater!" : z )
+</script>
+
+<script id="ch0104/20">
+var a = Number(prompt('请输入数值'))
+var b = Number(prompt('请输入数值'))
+var c = Number(prompt('请输入数值'))
+console.log(a % 400 == 0 ? "Y" : a % 4 == 0 && a % 100 !== 0 ? "Y" : "N")
+</script>
