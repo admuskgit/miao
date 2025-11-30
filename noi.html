@@ -299,5 +299,31 @@ console.log(y == 0 && f == '/' ? "Divide by zero!" : f  != '+' && f  != '-' && f
 var a = Number(prompt('请输入数值'))
 var b = Number(prompt('请输入数值'))
 var c = Number(prompt('请输入数值'))
-console.log(a % 400 == 0 ? "Y" : a % 4 == 0 && a % 100 !== 0 ? "Y" : "N")
+if (b ** 2 == 4 * a * c){
+var x1 = (- b) / (2 * a)
+console.log("x1= x2 = " + x1.toFixed(5))
+} else if (b * b > 4 * a * c){
+var x1 = (- b + (b * b - 4 * a * c) ** 0.5) / (2 * a)
+var x2 = (- b - (b * b - 4 * a * c) ** 0.5) / (2 * a)
+console.log( "x1 = " + x1.toFixed(5) + "; x2 = " + x2.toFixed(5))
+} else {
+var realpart = -b / (2 * a)
+var imagepart = Math.sqrt(4 * a * c - b * b) / (2 * a)
+console.log("x1 = " + realpart.toFixed(5) + "+" + imagepart.toFixed(5) + "i ; x2 = " + realpart.toFixed(5) + "-" + imagepart.toFixed(5) + "i")}
+</script>
+c 
+<script id="ch0104/21">
+var n = Number(prompt('请输入数值'))
+var x = Number(prompt('请输入数值'))
+var y = Number(prompt('请输入数值'))
+var z = n - y / x
+console.log(Math.floor(z))
+</script>
+
+<script id="ch0105/01">
+var n = Number(prompt('请输入数值'))
+var x = Number(prompt('请输入数值'))
+var y = Number(prompt('请输入数值'))
+var z = n - y / x
+console.log(Math.floor(z))
 </script>
