@@ -210,16 +210,12 @@ console.log(x % 3 == 0 && x % 5 == 0  ? "YES" : "NO")
 </script>
 
 <script id="ch0104/09">
-var x = Number(prompt('请输入n'))
-console.log(x % 3 == 0 && x % 5 == 0 && x % 7 == 0 ? "3 5 7 " :
- x % 3 == 0 && x % 5 == 0 ? "3 5" : 
-x % 3 == 0 &&  x % 7 == 0 ? "3 7" : 
- x % 5 == 0 && x % 7 == 0 ? "5 7" : 
-x % 3 == 0  ? "3"
- : x % 5 == 0  ? " 5 " : 
- x % 7 == 0 ? " 7 " :
- "n"
-)
+var x = Number(prompt('请输入n'));
+var divisors = [];
+if (x % 3 === 0) divisors.push(3);
+if (x % 5 === 0) divisors.push(5);
+if (x % 7 === 0) divisors.push(7);
+console.log(divisors.length > 0 ? divisors.join(' ') : 'n');
 </script>
 
 
