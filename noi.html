@@ -183,7 +183,7 @@ console.log(n % 2 == 0 ? "even" : "odd")
 
 <script id="ch0104/04">
 let ch = prompt('请输入一个字符')
-let ascii = ch.charCodeAt(0);
+let ascii = ch.charCodeAt(0); // 括号里的0表示字符串的第一位
 console.log(ascii % 2 == 0 ? "NO" : "YES")
 </script>
 
@@ -211,13 +211,19 @@ console.log(x % 3 == 0 && x % 5 == 0  ? "YES" : "NO")
 
 <script id="ch0104/09">
 var x = Number(prompt('请输入n'));
-var divisors = [];
-if (x % 3 === 0) divisors.push(3);
-if (x % 5 === 0) divisors.push(5);
-if (x % 7 === 0) divisors.push(7);
-console.log(divisors.length > 0 ? divisors.join(' ') : 'n');
+if (x % 3 === 0) {
+  console.log('3')
+}
+if (x % 5 === 0) {
+  console.log('5')
+}
+if (x % 7 === 0) {
+  console.log('7')
+}
+else if (x % 3 !== 0 && x % 5 !== 0 && x % 7 !== 0) {
+  console.log('n')
+}
 </script>
-
 
 <script id="ch0104/10">
 var x = Number(prompt('请输入语文成绩'))
