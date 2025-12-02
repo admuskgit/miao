@@ -296,12 +296,21 @@ console.log(x >= -1 && x <= 1&& y >= -1 && y <= 1 ? "yes" : "no")
 var x = Number(prompt('请输入数值'))
 var y = Number(prompt('请输入数值'))
 let f = prompt('输入操作符')
-var z = 
-  f == '+' ? x + y :
-  f == '-' ? x - y :
-  f == '*' ? x * y :
-  f == '/' ? x / y : null
-console.log(y == 0 && f == '/' ? "Divide by zero!" : f  != '+' && f  != '-' && f  != '*' && f  != '/' ? "Invalid operator!" : z )
+if (f == '+'){
+console.log(x + y)
+} else if (f == '-'){
+console.log(x - y)
+} else if (f == '*'){
+console.log(x * y)
+} else if (f == '/'){
+  if (y = 0){
+console.log("Divided by zero!")
+  } else {
+console.log(x / y)
+  }
+} else {
+console.log("Invalid operator!")
+}
 </script>
 
 <script id="ch0104/20">
