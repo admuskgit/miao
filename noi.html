@@ -252,20 +252,26 @@ console.log(x >= 0 && x < 5 ? a.toFixed(3) : x >= 5 && x < 10 ? b.toFixed(3) : c
 </script>
 
 <script id="ch0104/14">
-var n = Number(prompt('请输入数值'))
-let or = prompt('是否加急')
-var a = 8
-var b = 8 + Math.ceil((n - 1000) / 500) * 4
-var c = 8 + 5
-var d = 8 + Math.ceil((n - 1000) / 500) * 4 + 5
-console.log(n <= 1000 && or == 'y' ? c : n <= 1000 && or == 'x' ? a : n > 1000 && or == 'y' ? d : n > 1000 && or == 'x' ? b : "输入错误")
+var nw = Number(prompt('请输入数值'))
+var jiaji = prompt('是否加急')
+if (w <= 1000) {
+  var price = 8
+} else {
+  price = price + Math.ceil((w - 1000) / 500) * 4
+}
+if (jiaji == 'y') {
+  price = price + 5
+}
 </script>
 
 <script id="ch0104/15">
 var a = Number(prompt('请输入数值'))
 var b = Number(prompt('请输入数值'))
 var c = Number(prompt('请输入数值'))
-console.log(a >= b && a >= c ? a : b >= a && b >= c ? b : c >= a && c >= b ? c : "输入错误")
+var max = a
+if (b > max) {max = b}
+if (c > max) {max = c}
+console.log(max)
 </script>
 
 <script id="ch0104/16">
@@ -295,7 +301,7 @@ var z =
   f == '-' ? x - y :
   f == '*' ? x * y :
   f == '/' ? x / y : null
-console.log(y == 0 && f == '/' ? "Divide by zero!" : f  != '+' && f  != '-' && f  != '*' && f  != '/' ? "Invalid operater!" : z )
+console.log(y == 0 && f == '/' ? "Divide by zero!" : f  != '+' && f  != '-' && f  != '*' && f  != '/' ? "Invalid operator!" : z )
 </script>
 
 <script id="ch0104/20">
