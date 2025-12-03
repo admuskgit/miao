@@ -319,15 +319,15 @@ var b = Number(prompt('请输入数值'))
 var c = Number(prompt('请输入数值'))
 if (b ** 2 == 4 * a * c){
 var x1 = (- b) / (2 * a)
-console.log("x1= x2 = " + x1.toFixed(5))
+console.log("x1 = x2 = " + x1.toFixed(5))
 } else if (b * b > 4 * a * c){
 var x1 = (- b + (b * b - 4 * a * c) ** 0.5) / (2 * a)
 var x2 = (- b - (b * b - 4 * a * c) ** 0.5) / (2 * a)
-console.log( "x1 = " + x1.toFixed(5) + "; x2 = " + x2.toFixed(5))
+console.log( "x1 = " + x1.toFixed(5) + " ; x2 = " + x2.toFixed(5))
 } else {
 var realpart = -b / (2 * a)
-var imagepart = Math.sqrt(4 * a * c - b * b) / (2 * a)
-console.log("x1 = " + realpart.toFixed(5) + "+" + imagepart.toFixed(5) + "i ; x2 = " + realpart.toFixed(5) + "-" + imagepart.toFixed(5) + "i")}
+var part = Math.sqrt(4 * a * c - b * b) / (2 * a)
+console.log("x1 = " + realpart.toFixed(5) + "+" + part.toFixed(5) + "i ; x2 = " + realpart.toFixed(5) + "-" + part.toFixed(5) + "i")}
 </script>
 
 <script id="ch0104/21">
