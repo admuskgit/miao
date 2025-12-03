@@ -403,28 +403,28 @@ console.log(max)
 </script>
 
 <script id="ch0105/06">
-var n = Number(prompt('请输入整数个数'))
+var n = +prompt('请输入整数个数')
 var max = 0
-var min = 0
+var min = 1000
 for (i = 0 ; i < n ; i++){
-var age = Number(prompt("请输入第" + (i + 1) + "个整数"))
+var age = +prompt("请输入第" + (i + 1) + "个整数")
 if (age > max){max = age}
-else if(age < min){min = age}
+if (age < min){min = age}
 }
 var d = max - min
 console.log(d)
 </script>
 
 <script id="ch0105/07">
-var n = Number(prompt('请输入参赛天数'))
+var n = +prompt('请输入参赛天数')
 var sum = 0 
 var j1 = 0
 var y1 = 0
 var t1 = 0
 for (i = 0 ; i < n ; i++){
-var j = Number(prompt("请输入第" + (i + 1) + "天的金牌数"))
-var y = Number(prompt("请输入第" + (i + 1) + "天的银牌数"))
-var t = Number(prompt("请输入第" + (i + 1) + "天的铜牌数"))
+var j = +prompt("请输入第" + (i + 1) + "天的金牌数")
+var y = +prompt("请输入第" + (i + 1) + "天的银牌数")
+var t = +prompt("请输入第" + (i + 1) + "天的铜牌数")
 j1 += j
 y1 += y
 t1 += t
@@ -434,7 +434,7 @@ console.log( j1 , y1 ,t1 , sum)
 </script>
 
 <script id="ch0105/08">
-var n = Number(prompt('请输入三角形边数'))
+var n = Number(prompt('请输入多边形形边数'))
 var d = (n - 2) * 180
 for ( i = 1 ; i < n ; i++) {
 var n1 = Number(prompt("请输入第"+ i +"个角的度数"))
@@ -443,12 +443,28 @@ d -= n1
 console.log(d)
 </script>
 
-<script id="ch0105/08">
-var n = Number(prompt('请输入三角形边数'))
-var d = (n - 2) * 180
-for ( i = 1 ; i < n ; i++) {
-var n1 = Number(prompt("请输入第"+ i +"个角的度数"))
-d -= n1
+<script id="ch0105/09">
+var m = +prompt('请输入最小值')
+var n = +prompt('请输入最大值')
+var sum = 0
+while ( m <= n ) {
+  if ( m % 2 !== 0 ) {
+     sum += m
+  }
+  m++
 }
-console.log(d)
+console.log(sum)
+</script>
+
+<script id="ch0105/10">
+var m = +prompt('请输入最小值')
+var n = +prompt('请输入最大值')
+var sum = 0
+while ( m <= n ) {
+  if ( m % 2 !== 0 ) {
+     sum += m
+  }
+  m++
+}
+console.log(sum)
 </script>
