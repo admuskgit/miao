@@ -253,15 +253,17 @@ console.log(x >= 0 && x < 5 ? a.toFixed(3) : x >= 5 && x < 10 ? b.toFixed(3) : c
 
 <script id="ch0104/14">
 var w = Number(prompt('请输入数值'))
-var jiaji = prompt('是否加急')
+var j = prompt('是否加急')
+var price = 0 
 if (w <= 1000) {
   var price = 8
 } else {
-  price = price + Math.ceil((w - 1000) / 500) * 4
+  price = 8 + Math.ceil((w - 1000) / 500) * 4
 }
-if (jiaji == 'y') {
+if (j == 'y') {
   price = price + 5
 }
+console.log(price)
 </script>
 
 <script id="ch0104/15">
