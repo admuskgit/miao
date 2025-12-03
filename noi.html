@@ -343,9 +343,11 @@ console.log(Math.floor(z))
 <script id="ch0105/01">
 var n = Number(prompt('请输入学生人数'))
 var sum = 0
-for (var i = 0 ; i < n; i++){
+var i = 0
+while (i < n){
 var age = Number(prompt("请输入第" + (i + 1) + "个学生的年龄"))
 sum += age
+i++
 }
 var avg = sum / n
 console.log(avg.toFixed(2))
