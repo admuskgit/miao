@@ -389,11 +389,15 @@ console.log(sum + " " + avg.toFixed(5))
 </script>
 
 <script id="ch0105/05">
-var n = Number(prompt('请输入整数个数'))
-var max = Number(prompt('请输入第1个整数'))
-for (i = 1 ; i < n ; i++){
-var age = Number(prompt("请输入第" + (i + 1) + "个整数"))
-if (age > max){max = age}
+var n = +prompt('请输入整数个数')
+var max = 0
+var i = 0
+while (i < n){
+var age = +prompt("请输入第" + (i + 1) + "个整数")
+  if (age > max){
+  max = age
+  }
+i++
 }
 console.log(max)
 </script>
