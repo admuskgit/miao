@@ -555,30 +555,26 @@ if (K <= 2) {
     b = c
     }
   }
-  console.log( b )
+  console.log(b)
 </script>
-
+如何不通过第三个变量，交换两个变量的值？
 <script id="ch0105/18">
 var n = +prompt('请输入样本数量')
-  if ( n <= 0 ) {
-    console.log("0.0000")
-  } else {
-      var A = +prompt("请输入第1个总病例数")
-      var B = +prompt("请输入第1个疗效有效的病例数")
-      var x = (B / A) * 100
-    for (var i = 1 ; i < n ; i++ ) {
-      var a = +prompt("请输入第"+ (i + 1) +"个总病例数")
-      var b = +prompt("请输入第"+ (i + 1) +"个疗效有效的病例数")
+var A = +prompt("请输入第1个总病例数")
+var B = +prompt("请输入第1个疗效有效的病例数")
+var x = (B / A) * 100
+for (var i = 1 ; i < n ; i++) {
+  var a = +prompt("请输入第"+ (i + 1) +"个总病例数")
+  var b = +prompt("请输入第"+ (i + 1) +"个疗效有效的病例数")
       y = (b / a) * 100
-    if ( y - x > 5 ) {
-      console.log("better")
-    } else if ( x - y > 5 ) {
-      console.log("worse")
-    } else {
-      console.log("same")
-    }
-    }
+  if (y - x > 5) {
+    console.log("better")
+  } else if (x - y > 5) {
+    console.log("worse")
+  } else {
+    console.log("same")
   }
+}
 </script>
 
 <script id="ch0105/19">
