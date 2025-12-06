@@ -525,13 +525,19 @@ console.log(Math.floor(M * ((1 + R / 100) ** Y)))
 <script id="ch0105/16">
 var N = +prompt('请输入年薪')
 var K = +prompt('请输入增长率')
+var price = 200
+var savings = 0
 var M = 1
-while (M <= 20 && 200 * (1 + K / 100) ** M > N * M) {
+while (M <= 20) {
+  savings += N
+  if (savings >= price) {
+    console.log(M)
+    break
+  }
   M++
+  price = price * (1 + K / 100)
 }
-  if (M <= 20){
-  console.log(M)
-  } else {
+  if (M > 20){
   console.log("Impossible")
   }
 </script>
