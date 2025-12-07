@@ -646,8 +646,8 @@ for (i = 0 ; i < n ; i++) {
   var x = +prompt("请输入第"+ (i + 1) +"个人的取药量")
   if ( x <= m ) {
     m -= x
-  } else if ( x > m ) {
-    total += 1
+  } else {
+    total++
   }
 }
 console.log(total)
@@ -673,13 +673,18 @@ console.log(max)
 </script>
 
 <script id="ch0105/25">
-for (let a = 1; a <= 6; a++) {      
-  for (let c = 1; c <= 6; c++) {    
-    let b = 24*a - 40*c;
-    if (b >=0 && b <=6) {
-      let N = 49*a + 7*b + c;
-      console.log(`${N} ${a}${b}${c} ${c}${b}${a}`);
-    }
+for (i = 1 ; i <= 999 ; i++) {
+  var a7 = i % 7
+  var b7 = Math.floor(i / 7) % 7
+  var c7 = Math.floor(i / 7 / 7) % 7
+  var a9 = i % 9
+  var b9 = Math.floor(i / 9) % 9
+  var c9 = Math.floor(i / 9 / 9) % 9
+  if (a7 == c9 && b7 == b9 && c7 == a9) {
+    console.log(i)
+    console.log("" + a7 + b7 + c7)
+    console.log("" + a9 + b9 + c9)
+    break
   }
 }
 </script>
