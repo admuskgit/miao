@@ -580,7 +580,7 @@ for (var i = 1 ; i < n ; i++) {
 <script id="ch0105/19">
 var n = +prompt('请输入屋顶数')
 var total = 0
-for ( i = 0 ; i < n ; i++ ) {
+for (i = 0 ; i < n ; i++) {
   var x = +prompt("请输入第"+ (i + 1) +"个屋顶的横坐标")
   var y = +prompt("请输入第"+ (i + 1) +"个屋顶的纵坐标")
   var N = +prompt("请输入第"+ (i + 1) +"个屋顶的人数")
@@ -602,12 +602,59 @@ console.log(h.toFixed(7))
 </script>
 
 <script id="ch0105/21">
-var N = +prompt('请输入正整数')
-if ( N % 2 === 0 ) {
-  N = N / 2
-  console.log(N)
-} else {
-  N = 3 * N + 1
-  console.log(N)
+var n = +prompt('请输入正整数')
+while (n !== 1) {
+  if (n % 2 === 0) {
+    var next = n / 2
+    console.log(n + '/2=' + next)
+    n = next
+  } else {
+    next = 3 * n + 1
+    console.log(n + '*3+1=' + next)
+    n = next
+  }
+}
+console.log("End")
+</script>
+
+<script id="ch0105/22">
+var savings = 0
+var total = 0
+var ok = true
+for (i = 0 ; i < 12 ; i++) {
+  var cost = +prompt('请输入' + (i+1) + '月预算金额')
+  savings += 300
+  savings -= cost
+  if (savings >= 100) {
+    total += Math.floor(savings / 100) * 100
+    savings = savings - Math.floor(savings / 100) * 100
+  } else if (savings < 0) {
+    ok = false
+    console.log("-" + (i + 1))
+  }
+}
+if (ok) {
+  console.log(total * 1.2 + savings)
+}
+</script>
+
+<script id="ch0105/23">
+var savings = 0
+var total = 0
+var ok = true
+for (i = 0 ; i < 12 ; i++) {
+  var cost = +prompt('请输入' + (i+1) + '月预算金额')
+  savings += 300
+  savings -= cost
+  if (savings >= 100) {
+    total += Math.floor(savings / 100) * 100
+    savings = savings - Math.floor(savings / 100) * 100
+  } else if (savings < 0) {
+    ok = false
+    console.log("-" + (i + 1))
+  }
+}
+if (ok) {
+  console.log(total * 1.2 + savings)
 }
 </script>
