@@ -639,22 +639,92 @@ if (ok) {
 </script>
 
 <script id="ch0105/23">
-var savings = 0
+var m = +prompt('请输入药品总量')
+var n = +prompt('请输入取药人数')
 var total = 0
-var ok = true
-for (i = 0 ; i < 12 ; i++) {
-  var cost = +prompt('请输入' + (i+1) + '月预算金额')
-  savings += 300
-  savings -= cost
-  if (savings >= 100) {
-    total += Math.floor(savings / 100) * 100
-    savings = savings - Math.floor(savings / 100) * 100
-  } else if (savings < 0) {
-    ok = false
-    console.log("-" + (i + 1))
+for (i = 0 ; i < n ; i++) {
+  var x = +prompt("请输入第"+ (i + 1) +"个人的取药量")
+  if ( x <= m ) {
+    m -= x
+  } else if ( x > m ) {
+    total += 1
   }
 }
-if (ok) {
-  console.log(total * 1.2 + savings)
+console.log(total)
+</script>
+
+<script id="ch0105/24">
+var n = +prompt('请输入测量次数')
+var cur = 0
+var max = 0
+for (i = 0 ; i < n ; i++) {
+  var x = +prompt("请输入第"+ (i + 1) +"个小时的收缩压")
+  var y = +prompt("请输入第"+ (i + 1) +"个小时的舒张压")
+  if (x <= 140 && x >= 90 && y <= 90 && y >= 60) {
+    cur++
+    if (cur > max) {
+      max = cur
+    }
+} else {
+    cur = 0
+   }
+}
+console.log(max)
+</script>
+
+<script id="ch0105/25">
+for (let a = 1; a <= 6; a++) {      
+  for (let c = 1; c <= 6; c++) {    
+    let b = 24*a - 40*c;
+    if (b >=0 && b <=6) {
+      let N = 49*a + 7*b + c;
+      console.log(`十进制数：${N}, 七进制：${a}${b}${c}, 九进制：${c}${b}${a}`);
+    }
+  }
+}
+</script>
+
+<script id="ch0105/26">
+var n = +prompt('请输入四位数个数')
+var m = 0
+for (i = 0 ; i < n ; i++) {
+  var N = +prompt("请输入第"+ (i + 1) +"个四位数")
+  var a = N % 10
+  var b = (N - a) / 10 % 10
+  var c = (N - a - b * 10) / 100 % 10
+  var d = (N - a - b * 10 - c * 100) / 1000
+  if (a > b + c + d) {
+    m++
+  }
+}
+console.log(m)
+</script>
+
+<script id="ch0105/27">
+var k = +prompt('请输入整数')
+var sum = 0
+var i = 0
+while (sum <= k) {
+  i++
+  sum += 1 / i
+}
+console.log(i)
+</script>
+
+<script id="ch0105/28">
+var n = +prompt('请输入整数')
+while (n > 0) {
+  var digit = n % 10
+  console.log(digit)
+  n = Math.floor(n / 10)
+}
+</script>
+
+<script id="ch0105/29">
+var n = +prompt('请输入整数')
+while (n > 0) {
+  var digit = n % 10
+  console.log(digit)
+  n = Math.floor(n / 10)
 }
 </script>
