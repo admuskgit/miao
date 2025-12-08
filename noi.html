@@ -727,9 +727,16 @@ while (n > 0) {
 
 <script id="ch0105/29">
 var n = +prompt('请输入整数')
+var sign = 1
+if (n < 0) {
+  sign = -1
+  n = -n
+}
+var result = 0
 while (n > 0) {
   var digit = n % 10
-  console.log(digit)
   n = Math.floor(n / 10)
+  result = result * 10 + digit //*10让旧结果往左挪一位，再把新数字塞到最后一位
 }
+console.log(result * sign)
 </script>
