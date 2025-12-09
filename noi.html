@@ -848,18 +848,18 @@ console.log(sum.toFixed(2))
 </script>
 
 <script id="ch0105/37">
-var N = +prompt('请输入整数')
-var M = +prompt('请输入整数')
-var sign = 1
-var i = 0
-while (i <= N) {
-    if (i % 2 == 0) {
-      sign = -1 * sign
+var M = +prompt('请输入最大体力值')
+var N = +prompt('请输入初始战斗力')
+var X = +prompt('请输入能量元素个数')
+while (true) {
+  var cost = Math.ceil(M / N)
+  if (X < cost) {
+    break
   }
+  N += Math.floor(M / N)
+  X -= Math.ceil(M / N)
 }
-if (sign == 1) {
-  console.log("YES") 
-} 
+console.log(N)
 </script>
 
 <script id="ch0105/38">
