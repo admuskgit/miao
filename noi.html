@@ -836,18 +836,15 @@ console.log(a.toFixed(10))
 </script>
 
 <script id="ch0105/36">
-var N = +prompt('请输入整数')
-var M = +prompt('请输入整数')
-var sign = 1
+var x = +prompt('请输入整数')
+var n = +prompt('请输入整数')
+var sum = 0
 var i = 0
-while (i <= N) {
-    if (i % 2 == 0) {
-      sign = -1 * sign
-  }
+while (i <= n) {
+  sum += (x ** i)
+  i++
 }
-if (sign == 1) {
-  console.log("YES") 
-} 
+console.log(sum.toFixed(2))
 </script>
 
 <script id="ch0105/37">
