@@ -793,18 +793,20 @@ console.log(sum.toFixed(4))
 </script>
 
 <script id="ch0105/33">
-var N = +prompt('请输入整数')
-var M = +prompt('请输入整数')
-var sign = 1
-var i = 0
-while (i <= N) {
-    if (i % 2 == 0) {
-      sign = -1 * sign
+var n = +prompt('请输入整数')
+var i = 1
+var sum = 0
+var su = 0
+while (i <= n) {
+  if (i % 2 == 0) {
+     sum = sum - 1 / i
   }
+  else {
+    su = su + 1 / i
+  }
+  i++
 }
-if (sign == 1) {
-  console.log("YES") 
-} 
+console.log((sum + su).toFixed(4))
 </script>
 
 <script id="ch0105/34">
