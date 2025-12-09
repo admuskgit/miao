@@ -823,18 +823,16 @@ console.log(a)
 </script>
 
 <script id="ch0105/35">
-var N = +prompt('请输入整数')
-var M = +prompt('请输入整数')
-var sign = 1
-var i = 0
-while (i <= N) {
-    if (i % 2 == 0) {
-      sign = -1 * sign
-  }
+var n = +prompt('请输入整数')
+var sum = 1
+var a = 1
+var i = 1
+while (i <= n) {
+  sum = i * sum
+  a += 1 / sum
+  i++
 }
-if (sign == 1) {
-  console.log("YES") 
-} 
+console.log(a.toFixed(10))
 </script>
 
 <script id="ch0105/36">
