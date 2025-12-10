@@ -923,9 +923,17 @@ console.log(n)
 <script id="ch0105/42">
 var h = +prompt('请输入高度')
 var w = +prompt('请输入宽度')
-var s = +prompt('请输入字符')
+var s = String(prompt('请输入字符'))
 var n = +prompt('请输入开关')
-
+console.log(s.repeat(w))
+for ( i = 0 ; i < h - 2 ; i++ ) {
+  if ( n == 1 ) {
+    console.log(s + " ".repeat(w - 2) + s)
+  } else {
+    console.log(s.repeat(w))
+  }
+}
+console.log(s.repeat(w))
 </script>
 
 <script id="ch0105/43">
