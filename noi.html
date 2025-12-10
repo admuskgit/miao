@@ -902,33 +902,30 @@ console.log(n)
 </script>
 
 <script id="ch0105/41">
+var i = +prompt('请输入整数')
 var N = +prompt('请输入整数')
-var M = +prompt('请输入整数')
-var sign = 1
-var i = 0
+var n = 0
 while (i <= N) {
-    if (i % 2 == 0) {
-      sign = -1 * sign
+ if (i % 10 == 2) {
+   n++
+  }  if (Math.floor(i / 10) % 10 == 2) {
+   n++
+  }  if (Math.floor(i / 100) % 10 == 2) {
+   n++
+  }  if (Math.floor(i / 1000) % 10 == 2) {
+   n++
   }
+  i++
 }
-if (sign == 1) {
-  console.log("YES") 
-} 
+console.log(n)
 </script>
 
 <script id="ch0105/42">
-var N = +prompt('请输入整数')
-var M = +prompt('请输入整数')
-var sign = 1
-var i = 0
-while (i <= N) {
-    if (i % 2 == 0) {
-      sign = -1 * sign
-  }
-}
-if (sign == 1) {
-  console.log("YES") 
-} 
+var h = +prompt('请输入高度')
+var w = +prompt('请输入宽度')
+var s = +prompt('请输入字符')
+var n = +prompt('请输入开关')
+
 </script>
 
 <script id="ch0105/43">
