@@ -863,48 +863,42 @@ console.log(N)
 </script>
 
 <script id="ch0105/38">
-var N = +prompt('请输入整数')
-var M = +prompt('请输入整数')
-var sign = 1
-var i = 0
-while (i <= N) {
-    if (i % 2 == 0) {
-      sign = -1 * sign
-  }
-}
-if (sign == 1) {
-  console.log("YES") 
-} 
+var n = +prompt('请输入最高次幂')
+var M = +prompt('请输入系数')
+
 </script>
 
 <script id="ch0105/39">
 var N = +prompt('请输入整数')
-var M = +prompt('请输入整数')
-var sign = 1
-var i = 0
+var i = 1
+var sum = 0
 while (i <= N) {
-    if (i % 2 == 0) {
-      sign = -1 * sign
+  sum += i ** 2
+ if (i - Math.floor(i / 10) * 10 == 7 || i % 7 == 0 || Math.floor(i / 10) == 7) {
+   sum -= i ** 2
   }
+  i++
 }
-if (sign == 1) {
-  console.log("YES") 
-} 
+console.log(sum)
 </script>
 
 <script id="ch0105/40">
 var N = +prompt('请输入整数')
-var M = +prompt('请输入整数')
-var sign = 1
-var i = 0
+var i = 1
+var n = 0
 while (i <= N) {
-    if (i % 2 == 0) {
-      sign = -1 * sign
+ if (i % 10 == 1) {
+   n++
+  }  if (Math.floor(i / 10) % 10 == 1) {
+   n++
+  }  if (Math.floor(i / 100) % 10 == 1) {
+   n++
+  }  if (Math.floor(i / 1000) % 10 == 1) {
+   n++
   }
+  i++
 }
-if (sign == 1) {
-  console.log("YES") 
-} 
+console.log(n)
 </script>
 
 <script id="ch0105/41">
