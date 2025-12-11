@@ -866,12 +866,14 @@ console.log(N)
 var n = +prompt('请输入组数')
 for (var i = 0 ; i <= n ; i++ ) {
   var exp = +prompt('请输入次幂')
-  for (var j = 0 ; j < exp ; j++ ) {
+  var e = exp
+  for (var j = 0 ; j < e ; j++ ) {
     var c = +prompt('请输入系数')
-    console.log(c * exp)
+    if (i !== e){
+      console.log(c * exp)
+    }
     exp--
   }
-  console.log(1)
 }
 </script>
 
