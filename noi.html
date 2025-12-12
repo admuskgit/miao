@@ -972,9 +972,16 @@ for (var i = 2 ; i <= n ; i++ ) {
 
 <script id="ch0105/44">
 var n = +prompt('请输入整数')
-count = 0
-for (var i = 2 ; i <= n ; i++ ) {
-  if () {
+var count = 0
+for (var x = 2 ;  ; x++) {
+  var isPrime = true
+  for (var y = 2;y <= x / 2; y++) { //遍历从2到x的一半的所有数字
+    if ( x % y == 0 ) { //如果x能被y整除，则说明x不是素数
+      isPrime = false
+      break
+    }
+  }
+  if (isPrime) {
     count++
     if (count == n) {
       console.log(x)
