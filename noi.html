@@ -976,7 +976,7 @@ var count = 0
 for (var x = 2 ;  ; x++) {
   var isPrime = true
   for (var y = 2;y <= x / 2; y++) { //遍历从2到x的一半的所有数字
-    if ( x % y == 0 ) { //如果x能被y整除，则说明x不是素数
+    if ( x % y == 0 ) { //如果x能被y整除，则说明x不是素数.素数判定方法
       isPrime = false
       break
     }
@@ -993,5 +993,16 @@ for (var x = 2 ;  ; x++) {
 
 <script id="ch0105/45">
 var n = +prompt('请输入整数')
-
+var 面额 = 1
+var sum = 0
+var 天数 = 0
+for (var i = 1 ; i <= n ; i++ ) {
+  sum += 面额
+  天数++
+  if (天数 == 面额) {
+    面额++
+    天数 = 0
+  }
+}
+console.log(sum)
 </script>
