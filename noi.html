@@ -45,6 +45,11 @@ function narcissistic(n) {
     n= (n - ge) / 10
     sum += ge ** width
   }
+  if (sum == m) {
+  return true
+} else {
+  return false
+}
 }
 for (var i = 0 ; i < 10000 ; i++ ) {
   if (narcissistic(i)) {
