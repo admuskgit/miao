@@ -18,10 +18,17 @@ function narcissistic(n) {
     sum += ge ** width
   }
   if (sum == m) {
-  console.log("YES")
-} else {
-  console.log("NO")
+    return true
+  } else {
+    return false
+  }
 }
+var a = Number(prompt('请输入A'))
+if (narcissistic(a)) {
+  console.log("YES")
+}
+else {
+  console.log("NO")
 }
 </script>
 //调试功能函数，可以在浏览器中调试，点击第三个向下的箭头，
