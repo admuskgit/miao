@@ -1,4 +1,33 @@
- <script id="ch0103/01">
+ <script id="narcissistic">
+function digitWidth(n) {
+  var width = 0
+   do {
+    var ge = n % 10
+    n= (n - ge) / 10
+    width++
+  } while (n > 0) //换成do while,是为了n=0的特殊情况,
+  return width
+}
+function narcissistic(n) {
+  var width = digitWidth(n)
+  var sum = 0
+  var m = n
+  while (n > 0) {
+    var ge = n % 10
+    n= (n - ge) / 10
+    sum += ge ** width
+  }
+  if (sum == m) {
+  console.log("true")
+} else {
+  console.log("false")
+}
+}
+</script>
+//调试功能函数，可以在浏览器中调试，点击第三个向下的箭头，
+
+
+<script id="ch0103/01">
 var a = Number(prompt('请输入A'))
 var b = Number(prompt('请输入B'))
 var c = a + b
