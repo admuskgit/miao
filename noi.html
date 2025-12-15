@@ -93,9 +93,10 @@ console.log(completenumber(a) ? "YES" : "NO")
     for (var i = 2 ; i <= sqrt_n; i++) {
       if (n % i == 0) {
         return false
+      } else {
+        return true
       }
     }
-    return true
   }
 var a = Number(prompt('请输入A'))
 console.log(prime(a) ? "YES" : "NO")
