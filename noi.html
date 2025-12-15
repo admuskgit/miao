@@ -65,16 +65,27 @@ for (var i = 100 ; i < 1000 ; i++ ) {
 }
 </script>
 
-<script id="palindrom">
-
-</script>
-
-<script id="weekday">
-
-</script>
-
 <script id="complete-number">
-
+function completenumber(n) {
+  var sum = 0
+  for (var i = 1 ; i <= n / 2 ; i++) {
+    if (n % i == 0) {
+      sum += i
+    }
+  }
+  if (sum == n) {
+    return true
+  } else {
+    return false
+  }
+}
+var a = Number(prompt('请输入A'))
+if (completenumber(a)) {
+  console.log("YES")
+}
+else {
+  console.log("NO")
+}
 </script>
 
 <script id="ch0103/01">
