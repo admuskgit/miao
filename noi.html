@@ -101,6 +101,36 @@ var a = Number(prompt('请输入A'))
 console.log(prime(a) ? "YES" : "NO")
 </script>
 
+<script id="perfect-number">
+function palindrom(n) {
+  var a = n
+  var reverse = 0
+  while (n > 0) {
+    var ge = n % 10
+    reverse = reverse * 10 + ge
+    n = (n - ge) / 10
+  }
+  if (reverse == a) {
+    return true
+  } else {
+    return false
+  }
+}
+var a = Number(prompt('请输入A'))
+if (palindrom(a)) {
+  console.log("YES")
+}
+else {
+  console.log("NO")
+}
+</script>
+
+
+
+
+
+
+
 
 
 
