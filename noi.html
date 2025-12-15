@@ -68,7 +68,7 @@ for (var i = 100 ; i < 1000 ; i++ ) {
 <script id="complete-number">
 function completenumber(n) {
   var sum = 1
-  for (var i = 2 ; i <= n ** 0.5 ; i++) {
+  for (var i = 2 ; i <= Math.sqrt(n) ; i++) {
     if (n % i == 0) {
       sum += i
       if (i != n / i) {
@@ -89,7 +89,8 @@ console.log(completenumber(a) ? "YES" : "NO")
 
 <script id="prime">
   function prime(n) {
-    for (var i = 2 ; i < n ; i++) {
+    var sqrt_n = Math.sqrt(n)
+    for (var i = 2 ; i <= sqrt_n; i++) {
       if (n % i == 0) {
         return false
       }
@@ -99,6 +100,16 @@ console.log(completenumber(a) ? "YES" : "NO")
 var a = Number(prompt('请输入A'))
 console.log(prime(a) ? "YES" : "NO")
 </script>
+
+
+
+
+
+
+
+
+
+
 
 <script id="ch0103/01">
 var a = Number(prompt('请输入A'))
