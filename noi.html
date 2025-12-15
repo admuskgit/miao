@@ -111,6 +111,9 @@ console.log(completenumber(a) ? "YES" : "NO")
 <script id="prime">
   function prime(n) {
     var sqrt_n = Math.sqrt(n)
+    if (n <= 1) {
+      return false
+    }
     for (var i = 2 ; i <= sqrt_n; i++) {
       if (n % i == 0) {
         return false
