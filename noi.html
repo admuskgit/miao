@@ -102,7 +102,33 @@ console.log(completenumber(a) ? "YES" : "NO")
 
 
 
-
+<script id="complete-numbers">
+function completenumber(n) {
+  if (n <= 1) {
+    return false
+  }
+  var sum = 1
+  for (var i = 2 ; i <= Math.sqrt(n) ; i++) {
+    if (n % i == 0) {
+      sum += i
+      if (i != n / i) {
+      sum += n / i
+    }
+    }
+    
+  }
+  if (sum == n) {
+    return true
+  } else {
+    return false
+  }
+}
+for (var i = 1 ; i <= 1000 ; i++ ) {
+  if (completenumber(i)) {
+    console.log(i)
+  }
+}
+</script>
 
 
 
@@ -127,7 +153,25 @@ console.log(prime(a) ? "YES" : "NO")
 
 
 
-
+<script id="primes">
+  function prime(n) {
+    var sqrt_n = Math.sqrt(n)
+    if (n <= 1) {
+      return false
+    }
+    for (var i = 2 ; i <= sqrt_n; i++) {
+      if (n % i == 0) {
+        return false
+      }
+    }
+    return true
+  }
+  for (var i = 1 ; i <= 1000 ; i++ ) {
+    if (prime(i)) {
+      console.log(i)
+    }
+  }
+</script>
 
 
 <script id="palindrom">
@@ -157,12 +201,23 @@ else {
 
 
 
-
-
-
-
-
 <script id="weekday">
+function weekday(n) {
+  
+}
+</script>
+
+
+
+<script id="itob">
+function weekday(n) {
+  
+}
+</script>
+
+
+
+<script id="lcf&lcm">
 function weekday(n) {
   
 }
@@ -172,13 +227,11 @@ function weekday(n) {
 
 
 
-
-
-
-
-
-
-
+<script id="sqrt">
+function weekday(n) {
+  
+}
+</script>
 
 
 
