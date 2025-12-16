@@ -202,8 +202,52 @@ else {
 
 
 <script id="weekday">
-function weekday(n) {
-  
+var y = +prompt('请输入年份')
+var m = +prompt('请输入月份')
+var td = 0
+for (var i = 1970 ; i < y ; i++) {
+  if (i % 400 == 0 || (i % 4 == 0 && i % 100 != 0)) {
+     td = td + 366
+  }
+  else {
+    td = td + 365
+  }
+}
+for (var j = 1 ; j < m ; j++) {
+  if (j == 2 && (y % 400 == 0 || (y % 4 == 0 && y % 100 != 0))) {
+    td = td + 29
+  }
+  else if (j == 2) {
+    td = td + 28
+  }
+  else if (j == 4 || j == 6 || j == 9 || j == 11) {
+    td = td + 30
+  }
+  else {
+    td = td + 31
+  }
+}
+var d = td % 7
+var weekday = (4 + d) % 7
+if (weekday == 0) {
+  console.log('周日')
+}
+if (weekday == 1) {
+  console.log('周一')
+}
+if (weekday == 2) {
+  console.log('周二')
+}
+if (weekday == 3) {
+  console.log('周三')
+}
+if (weekday == 4) {
+  console.log('周四')
+}
+if (weekday == 5) {
+  console.log('周五')
+}if (weekday == 6) {
+  console.log('周六')
 }
 </script>
 
