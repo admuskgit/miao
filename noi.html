@@ -166,7 +166,7 @@ console.log(prime(a) ? "YES" : "NO")
     }
     return true
   }
-  for (var i = 1 ; i <= 1000 ; i++ ) {
+  for (var i = 1 ; i <= 100 ; i++ ) {
     if (prime(i)) {
       console.log(i)
     }
@@ -254,28 +254,60 @@ if (weekday == 5) {
 
 
 <script id="itob">
-function weekday(n) {
-  
+function itob(n) {
+  if (n < 0) {
+    n = -n
+  }
+  if (n > 0) {
+   var ge = n % 10
+   n = (n - ge) / 10
+   var s = itob(n)
+   return s + ge
+  }
+  else {
+    return ""
+  }
 }
+var a = Number(prompt('请输入A'))
+console.log(itob(a))
 </script>
+
+
+
+
 
 
 
 <script id="lcf&lcm">
-function weekday(n) {
-  
-}
+var a = +prompt('请输入数字')
+var b = +prompt('请输入数字')
+  if (b == 0) {
+     console.log(a)
+  } else {
+      while (b != 0) {
+    var c = a % b
+    a = b
+    b = c 
+  }
+  console.log(a)
+  }
 </script>
+
+
+
 
 
 
 
 
 <script id="sqrt">
-function weekday(n) {
+function sqrt(n) {
   
 }
 </script>
+
+
+
 
 
 
