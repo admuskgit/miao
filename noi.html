@@ -281,6 +281,16 @@ console.log(itob(a))
 <script id="lcf&lcm">
 var a = +prompt('请输入数字')
 var b = +prompt('请输入数字')
+if (a < 0) {
+var d = -a
+} else {
+var d = a
+}
+if (b < 0) {
+var e = -b
+} else {
+var e = b
+}
   if (b == 0) {
      console.log(a)
   } else {
@@ -290,7 +300,9 @@ var b = +prompt('请输入数字')
     b = c 
   }
   console.log(a)
-  }
+}
+var f = (d * e) / a
+  console.log(f)
 </script>
 
 
@@ -302,7 +314,14 @@ var b = +prompt('请输入数字')
 
 <script id="sqrt">
 function sqrt(n) {
-  
+var n = +prompt('请输入A')
+var x = n
+var y = 1
+while (x > y) {
+  x = (x + y) / 2
+  y = n / x
+}
+return x  
 }
 </script>
 
