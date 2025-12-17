@@ -269,7 +269,11 @@ function itob(n) {
   }
 }
 var a = Number(prompt('请输入A'))
-console.log(itob(a))
+if (a < 0) {
+  console.log('-' + itob(a))
+} else {
+  console.log(itob(a))
+}
 </script>
 
 
