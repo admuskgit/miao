@@ -628,9 +628,23 @@ for(var i = 0; i <= 160; i++) {
 for(var y = 0; y <= 100; y++) {
   dot(y * Math.sqrt(3) / 3, y, 'green')//线不连续，x方向是连续的，y方向是不连续
 }
-//* 画一条跨越画布左上角和右下角的对角线
+//* 画一条跨越画布左上角和右下角的对角线,没有小数运算，终极版.
 //斜率是1，可以让步径小的作为因变量，步长大的作为自变量，靠近x轴x可以作为自变量，若靠近y轴，y可以做自变量。
-
+function line(x1, y1, x2, y2) {
+  var dx = x2 - x1
+  var dy = y2 - y1
+  var ty = 0
+  var y = y1
+  for (var x = x1; x <= x2; x++) {
+    dot(x, y, 'pink')
+    ty += dy
+    if (ty >= dx) {
+      y++
+      ty -= dx
+    }
+  }
+}
+line(0, 0, 450, 103)
  //   * 画一个空心矩形
  for(var i = 60; i <= 200; i++) {
   dot(60, i, 'red')
