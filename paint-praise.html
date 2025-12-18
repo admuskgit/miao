@@ -584,7 +584,7 @@
 </script>
 <script>
 //* 在 坐标 (42, 42) 画出一个点
-dot(42, 42, 'green')
+dot(35, 42, 'pink')
 //* 画一条水平实线，粗细为一个像素
 for(var i = 44; i <= 200; i++) {
   dot(i, 44, 'green')
@@ -602,11 +602,19 @@ for(var i = 48; i <= 200; i+=4) {
     dot(i, 52, 'green')
     dot(i + 1, 52, 'green')
 }
+for(var i = 48; i <= 200; i++) {
+    if (i % 4 < 2) 
+      dot(i, 57,'red') 
+}
 //* 画一条三个实点两个空点的虚线
 for(var i = 48; i <= 200; i+=5) {
     dot(i, 54, 'green')
     dot(i + 1, 54, 'green')
     dot(i + 2, 54, 'green')
+}
+for(var i = 55; i <= 200; i++) {
+    if (i % 5 < 3) 
+      dot(i, 62,'red') 
 }
 //* 画一条45度的斜线
 for(var i = 0; i <= 200; i++) {
@@ -614,11 +622,11 @@ for(var i = 0; i <= 200; i++) {
 }
 // * 画一条30度的斜线（与x轴的夹角呈30度）
 for(var i = 0; i <= 200; i++) {
-  dot(i, i * 0.577, 'green')
+  dot(i, i * Math.sqrt(3) / 3, 'green')
 }
   // * 画一条60度的斜线（与x轴的夹角呈60度）
 for(var i = 0; i <= 200; i++) {
-  dot(i, i * 1.732, 'green')
+  dot(i, i * Math.sqrt(3), 'green')//线不连续，x方向是连续的，y方向是不连续
 }
 //* 画一条跨越画布左上角和右下角的对角线
 for(var i = 0; i <= 1000000; i++) {
@@ -638,6 +646,24 @@ for(var i = 0; i <= 1000000; i++) {
   dot(i, 200, 'red')
 }
  //   * 画一个实心矩形
+ for(var i = 80; i <= 100; i++) {
+  dot(70, i, 'red')
+ }
+  for(var i = 80; i <= 100; i++) {
+  dot(71, i, 'red')
+ }
+  for(var i = 80; i <= 100; i++) {
+  dot(72, i, 'red')
+ }
+  for(var i = 80; i <= 100; i++) {
+  dot(73, i, 'red')
+ }
+  for(var i = 80; i <= 100; i++) {
+  dot(74, i, 'red')
+ }
+  for(var i = 80; i <= 100; i++) {
+  dot(75, i, 'red')
+ }
  //   * 画两个空心的圆，圆心在画布中心：
  //     * 一个半径为50像素
  //     * 一个半径为200像素
