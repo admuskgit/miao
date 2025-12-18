@@ -628,7 +628,7 @@ for(var i = 0; i <= 160; i++) {
 for(var y = 0; y <= 100; y++) {
   dot(y * Math.sqrt(3) / 3, y, 'green')//线不连续，x方向是连续的，y方向是不连续
 }
-//* 画一条跨越画布左上角和右下角的对角线,没有小数运算，终极版.
+//* 画一条跨越画布左上角和右下角的对角线,没有小数运算，目前的终极版.
 //斜率是1，可以让步径小的作为因变量，步长大的作为自变量，靠近x轴x可以作为自变量，若靠近y轴，y可以做自变量。
 function line(x1, y1, x2, y2) {
   var dx = x2 - x1
@@ -638,60 +638,30 @@ function line(x1, y1, x2, y2) {
   for (var x = x1; x <= x2; x++) {
     dot(x, y, 'pink')
     ty += dy
-    if (ty >= dx) {
+    if (ty >= dx) {//攒够一次的步长，y++
       y++
       ty -= dx
     }
   }
 }
 line(0, 0, 450, 103)
+
  //   * 画一个空心矩形
- for(var i = 60; i <= 200; i++) {
-  dot(60, i, 'red')
+for (var x = 20; x < 151; x++) {
+  dot(x, 10, 'red')     
+  dot(x, 40, 'red')   
 }
- for(var i = 60; i <= 200; i++) {
-  dot(i, 60, 'red')
-}
- for(var i = 60; i <= 200; i++) {
-  dot(200, i, 'red')
-}
- for(var i = 60; i <= 200; i++) {
-  dot(i, 200, 'red')
+for (var y = 10; y < 40; y++) {
+  dot(20, y, 'red')    
+  dot(150, y, 'red')   
 }
  //   * 画一个实心矩形
- for(var i = 80; i <= 100; i++) {
-  dot(70, i, 'red')
- }
-  for(var i = 80; i <= 100; i++) {
-  dot(71, i, 'red')
- }
-  for(var i = 80; i <= 100; i++) {
-  dot(72, i, 'red')
- }
-  for(var i = 80; i <= 100; i++) {
-  dot(73, i, 'red')
- }
-  for(var i = 80; i <= 100; i++) {
-  dot(74, i, 'red')
- }
-  for(var i = 80; i <= 100; i++) {
-  dot(75, i, 'red')
- }
-   for(var i = 80; i <= 100; i++) {
-  dot(76, i, 'red')
- }
-   for(var i = 80; i <= 100; i++) {
-  dot(77, i, 'red')
- }
-   for(var i = 80; i <= 100; i++) {
-  dot(78, i, 'red')
- }
-   for(var i = 80; i <= 100; i++) {
-  dot(79, i, 'red')
- }
-   for(var i = 80; i <= 100; i++) {
-  dot(80, i, 'red')
- }
+for (var y = 100; y < 200; y++) {
+  for (var x = 100; x < 150; x++) {
+    dot(x, y, 'red')
+  }
+}
+
  //   * 画两个空心的圆，圆心在画布中心：
  //     * 一个半径为50像素
  //     * 一个半径为200像素
