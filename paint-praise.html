@@ -607,7 +607,7 @@ for(var i = 48; i <= 200; i++) {
       dot(i, 57,'red') 
 }
 //* 画一条三个实点两个空点的虚线
-for(var i = 48; i <= 200; i+=5) {
+for(var i = 48; i <= 140; i+=5) {
     dot(i, 54, 'green')
     dot(i + 1, 54, 'green')
     dot(i + 2, 54, 'green')
@@ -617,21 +617,20 @@ for(var i = 55; i <= 200; i++) {
       dot(i, 62,'red') 
 }
 //* 画一条45度的斜线
-for(var i = 0; i <= 200; i++) {
+for(var i = 0; i <= 150; i++) {
   dot(i, i, 'green')
 }
 // * 画一条30度的斜线（与x轴的夹角呈30度）
-for(var i = 0; i <= 200; i++) {
+for(var i = 0; i <= 160; i++) {
   dot(i, i * Math.sqrt(3) / 3, 'green')
 }
   // * 画一条60度的斜线（与x轴的夹角呈60度）
-for(var i = 0; i <= 200; i++) {
-  dot(i, i * Math.sqrt(3), 'green')//线不连续，x方向是连续的，y方向是不连续
+for(var y = 0; y <= 100; y++) {
+  dot(y * Math.sqrt(3) / 3, y, 'green')//线不连续，x方向是连续的，y方向是不连续
 }
 //* 画一条跨越画布左上角和右下角的对角线
-for(var i = 0; i <= 1000000; i++) {
-  dot(i, i, 'green')
-}
+//斜率是1，可以让步径小的作为因变量，步长大的作为自变量，靠近x轴x可以作为自变量，若靠近y轴，y可以做自变量。
+
  //   * 画一个空心矩形
  for(var i = 60; i <= 200; i++) {
   dot(60, i, 'red')
@@ -663,6 +662,21 @@ for(var i = 0; i <= 1000000; i++) {
  }
   for(var i = 80; i <= 100; i++) {
   dot(75, i, 'red')
+ }
+   for(var i = 80; i <= 100; i++) {
+  dot(76, i, 'red')
+ }
+   for(var i = 80; i <= 100; i++) {
+  dot(77, i, 'red')
+ }
+   for(var i = 80; i <= 100; i++) {
+  dot(78, i, 'red')
+ }
+   for(var i = 80; i <= 100; i++) {
+  dot(79, i, 'red')
+ }
+   for(var i = 80; i <= 100; i++) {
+  dot(80, i, 'red')
  }
  //   * 画两个空心的圆，圆心在画布中心：
  //     * 一个半径为50像素
