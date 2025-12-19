@@ -670,18 +670,77 @@ dot(x + 220, -y + 220)
 }
 
 
-for(var x = -80; x <= 80 / Math.sqrt(2); x++) {
+for(var x = 0; x <= 80 / Math.sqrt(2); x++) {
+//八对称性，重点：x = 0和 x <= 80 / Math.sqrt(2),需要计算根号，
 var y= Math.sqrt(80 * 80 - x * x)
-dot(-x + 90, y + 90,'red')
-dot(-x +90, -y + 90,'blue')
-dot(x + 90, y + 90,'pink')
-dot(x + 90, -y + 90,'green')
-dot(y + 90, x + 90,'yellow')
-dot(y + 90, -x + 90,'black')
-dot(-y + 90, x + 90,'green')
-dot(-y + 90, -x + 90,'yellow')
+dot(-x + 220, y + 220,'red')
+dot(-x +220, -y + 220,'blue')
+dot(x + 220, y + 220,'black')
+dot(x + 220, -y + 220,'green')
+dot(y + 220, x + 220,'red')
+dot(y + 220, -x + 220,'black')
+dot(-y + 220, x + 220,'green')
+dot(-y + 220, -x + 220,'yellow')
 }
 
+function circle(cx, cy, r) {
+  var x = 0
+  var y = r
+  while (x <= y) {
+    dot(cx + x, cy + y, 'red')
+    dot(cx + x, cy - y, 'green')
+    dot(cx - x, cy + y, 'blue')
+    dot(cx - x, cy - y, 'pink')
+    dot(cx + y, cy + x, 'black')
+    dot(cx + y, cy - x, 'yellow')
+    dot(cx - y, cy - x, 'cyan')
+    dot(cx - y, cy + x, 'purple')
+    x++
+    var y1 = y
+    var y2 = y - 1
+    var rr = r * r - x * x
+    var r1 = r * r - y1 * y1
+    var r2 = r * r - y2 * y2
+    var p1 = Math.abs(r1 - rr)
+    var p2 = Math.abs(r2 - rr)
+    if (p1 < p2) {//比较谁更靠近真正的圆弧，不是圆心
+      y = y1
+    } else {
+      y = y2
+    }
+    }
+  }
+circle(220, 220, 50)
+
+
+function circle(cx, cy, r) {//目前的终极版本
+  var x = 0
+  var y = r
+  while (x <= y) {
+    dot(cx + x, cy + y, 'red')
+    dot(cx + x, cy - y, 'green')
+    dot(cx - x, cy + y, 'blue')
+    dot(cx - x, cy - y, 'pink')
+    dot(cx + y, cy + x, 'black')
+    dot(cx + y, cy - x, 'yellow')
+    dot(cx - y, cy - x, 'cyan')
+    dot(cx - y, cy + x, 'purple')
+    x++
+    var y1 = y
+    var y2 = y - 1
+    var rr = r * r
+    var r1 = x * x + y1 * y1
+    var r2 = x * x + y2 * y2
+    var p1 = Math.abs(r1 - rr)
+    var p2 = Math.abs(r2 - rr)
+    if (p1 < p2) {//比较谁的长度更靠近半径，不是圆心
+      y = y1
+    } else {
+      y = y2
+    }
+  }
+}
+circle(220, 220, 50)
  //     * 一个半径为50像素
  //     * 一个半径为200像素
  //   * 画一个实心的圆，半径至少为100像素
