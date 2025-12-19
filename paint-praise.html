@@ -670,16 +670,16 @@ dot(x + 220, -y + 220)
 }
 
 
-for(var x = -80; x <= 80; x++) {
+for(var x = -80; x <= 80 / Math.sqrt(2); x++) {
 var y= Math.sqrt(80 * 80 - x * x)
-dot(-x + 90, y + 90,'red')//下半圆
-dot(-x +90, -y + 90,'blue')//上半圆
-dot(x + 90, y + 90,'pink')//下半圆
-dot(x + 90, -y + 90,'green')//上半圆
-dot(y + 90, x + 90,'yellow')//左半圆
-dot(y + 90, -x + 90,'black')//左半圆
-dot(-y + 90, x + 90,'green')//左半圆
-dot(-y + 90, -x + 90,'yellow')//左半圆
+dot(-x + 90, y + 90,'red')
+dot(-x +90, -y + 90,'blue')
+dot(x + 90, y + 90,'pink')
+dot(x + 90, -y + 90,'green')
+dot(y + 90, x + 90,'yellow')
+dot(y + 90, -x + 90,'black')
+dot(-y + 90, x + 90,'green')
+dot(-y + 90, -x + 90,'yellow')
 }
 
  //     * 一个半径为50像素
