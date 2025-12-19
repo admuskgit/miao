@@ -744,6 +744,45 @@ circle(220, 220, 50)
  //     * 一个半径为50像素
  //     * 一个半径为200像素
  //   * 画一个实心的圆，半径至少为100像素
+ function circle(cx, cy, r) {//目前的终极版本
+  var x = 0
+  var y = r
+  while (x <= y) {
+    dot(cx + x, cy + y, 'red')
+    dot(cx + x, cy - y, 'green')
+    dot(cx - x, cy + y, 'blue')
+    dot(cx - x, cy - y, 'pink')
+    dot(cx + y, cy + x, 'black')
+    dot(cx + y, cy - x, 'yellow')
+    dot(cx - y, cy - x, 'cyan')
+    dot(cx - y, cy + x, 'purple')
+    x++
+    var y1 = y
+    var y2 = y - 1
+    var rr = r * r
+    var r1 = x * x + y1 * y1
+    var r2 = x * x + y2 * y2
+    var p1 = Math.abs(r1 - rr)
+    var p2 = Math.abs(r2 - rr)
+    if (p1 < p2) {//比较谁的长度更靠近半径，不是圆心
+      y = y1
+    } else {
+      y = y2
+    }
+  }
+}
+circle(400, 290, 110)
+
+function dot1(cx, cy, r) {
+  for (var y = -r; y <= r; y++) {
+    var d = Math.sqrt(r * r - y * y)
+  for (var x = -d; x <= d; x++) {
+    dot(cx + x, cy + y, 'red')
+  }
+  }
+}
+dot1(370, 290, 70)
+
  //   * 画一个【大小位置都合适】的sin(x)的图像
 
  //   * 画出rgb色彩空间的某一面（尺寸要大于100x100）
