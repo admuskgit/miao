@@ -772,12 +772,12 @@ circle(220, 220, 50)
   }
 }
 circle(400, 290, 110)
-
+//   * 画一个实心的圆
 function dot1(cx, cy, r) {
   for (var y = -r; y <= r; y++) {
     var d = Math.sqrt(r * r - y * y)
   for (var x = -d; x <= d; x++) {
-    dot(cx + x, cy + y, 'red')
+    dot(cx + x, cy + y, 'green')
   }
   }
 }
@@ -787,7 +787,7 @@ dot1(370, 290, 70)
 
 for (var x = 0; x < 360; x++) {
 var y = 15 * Math.sin(x / 15) + 210
-dot(x, y, 'red')
+dot(x, y, 'green')
 }
 
 
@@ -795,7 +795,7 @@ dot(x, y, 'red')
 
 
 
- 
+
  //   * 如果做出上一题后，尝试将其每个点的坐标乘以一个矩阵（如(2,0,0,2)或(1,0.27得到新的位置，即绘制出被线性变换后的色彩空间某一面
  //     可以考虑如下几种矩阵：
  //        2 0
