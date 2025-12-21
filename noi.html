@@ -197,6 +197,9 @@ else {
   console.log("NO")
 }
 </script>
+
+
+
 <script id="weekday">
 var y = +prompt('请输入年份')
 var m = +prompt('请输入月份')
@@ -246,6 +249,10 @@ if (weekday == 5) {
   console.log('6')
 }
 </script>
+
+
+
+
 <script id="itob">
 function itob(n) {
   if (n < 0) {
@@ -268,6 +275,51 @@ if (a < 0) {
   console.log(itob(a))
 }
 </script>
+<script id="btoi1">
+  function btoi(n) {
+    if (n == 0) {
+      return '0'
+    }
+    if (n == 1) {
+      return '1'
+    }
+    if (n == 2) {
+      return '2'
+    }
+    if (n == 3) {
+      return '3'
+    }
+    if (n == 4) {
+      return '4'
+    }
+    if (n == 5) {
+      return '5'
+    }
+    if (n == 6) {
+      return '6'
+    }
+    if (n == 7) {
+      return '7'
+    }
+    if (n == 8) {
+      return '8'
+    }
+    if (n == 9) {
+      return '9'
+    }
+  }
+var a = +prompt('请输入A')
+var s = ""
+while (a > 0) {
+  var ge = a % 10
+  a = (a - ge) / 10
+  s = btoi(ge) + s
+}
+console.log(s)
+</script>
+
+
+
 <script id="lcf&lcm">
 var a = +prompt('请输入数字')//最大公约数和最小公倍数
 var b = +prompt('请输入数字')
