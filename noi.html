@@ -361,7 +361,15 @@ while (x > y) {
 console.log(x.toFixed(3))
 </script>
 
-
+<script id="sqrt2">
+  function sqrt(n) {//牛顿法
+    var x = n
+    for (var i = 0; i < 10; i++) {
+      x = x * 0.5 + n / x * 0.5
+    }
+    return x
+  }
+</script>
 
 
 <script id="ch0103/01">
