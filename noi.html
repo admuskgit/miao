@@ -10,15 +10,59 @@
 }
 find(1)
   function find(start = 1,history = "1"){
-    if (start == 7) {
+    if (start == 10) {
     console.log(history)
     return
     }
-    if (start > 7) return 
+
+    if (start > 10) return 
+
     find(start + 1,history + " + 1")
     find(start + 2,history + " + 2")     
 }
 find(1)
+//走网格
+  function find(startx = 0,starty = 0,history = ""){
+    if (startx > 3 || starty > 4) {
+    return
+    }
+
+    if (startx == 3 && starty == 4) {
+    console.log(history)
+    return 
+    }
+    find(startx + 1,starty,history + "右")
+    find(startx,starty + 1,history + "上")     
+}
+find(0,0)
+
+function name(params) {
+    if (params < 3){return 1}
+    else {return name(params - 1) + name(params - 2)}
+}//斐波那契，递归，params稍微大一点就会爆栈，重复计算次数太多，递归是问题规模递减并且可终止,用循环写、
+var fibs = []
+function fib(n) {
+  if (fibs[n]) return fibs[n]
+  if (n < 3) {
+    fibs[n] = 1
+  } else {
+    fibs[n] = fib(n - 1) + fib(n - 2)
+  }
+  return fibs[n]
+}
+
+
+
+var fibs = []
+function name(params) {
+  if (fibs[params]) {
+    return fibs[params]
+  }
+    if (params < 3){return 1}
+    else {var result = name(params - 1) + name(params - 2)}
+    fibs[params] = result
+    return result
+}
 </script>
 
 
