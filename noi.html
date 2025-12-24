@@ -1,4 +1,32 @@
- <script id="narcissistic">
+<script id="find">
+  function find(start = 1,history = "1"){
+    if (start == 13) {
+    console.log(history)
+    return
+    }
+    if (start > 13) return 
+    find(start + 5,history + " + 5")
+    find(start * 3,history + " * 3")     
+}
+find(1)
+  function find(start = 1,history = "1"){
+    if (start == 7) {
+    console.log(history)
+    return
+    }
+    if (start > 7) return 
+    find(start + 1,history + " + 1")
+    find(start + 2,history + " + 2")     
+}
+find(1)
+</script>
+
+
+
+
+
+
+<script id="narcissistic">
 function digitWidth(n) {
   var width = 0
    do {
