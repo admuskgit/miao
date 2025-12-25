@@ -3,12 +3,27 @@ function f(x){
   if (x == 0) {
     return 0
   } else {
-    return (2 * f(x - 1) + 1)
+    return (2 * f(x - 1) + x * x)
   }
 }
-console.log(f(4))
+console.log(f(5))
 </script>
 
+<script>
+//阶乘,递归,x太大会爆栈。
+  function f(x){
+    if (x == 0) {
+      return 1
+    } else {
+      return x * f(x - 1)
+    }
+  }
+  console.log(f(999999))
+</script>
+
+<script>
+
+</script>
 
 
 
