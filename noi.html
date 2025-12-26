@@ -1,4 +1,7 @@
 <script>
+  
+</script>
+<script>
 function f(x){
   if (x == 0) {
     return 0
@@ -33,18 +36,21 @@ console.log(f(5))
     console.log(history)
     return
     }
+
     if (start > 13) return 
+
     find(start + 5,history + " + 5")
     find(start * 3,history + " * 3")     
 }
 find(1)
+//走楼梯
   function find(start = 1,history = "1"){
-    if (start == 10) {
+    if (start == 19) {
     console.log(history)
     return
     }
 
-    if (start > 10) return 
+    if (start > 19) return 
 
     find(start + 1,history + " + 1")
     find(start + 2,history + " + 2")     
@@ -52,11 +58,11 @@ find(1)
 find(1)
 //走网格
   function find(startx = 0,starty = 0,history = ""){
-    if (startx > 3 || starty > 4) {
+    if (startx > 4 || starty > 4) {
     return
     }
 
-    if (startx == 3 && starty == 4) {
+    if (startx == 4 && starty == 4) {
     console.log(history)
     return 
     }
@@ -83,13 +89,15 @@ function fib(n) {
 
 
 var fibs = []
-function name(params) {
-  if (fibs[params]) {
-    return fibs[params]
+function name(n) {
+  if (fibs[n]) {
+    return fibs[n]
   }
-    if (params < 3){return 1}
-    else {var result = name(params - 1) + name(params - 2)}
-    fibs[params] = result
+
+    if (n < 3){return 1}
+    
+    else {var result = name(n - 1) + name(n - 2)}
+    fibs[n] = result
     return result
 }
 </script>
