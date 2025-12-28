@@ -1,5 +1,15 @@
 <script>
-  
+  var twosum = function (nums, target) {
+    var record = []
+    for (var i = 0; i < nums.length; i++) {
+      var current = nums[i]
+      var need = target - current
+      if (record[need] > -1) {
+        return [i, record[need]]
+      }
+      record[current] = i
+    }
+  }
 </script>
 <script>
 function f(x){
