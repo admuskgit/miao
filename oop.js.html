@@ -213,16 +213,21 @@ LinkedList.prototype.toArray = function() {
   return res
 }
 //获取链表中元素的数量.size
-LinkedList.defineProperty(LinkedList.prototype, 'size', {
+Object.defineProperty(LinkedList.prototype, 'size', {
   get: function() {
     return this.length
   }
 }
 )
 //l.toArray().join('->')
-//表示一个集合
-function MySet() {
+//表示一个集合,集合中不能有重复，如果传入一个数组，需要自动去重（这是一个常见的构造函数设计方式：参数可选）
+function MySet(arr = []) {
   this.items = []
+  for(let v of arr) {
+    if (!this.items.includes(v)) {
+      this.items.push(v)
+    }
+  }
 }
 //向集合中增加元素
 MySet.prototype.add = function(item) {
@@ -265,7 +270,6 @@ MySet.prototype.forEach = function(callback) {
     callback(this.items[i], i)
   }
 }
-let s = new MySet()
 //表达一个映射
 function MyMap() {
   this.items = Object.create(null)
@@ -380,4 +384,4 @@ Object.defineProperty(Queue.prototype, 'size', {
   }
 }
 )
-
+</script>
