@@ -293,7 +293,7 @@ MyMap.prototype = {
   },
   //删除这个映射中的key及其映射的值
   delete: function(key) {
-    if (this.has([key])) {
+    if (this.has(key)) {
       delete this.items[key]
       return true
     }
@@ -304,7 +304,7 @@ MyMap.prototype = {
     return Object.keys(this.items).length
   },
   //遍历这个映射中所有的映射对
-  forEach() {
+  forEach(callback) {
     Object.keys(this.items).forEach(key => {
       callback(this.items[key], key)
     })
