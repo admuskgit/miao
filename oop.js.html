@@ -339,8 +339,8 @@ function Stack() {
   this.items = []
 }
 //向栈中增加元素
-Stack.prototype.in = function(val) {
-  this.items.in(val)
+Stack.prototype.push = function(val) {
+  this.items.push(val)
 }
 //从栈中取出元素并删除栈顶元素
 Stack.prototype.out = function() {

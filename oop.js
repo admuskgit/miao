@@ -83,9 +83,12 @@ Vector.prototype.plus = function(params) {
 Vector.prototype.minus = function(params) {
   return new Vector(this.x - params.x , this.y - params.y)
 }
-Vector.prototype.length = function() {
-  return Math.sqrt(this.x * this.x + this.y * this.y)
+Object.defineProperty(Vector.prototype, 'length' ,{
+  get: function() {
+    return Math.sqrt(this.x * this.x + this.y * this.y)
+  }
 }
+)
 let v1 = new Vector(6,6)
 let v2 = new Vector(8,-8)
 let v3 = v1.plus(v2)
@@ -336,7 +339,7 @@ function Stack() {
   this.items = []
 }
 //向栈中增加元素
-Stack.prototype.in = function(val) {
+Stack.prototype.push = function(val) {
   this.items.push(val)
 }
 //从栈中取出元素并删除栈顶元素
