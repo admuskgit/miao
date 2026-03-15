@@ -409,3 +409,4 @@ Object.defineProperty(Queue.prototype, 'size', {
     return this.length
   }
 }
+)
