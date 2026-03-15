@@ -342,7 +342,7 @@ Stack.prototype.push = function(val) {
   this.items.push(val)
 }
 //从栈中取出元素并删除栈顶元素
-Stack.prototype.out = function() {
+Stack.prototype.pop = function() {
   return this.items.pop()
 }
 //查看但不删除栈顶元素
