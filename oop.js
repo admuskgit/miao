@@ -1,106 +1,30 @@
-
-function TextCell(text) {
-  this.lines = text.split('\n')
-}
-TextCell.prototype.minWidth = function() {
-return Math.max(...this.lines.map(it => it.length))
-}
-TextCell.prototype.minHeight = function() {
-return this.lines.length
-}
-TextCell.prototype.draw = function(width, height) {
-  let result = []
-  for (let i = 0; i < height; i++) {
-    let line = this.lines[i] || ''
-    while (line.length < width) {
-      line += ' '
-    }
-    result.push(line)
+class Vector {
+  constructor(x, y) {
+    this.x = x
+    this.y = y
   }
-  return result
-}
-let tc = new TextCell('aaa\nbbb\nccc\nddd\neee')
-tc.minWidth()
-tc.minHeight()
-tc.draw(1, 2)
-let table = [
-  [new TextCell('aaa\nbbb\nabab'),new TextCell('ccc\nddd')],
-  [new TextCell('111\n222'),new TextCell('333\n444')],
-  [new TextCell('777'),new TextCell('999\nfff')]
-]
-function rowHeights ( rows ) {
-return rows . map ( function ( row ) {
-return row . reduce ( function ( max , cell ) {
-return Math . max ( max , cell . minHeight () ) ;
-}, 0) ;
-}) ;
-}
-function colWidths ( rows ) {
-return rows [0]. map ( function (_ , i ) {
-return rows . reduce ( function ( max , row ) {
-return Math . max ( max , row [ i ]. minWidth () ) ;
-}, 0) ;
-}) ;
-}
-function drawTable ( rows ) {
-var heights = rowHeights ( rows ) ;
-var widths = colWidths ( rows ) ;
-function drawLine ( blocks , lineNo ) {
-return blocks . map ( function ( block ) {
-return block [ lineNo ];
-}) . join (" ") ;
-}
-function drawRow ( row , rowNum ) {
-var blocks = row . map ( function ( cell , colNum ) {
-return cell . draw ( widths [ colNum ] , heights [ rowNum ]) ;
-}) ;
-return blocks [0]. map ( function (_ , lineNo ) {
-return drawLine ( blocks , lineNo ) ;
-}) . join ("\n") ;
-}
-return rows.map ( drawRow ).join ("\n") ;
-}
-drawTable(table)
-//console.log(drawTable(table))
-var MOUNTAINS = [
-  {name: "Kilimanjaro", height: 5895, country: "Tanzania"},
-  {name: "Everest", height: 8848, country: "Nepal"},
-  {name: "Mount Fuji", height: 3776, country: "Japan"},
-  {name: "Mont Blanc", height: 4808, country: "Italy/France"},
-  {name: "Vaalserberg", height: 323, country: "Netherlands"},
-  {name: "Denali", height: 6168, country: "United States"},
-  {name: "Popocatepetl", height: 5465, country: "Mexico"}
-];
-// A vector type
-
-function Vector(x, y) {
-  this.x = x
-  this.y = y
-}
-Vector.prototype.plus = function(params) {
-  return new Vector(this.x + params.x , this.y + params.y)
-}
-Vector.prototype.minus = function(params) {
-  return new Vector(this.x - params.x , this.y - params.y)
-}
-Object.defineProperty(Vector.prototype, 'length' ,{
-  get: function() {
+  plus(params) {
+    return new Vector(this.x + params.x , this.y + params.y)
+  }
+  minus(params) {
+    return new Vector(this.x - params.x , this.y - params.y)
+  }
+  get length(){
     return Math.sqrt(this.x * this.x + this.y * this.y)
   }
 }
-)
-// A Complex type
-function Complex(real, imag) {
-  this.real = real
-  this.imag = imag
-}
-Complex.prototype.plus = function(params) {
-  return new Complex(this.real + params.real , this.imag + params.imag)
-}
-Complex.prototype.minus = function(params) {
-  return new Complex(this.real - params.real , this.imag - params.imag)
-}
-Complex.prototype.multiple = function(params) {
+class Complex {
+  constructor(real, imag) {
+    this.real = real
+    this.imag = imag
+  }
+  plus (params) {
+    return new Complex(this.real + params.real , this.imag +  params.imag)
+  }
+  minus (params) {
+    return new Complex(this.real - params.real , this.imag -  params.imag)
+  }
+  multiple (params) {
     let a = this.real
     let b = this.imag
     let c = params.real
@@ -109,222 +33,195 @@ Complex.prototype.multiple = function(params) {
         a * c - b * d, // 实部：ac - bd
         a * d + b * c  // 虚部：ad + bc
     )
-}
-Complex.prototype.div = function(params) {
+  }
+  div (params) {
     let helper = new Complex(params.real, -params.imag)
     let fenmu = params.multiple(helper).real
     let fenzi = this.multiple(helper)
     let real = fenzi.real / fenmu
     let imag = fenzi.imag / fenmu
-    return new Complex(real, imag)
+  return new Complex(real, imag)
+  }
+  toString (params) {
+    return this.real + (this.imag > 0 ? " + "  : '')+ this.imag + "i "
+  }
 }
-Complex.prototype.toString = function(params) {
-  return this.real + (this.imag > 0 ? " + "  : '')+ this.imag + "i "
+class Node {
+  constructor(val) {
+    this.val = val
+    this.next = null
+  }
 }
-function Node(val) {
-  this.val = val
-  this.next = null
-}
-//表示一个单向链表
-function LinkedList() {
+class LinkedList {
+  constructor() {
   this.head = null
   this.length = 0
-}
-//返回链表第idx个节点的值
-LinkedList.prototype.at = function(idx) {
-  if (idx < 0 || idx >= this.length) return undefined//返回null不合适
-  let p = this.head
-  for (let i = 0; i < idx; i++) {
-    p = p.next
   }
-  return p.val
-}
-//设置链表第idx项的值为val
-LinkedList.prototype.set = function(idx, val) {
-  if (idx < 0 || idx >= this.length) return undefined
-  let p = this.head
-  for (let i = 0; i < idx; i++) {
-    p = p.next
+  at (idx) {
+    if (idx < 0 || idx >= this.length) return undefined
+    let p = this.head
+    for (let i = 0; i < idx; i++) {
+      p = p.next
+    }
+    return p.val
   }
-  p.val = val
-  return true
-}
-//在链表末尾新增一个节点，值为val
-LinkedList.prototype.append = function(val) {
-  let node = new Node(val)
-  if (!this.head) {
-    this.head = node
-    this.length++
+  set (idx, val) {
+    if (idx < 0 || idx >= this.length) return undefined
+    let p = this.head
+    for (let i = 0; i < idx; i++) {
+      p = p.next
+    }
+    p.val = val
     return true
   }
-  let p = this.head
-  while (p.next) {
-    p = p.next
-  }
-  p.next = node 
-  this.length++
-  return true
-} 
-//返回链表末尾节点的值，并删除此节点
-LinkedList.prototype.pop = function() {
-  if (!this.head) {
-    return undefined
-  }
-  if (!this.head.next) {
-    let val = this.head.val
-    this.head = null
-    //this.length--
+  append (val) {
+    let node = new Node(val)
+    if (!this.head) {
+      this.head = node
+      this.length++
+      return true
+    }
+    let p = this.head
+    while (p.next) {
+      p = p.next
+    }
+    p.next = node 
+    this.length++
+    return true
+  } 
+  pop () {
+    if (!this.head) {
+      return undefined
+    }
+    if (!this.head.next) {
+      let val = this.head.val
+      this.head = null
+      return val
+    }
+    let p = this.head
+    while (p.next.next) {
+      p = p.next
+    }
+    let val = p.next.val
+    p.next = null
+    this.length-- 
     return val
   }
-  let p = this.head
-  while (p.next.next) {
-    p = p.next
+  prepend (val) {
+    let node = new Node(val)
+    node.next = this.head
+    this.head = node
+    this.length++ 
+    return true
   }
-  let val = p.next.val
-  p.next = null
-  this.length-- 
-  return val
-}
-//在链表头部新增一个节点，值为val
-LinkedList.prototype.prepend = function(val) {
-  let node = new Node(val)
-  node.next = this.head
-  this.head = node
-  this.length++ 
-  return true
-  //return this 返回链表自己，支持链式调用l.unshift(1).unshift(2).unshift(3)
-}
-//返回链表第一个节点的值，并删除此节点
-LinkedList.prototype.shift = function() {
-  if (!this.head) {
-    return undefined
+  shift() {
+    if (!this.head) {
+      return undefined
+    }
+    let val = this.head.val
+    this.head = this.head.next
+    this.length--
+    return val
   }
-  let val = this.head.val
-  this.head = this.head.next
-  this.length--
-  return val
-}
-//链表转换为数组
-LinkedList.prototype.toArray = function() {
-  let res = []
-  let current = this.head
-  while (current) {
-    res.push(current.val)
-    current = current.next
+  toArray() {
+    let res = []
+    let current = this.head
+    while (current) {
+      res.push(current.val)
+      current = current.next
+    }
+    return res
   }
-  return res
-}
-//获取链表中元素的数量.size
-Object.defineProperty(LinkedList.prototype, 'size', {
-  get: function() {
+  get size() {
     return this.length
   }
 }
-)
-//l.toArray().join('->')
-//表示一个集合,集合中不能有重复，如果传入一个数组，需要自动去重（这是一个常见的构造函数设计方式：参数可选）
-function MySet(arr = []) {
-  this.items = []
-  for(let v of arr) {
+class MySet {
+  constructor(arr = []) {
+    this.items = []
+    for(let v of arr) {
     if (!this.items.includes(v)) {
       this.items.push(v)
     }
+    }
   }
-}
-//向集合中增加元素
-MySet.prototype.add = function(item) {
+  add (item) {
   if (!this.items.includes(item)) {
     this.items.push(item)
   }
-}
-//从集合中删除item元素
-MySet.prototype.delete = function(item) {
+  }
+  delete (item) {
   let idx = this.items.indexOf(item)
   if (idx !== -1) {
     this.items.splice(idx, 1)
     return true
   }
   return false
-}
-//获取集合中的元素s.size,使用getter
-Object.defineProperty(MySet.prototype, 'size', {
-  get: function() {
+  }
+  get size() {
     return this.items.length
   }
-}
-)
-//清空结合的所有元素
-MySet.prototype.clear = function() {
+  clear () {
   this.items = []
-}
-//判断集合中是否存在某元素
-MySet.prototype.has = function(item) {
-  //return this.items.includes(val)
+  }
+  has (item) {
   let idx = this.items.indexOf(item)
   if (idx !== -1) {
     return true
   }
   return false
-}
-//遍历集合中的元素
-MySet.prototype.forEach = function(callback) {
+  }
+  forEach (callback) {
   for (let i = 0; i < this.items.length; i++) {
     callback(this.items[i], i)
   }
+  }
 }
-//表达一个映射
-function MyMap() {
-  this.items = []
-}
-MyMap.prototype = {
-//设置映射中的key映射到val
-  set: function(key, val) {
-    for(let i = 0; i < this.items.length; i+=2) {
-      if (this.items[i] === key) {
-        this.items[i + 1] = val
-        return this
-      }
-    }
-    this.items.push(key, val)
-    return this
-  },
-  //获取这个映射中key所对应的val
-  get: function(key) {
-    for (let i = 0; i < this.items.length; i += 2) {
-      if (this.items[i] === key) {
-        return this.items[i + 1]
-      }
-    }
-    return undefined
-  },
-  //判断这个映射中是否存在这个key的映射
-  has: function(key) {
-    for (let i = 0; i < this.items.length; i += 2) {
-      if (this.items[i] === key) {
-        return true
-      }
-    }
-    return false
-  },
-  //清空这个映射中所有的映射对
-  clear: function() {
+class MyMap {
+  constructor(arr = []) {
     this.items = []
-  },
-  //删除这个映射中的key及其映射的值
-  delete: function(key) {
-    for (let i = 0; i < this.items.length; i += 2) {
-      if (this.items[i] === key) {
-        this.items.splice(i,2)
-        return true
-      }
+  }
+  set(key, val) {
+  for(let i = 0; i < this.items.length; i+=2) {
+    if (this.items[i] === key) {
+      this.items[i + 1] = val
+      return this
     }
-    return false
-  },
-  //获取这个映射中映射对的数量
+  }
+  this.items.push(key, val)
+  return this
+  }
+  get(key) {
+  for (let i = 0; i < this.items.length; i += 2) {
+    if (this.items[i] === key) {
+      return this.items[i + 1]
+    }
+  }
+  return undefined
+  }
+  has(key) {
+  for (let i = 0; i < this.items.length; i += 2) {
+    if (this.items[i] === key) {
+      return true
+    }
+  }
+  return false
+  }
+  clear() {
+    this.items = []
+  }
+  delete(key) {
+  for (let i = 0; i < this.items.length; i += 2) {
+    if (this.items[i] === key) {
+      this.items.splice(i,2)
+      return true
+    }
+  }
+  return false
+  }
   get size() {
     return this.items.length / 2
-  },
-  //遍历这个映射中所有的映射对
+  }
   forEach(callback) {
     for(let i = 0; i < this.items.length; i += 2) {
       let val = this.items[i + 1]
@@ -333,54 +230,47 @@ MyMap.prototype = {
     }
   }
 }
-//表示一个栈：后进先出
-function Stack() {
-  this.items = []
-}
-//向栈中增加元素
-Stack.prototype.push = function(val) {
+class Stack {
+  constructor() {
+    this.items = []
+  }
+  push (val) {
   this.items.push(val)
-}
-//从栈中取出元素并删除栈顶元素
-Stack.prototype.pop = function() {
+  }
+  pop () {
   if (this.items.length === 0) {
     return undefined
   }
   return this.items.pop()
-}
-//查看但不删除栈顶元素
-Stack.prototype.peek = function() {
-  return this.items[this.items.length - 1]
-}
-//获取栈中元素的数量stack.size
-Object.defineProperty(Stack.prototype, 'size', {
-  get: function() {
+  }
+  peek () {
+    return this.items[this.items.length - 1]
+  }
+  get size() {
     return this.items.length
   }
+
 }
-)
-//表示一个队列 先进先出 尾进头出 买票排队
-function Queue() {
-  this.head = null
-  this.tail = null
-  this.length = 0
-}
-//向队列中增加元素
-Queue.prototype.add = function(val) {
+class Queue {
+  constructor() {
+    this.head = null
+    this.tail = null
+    this.length = 0
+  }
+  add (val) {
   let node = new Node(val)
   if(!this.tail) {
     this.head = this.tail = node
     this.length++
-    return this// 返回队列对象，方便链式调用
+    return this
   } else {
     this.tail.next = node
     this.tail = node
     this.length++
     return this
   }
-}
-//取出队头，并删除
-Queue.prototype.pop = function() {
+  }
+  pop () {
   if(!this.head) {
     return undefined
   } else if(this.tail === this.head){
@@ -394,19 +284,15 @@ Queue.prototype.pop = function() {
     this.length--
     return res
   }
-}
-//查看队头元素
-Queue.prototype.peek = function() {
+  }
+  peek () {
   if(!this.head) {
     return undefined
   } else {
     return this.head
   }
-}
-//获取队列中元素的数量.size
-Object.defineProperty(Queue.prototype, 'size', {
-  get: function() {
+  }
+  get size() {
     return this.length
   }
 }
-)
