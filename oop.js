@@ -101,7 +101,14 @@ Complex.prototype.minus = function(params) {
   return new Complex(this.real - params.real , this.imag - params.imag)
 }
 Complex.prototype.multiple = function(params) {
-  return new Complex(this.real * params.real - this.imag * params.imag, this.real * params.imag + this.imag * params.real)
+    let a = this.real
+    let b = this.imag
+    let c = params.real
+    let d = params.imag
+    return new Complex(
+        a * c - b * d, // 实部：ac - bd
+        a * d + b * c  // 虚部：ad + bc
+    )
 }
 Complex.prototype.div = function(params) {
     let helper = new Complex(params.real, -params.imag)
