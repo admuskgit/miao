@@ -117,12 +117,12 @@ Complex.prototype.div = function(params) {
 Complex.prototype.toString = function(params) {
   return this.real + (this.imag > 0 ? " + "  : '')+ this.imag + "i "
 }
-let c1 = new Complex(1,21)
-let c2 = new Complex(2,3)
-let c3 = c1.plus(c2)
-let c4 = c2.minus(c1)
-let c5 = c1.multiple(c2)
-let c6 = c2.div(c1)
+//let c1 = new Complex(1,21)
+//let c2 = new Complex(2,3)
+//let c3 = c1.plus(c2)
+//let c4 = c2.minus(c1)
+//let c5 = c1.multiple(c2)
+//let c6 = c2.div(c1)
 //console.log(c4.toString())
 
 function Node(val) {
