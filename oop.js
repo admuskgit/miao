@@ -104,11 +104,11 @@ Complex.prototype.multiple = function(params) {
   return new Complex(this.real * params.real - this.imag * params.imag, this.real * params.imag + this.imag * params.real)
 }
 Complex.prototype.div = function(params) {
-    var helper = new Complex(params.real, -params.imag)
-    var fenmu = params.multiple(helper).real
-    var fenzi = this.multiple(helper)
-    var real = fenzi.real / fenmu
-    var imag = fenzi.imag / fenmu
+    let helper = new Complex(params.real, -params.imag)
+    let fenmu = params.multiple(helper).real
+    let fenzi = this.multiple(helper)
+    let real = fenzi.real / fenmu
+    let imag = fenzi.imag / fenmu
     return new Complex(real, imag)
 }
 Complex.prototype.toString = function(params) {
