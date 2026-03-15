@@ -409,4 +409,150 @@ Object.defineProperty(Queue.prototype, 'size', {
     return this.length
   }
 }
-)
+class Node {
+  constructor(val) {
+    this.val = val
+    this.next = null
+  }
+}
+class Queue{
+  constructor() {
+    this.head = null
+    this.tail = null
+    this.length = 0
+  }
+  add(val) {
+    let node = new Node(val)
+    if(!this.tail) {
+    this.head = this.tail = node
+    this.length++
+    return this// 返回队列对象，方便链式调用
+    } else {
+    this.tail.next = node
+    this.tail = node
+    this.length++
+    return this
+    }
+  }
+  pop() {
+    if(!this.head) {
+    return undefined
+    } else if(this.tail === this.head){
+    let res = this.head.val
+    this.head = this.tail = null
+    this.length--
+    return res
+    } else {
+    let res = this.head.val
+    this.head = this.head.next
+    this.length--
+    return res
+    }
+}
+class Stack {
+  constructor() {
+    this.items = []
+  }
+  push(val) {
+  this.items.push(val)
+  }
+  pop() {
+  if (this.items.length === 0) {
+    return undefined
+  }
+  return this.items.pop()
+  }
+  //查看但不删除栈顶元素
+  peek() {
+    return this.items[this.items.length - 1]
+  }
+  //获取栈中元素的数量stack.size
+  get size() {
+      return this.items.length
+  }
+}
+class LinkedList() {
+  constructor() {
+    this.head = null
+    this.length = 0
+  }
+  at(idx) {
+  if (idx < 0 || idx >= this.length) return undefined
+  let p = this.head
+  for (let i = 0; i < idx; i++) {
+    p = p.next
+  }
+  return p.val
+  }
+  set (idx, val) {
+  if (idx < 0 || idx >= this.length) return undefined
+  let p = this.head
+  for (let i = 0; i < idx; i++) {
+    p = p.next
+  }
+  p.val = val
+  return true
+  }
+  append(val) {
+  let node = new Node(val)
+  if (!this.head) {
+    this.head = node
+    this.length++
+    return true
+  }
+  let p = this.head
+  while (p.next) {
+    p = p.next
+  }
+  p.next = node 
+  this.length++
+  return true
+ }
+ pop() {
+  if (!this.head) {
+    return undefined
+  }
+  if (!this.head.next) {
+    let val = this.head.val
+    this.head = null
+    //this.length--
+    return val
+  }
+  let p = this.head
+  while (p.next.next) {
+    p = p.next
+  }
+  let val = p.next.val
+  p.next = null
+  this.length-- 
+  return val
+  }
+  prepend (val) {
+  let node = new Node(val)
+  node.next = this.head
+  this.head = node
+  this.length++ 
+  return true
+  }
+  shift() {
+  if (!this.head) {
+    return undefined
+  }
+  let val = this.head.val
+  this.head = this.head.next
+  this.length--
+  return val
+  }
+  toArray() {
+  let res = []
+  let current = this.head
+  while (current) {
+    res.push(current.val)
+    current = current.next
+  }
+  return res
+  }
+  get size() {
+    return this.length
+  }
+}
