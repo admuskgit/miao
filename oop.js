@@ -89,11 +89,6 @@ Object.defineProperty(Vector.prototype, 'length' ,{
   }
 }
 )
-let v1 = new Vector(6,6)
-let v2 = new Vector(8,-8)
-let v3 = v1.plus(v2)
-let v4 = v2.minus(v1)
-v1.length()
 // A Complex type
 function Complex(real, imag) {
   this.real = real
@@ -109,22 +104,16 @@ Complex.prototype.multiple = function(params) {
   return new Complex(this.real * params.real - this.imag * params.imag, this.real * params.imag + this.imag * params.real)
 }
 Complex.prototype.div = function(params) {
-  let helper = params.real * params.real + params.imag * params.imag
-  let real = (this.real * params.real + this.imag * params.imag) / helper
-  let imag = (this.imag * params.real - this.real * params.imag) / helper
-  return new Complex(real, imag)
+    var helper = new Complex(params.real, -params.imag)
+    var fenmu = params.multiple(helper).real
+    var fenzi = this.multiple(helper)
+    var real = fenzi.real / fenmu
+    var imag = fenzi.imag / fenmu
+    return new Complex(real, imag)
 }
 Complex.prototype.toString = function(params) {
   return this.real + (this.imag > 0 ? " + "  : '')+ this.imag + "i "
 }
-//let c1 = new Complex(1,21)
-//let c2 = new Complex(2,3)
-//let c3 = c1.plus(c2)
-//let c4 = c2.minus(c1)
-//let c5 = c1.multiple(c2)
-//let c6 = c2.div(c1)
-//console.log(c4.toString())
-
 function Node(val) {
   this.val = val
   this.next = null
