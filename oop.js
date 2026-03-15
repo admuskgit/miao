@@ -109,7 +109,10 @@ Complex.prototype.multiple = function(params) {
   return new Complex(this.real * params.real - this.imag * params.imag, this.real * params.imag + this.imag * params.real)
 }
 Complex.prototype.div = function(params) {
-  return new Complex((this.real * params.real + this.imag * params.imag) / (params.real * params.real + params.imag * params.imag), (this.imag * params.real - this.real * params.imag) / (params.real * params.real + params.imag * params.imag))
+  let helper = params.real * params.real + params.imag * params.imag
+  let real = (this.real * params.real + this.imag * params.imag) / helper
+  let imag = (this.imag * params.real - this.real * params.imag) / helper
+  return new Complex(real, imag)
 }
 Complex.prototype.toString = function(params) {
   return this.real + (this.imag > 0 ? " + "  : '')+ this.imag + "i "
