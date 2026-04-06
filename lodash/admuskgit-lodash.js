@@ -9,4 +9,4 @@ var admuskgit = function() {
   return {
     chunk: chunk
   }
-}
+}()
