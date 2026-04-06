@@ -6,4 +6,7 @@ var admuskgit = function() {
     }
     return result
   }
+  return {
+    chunk: chunk
+  }
 }
