@@ -15,12 +15,19 @@ var admuskgit = {
     }
     return result
   },
-  difference(array, arr) {
+  difference(array) {
     var res = []
+    var values = []
+    for (var i = 1; i < arguments.length; i++) {
+      var arr = arguments[i]
+      for (var j = 0; j < arr.length; j++) {
+        values.push(arr[j])
+      }
+    }
     for (var i = 0; i < array.length; i++) {
       var f = false
-      for (var j = 0; j < arr.length; j++) {
-        if (array[i] === arr[j]) {
+      for (var j = 0; j < values.length; j++) {
+        if (array[i] === values[j]) {
           f = true
           break
         }
