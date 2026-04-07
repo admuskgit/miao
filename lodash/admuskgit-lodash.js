@@ -15,5 +15,20 @@ var admuskgit = {
     }
     return result
   },
-
+  difference(array, arr) {
+    var res = []
+    for (var i = 0; i < array.length; i++) {
+      var f = false
+      for (var j = 0; j < arr.length; j++) {
+        if (array[i] === arr[j]) {
+          f = true
+          break
+        }
+      }
+      if (!f) {
+        res.push(array[i])
+      }
+    }
+    return res
+  },
 }
