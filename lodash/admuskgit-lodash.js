@@ -44,5 +44,14 @@ var admuskgit = {
     }
     return array
   },
-
+  drop(array, n=1) {
+    let res = []
+    for (let i = n; i < array.length; i++) {
+      res.push(array[i])
+    }
+    return res
+  },
+  findIndex(array, predicate=_.identity, fromIndex=0) {
+    
+  }
 }
