@@ -38,7 +38,7 @@ var admuskgit = {
     }
     return res
   },
-  fill(array, value, start=0, end=array.length) {
+  fill(array, value, start = 0, end = array.length) {
     for (let i = start; i < end; i++) {
       array[i] = value
     }
@@ -51,7 +51,12 @@ var admuskgit = {
     }
     return res
   },
-  findIndex(array, predicate=_.identity, fromIndex=0) {
-    
-  }
+  findIndex(array, predicate = _.identity, fromIndex = 0) {
+    for (let i = fromIndex; i < array.length; i++) {
+      if (predicate(array[i])) {
+        return i
+      }
+    }
+    return -1
+  },
 }
