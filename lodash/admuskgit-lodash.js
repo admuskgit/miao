@@ -51,8 +51,32 @@ var admuskgit = {
     }
     return res
   },
-  findIndex(array, predicate = _.identity, fromIndex = 0) {
+  iteratee(predicate) {
+    if (typeof predicate === "function") {
+      return predicate
+    }
+    if (Array.isArray(predicate)) {
+      return obj => obj[predicate[0]] === predicate[1]
+    }
+    if (typeof predicate === "object" && predicate !== null) {
+      return obj => Object.keys(predicate).every(key => obj[key] === predicate[key])
+    }
+    if (typeof predicate === "string") {
+      return obj => !!obj[predicate]
+    }
+  },
+  findIndex(array, predicate = identity, fromIndex = 0) {
+    predicate = this.iteratee(predicate)
     for (let i = fromIndex; i < array.length; i++) {
+      if (predicate(array[i])) {
+        return i
+      }
+    }
+    return -1
+  },
+  findLastIndex(array, predicate = identity, fromIndex = array.length-1) {
+    predicate = this.iteratee(predicate)
+    for (let i = fromIndex; i >= 0; i--) {
       if (predicate(array[i])) {
         return i
       }
