@@ -83,4 +83,40 @@ var admuskgit = {
     }
     return -1
   },
+  flatten(array) {
+    let res = []
+    for(let i = 0; i < array.length; i++) {
+      let item = array[i]
+      if(Array.isArray(item)) {
+        res.push(...item)
+      } else {
+        res.push(item)
+      }
+    }
+    return res
+  },
+  flattenDeep(array) {
+    let res = []
+    for(let i = 0; i < array.length; i++) {
+      let item = array[i]
+      if(Array.isArray(item)) {
+        res.push(...this.flattenDeep(item))
+      } else {
+        res.push(item)
+      }
+    }
+    return res
+  },
+  flattenDepth(array, depth = 1) {
+    let res = []
+    for(let i = 0; i < array.length; i++) {
+      let item = array[i]
+      if(Array.isArray(item) && depth > 0) {
+        res.push(...this.flattenDepth(item, depth - 1))
+      } else {
+        res.push(item)
+      }
+    }
+    return res
+  },
 }
