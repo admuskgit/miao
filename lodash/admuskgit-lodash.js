@@ -119,4 +119,14 @@ var admuskgit = {
     }
     return res
   },
+  fromPairs(pairs) {
+    let obj = {}
+    for(let i = 0; i < pairs.length; i++) {
+      let pair = pairs[i]
+      let key = pair[0]
+      let val = pair[1]
+      obj[key] = val
+    }
+    return obj
+  },
 }
