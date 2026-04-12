@@ -146,5 +146,6 @@ var admuskgit = {
         return i
       }
     }
+    return -1
   },
 }
