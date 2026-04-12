@@ -129,4 +129,22 @@ var admuskgit = {
     }
     return obj
   },
+  head(array) {
+    if(!Array.isArray(array)) return undefined
+    return array[0]
+  },
+  indexOf(array, value, fromIndex=0) {
+    for(let i = fromIndex; i < array.length; i++) {
+      if(array[i] === value) {
+        return i
+      }
+    }
+  },
+  lastIndexOf(array, value, fromIndex=array.length-1) {
+    for(let i = fromIndex; i >= 0; i--) {
+      if(array[i] === value) {
+        return i
+      }
+    }
+  },
 }
