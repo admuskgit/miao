@@ -56,13 +56,27 @@ var admuskgit = {
       return predicate
     }
     if (Array.isArray(predicate)) {
-      return obj => obj[predicate[0]] === predicate[1]
+      let key = predicate[0];
+      let val = predicate[1];
+      return function(obj) {
+        return obj[key] === val
+      }
     }
     if (typeof predicate === "object" && predicate !== null) {
-      return obj => Object.keys(predicate).every(key => obj[key] === predicate[key])
+      let entries = Object.entries(predicate);
+      return function(obj) {
+        return entries.every(function([k, v]) {
+          return obj[k] === v
+        })
+      }
     }
     if (typeof predicate === "string") {
-      return obj => !!obj[predicate]
+      return function(obj) {
+        return obj[predicate]
+      }
+    }
+    return function(obj) {
+      return obj
     }
   },
   findIndex(array, predicate = identity, fromIndex = 0) {
@@ -147,5 +161,75 @@ var admuskgit = {
       }
     }
     return -1
+  },
+  initial(array) {
+    let res = []
+    for(let i = 0; i < array.length - 1; i++) {
+      res.push(array[i])
+    }
+    return res
+  },
+  join(array, separator=',') {
+    let res = ''
+    for(let i = 0; i < array.length; i++) {
+      res += array[i]
+      if(i !== array.length - 1) {
+        res += separator
+      }
+    }
+    return res
+  },
+  last(array) {
+    return array.length ? array[array.length - 1] : undefined
+  },
+  pull(array, values) {
+    for(let i = 0; i < array.length; i++) {
+      for(let j = 1; j < arguments.length; j++) {
+        if(array[i] === arguments[j]) {
+          array.splice(i, 1) 
+          i--
+          break
+        }
+      }
+    }
+    return array
+  },
+  reverse(array) {
+    let left = 0
+    let right = array.length - 1
+    while(left < right) {
+      let temp = array[left]
+      array[left] = array[right]
+      array[right] = temp
+      left++
+      right--
+    }
+    return array
+  },
+  every(collection, predicate = identity) {
+    predicate = this.iteratee(predicate)
+    if(collection === null) {
+      return true
+    }
+    if(Array.isArray(collection)) {
+      for(let i = 0; i < collection.length; i++) {
+        if(!predicate(collection[i], i, collection)) {
+          return false
+        }
+      }
+    } else {
+      for(let key of collection) {
+        if(!predicate(collection[i], key, collection)) {
+          return false
+        }
+      }
+    }
+    return true
+  },
+  some(collection, predicate = identity) {
+
+  },
+  countBy(collection, iteratee = identity) {
+
   },
 }
