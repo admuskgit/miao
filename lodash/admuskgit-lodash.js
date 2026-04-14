@@ -218,8 +218,8 @@ var admuskgit = {
         }
       }
     } else {
-      for(let key of collection) {
-        if(!predicate(collection[i], key, collection)) {
+      for(let key in collection) {
+        if(!predicate(collection[key], key, collection)) {
           return false
         }
       }
@@ -227,9 +227,54 @@ var admuskgit = {
     return true
   },
   some(collection, predicate = identity) {
-
+    predicate = this.iteratee(predicate)
+    if(collection === null) {
+      return true
+    }
+    if(Array.isArray(collection)) {
+      for(let i = 0; i < collection.length; i++) {
+        if(predicate(collection[i], i, collection)) {
+          return true
+        }
+      }
+    } else {
+      for(let key in collection) {
+        if(predicate(collection[key], key, collection)) {
+          return true
+        }
+      }
+    }
+    return false
   },
   countBy(collection, iteratee = identity) {
+    iteratee = this.iteratee(iteratee)
+    let obj = {}
+    if(Array.isArray(collection)) {
+      for(let i = 0; i < collection.length; i++) {
+        let k = iteratee(collection[i], i, collection)
+        if(obj[k]) {
+           obj[k]++
+        } else {
+          obj[k] = 1
+        }
+      }
+    } else {
+      for(let key in collection) {
+        let k = iteratee(collection[key], key, collection)
+        if(obj[k]) {
+           obj[k]++
+        } else {
+          obj[k] = 1
+        }
+      }
+    }
+    return obj
+  },
+  groupBy(collection, iteratee = identity) {
 
   },
+  keyBy(collection, iteratee = identity) {
+
+  },
+
 }
