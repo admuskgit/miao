@@ -293,7 +293,40 @@ var admuskgit = {
     return obj
   },
   keyBy(collection, iteratee = identity) {
+    iteratee = this.iteratee(iteratee)
+    let obj = {}
+    if(Array.isArray(collection)) {
+      for(let i = 0; i < collection.length; i++) {
+        let key = iteratee(collection[i], i, collection)
+        obj[key] = collection[i]
+      }
+    } else {
+      for(let key in collection) {
+        let key = iteratee(collection[key], key, collection)
+        obj[key] = collection[key]
+      }
+    }
+    return obj
+  },
+  forEach(collection, iteratee = identity) {
 
   },
+  map(collection, iteratee = identity) {
 
+  },
+  filter(collection, [predicate = identity]) {
+
+  },
+  reduce(collection, iteratee = identity, accumulator) {
+
+  },
+  reduceRight(collection, iteratee = identity, accumulator) {
+
+  },
+  size(collection) {
+
+  },
+  sortBy(collection, iteratees= identity) {
+
+  },
 }
