@@ -309,7 +309,17 @@ var admuskgit = {
     return obj
   },
   forEach(collection, iteratee = identity) {
-
+    iteratee = this.iteratee(iteratee)
+    if(Array.isArray(collection)) {
+      for(let i = 0; i < collection.length; i++) {
+        iteratee(collection[i], i, collection)
+      }
+    } else {
+      for(let key in collection) {
+        iteratee(collection[key], key, collection)
+      }
+    }
+    return collection
   },
   map(collection, iteratee = identity) {
 
