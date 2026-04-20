@@ -335,19 +335,88 @@ var admuskgit = {
     }
     return array
   },
-  filter(collection, [predicate = identity]) {
-
+  filter(collection, predicate = identity) {
+    predicate = this.iteratee(predicate)
+    if(Array.isArray(collection)) {
+      for(let i = 0; i < collection.length; i++) {
+        if(predicate(collection[i], i, collection)) {
+          return collection[i].user
+        }
+      }
+    } else {
+      for(let key in collection) {
+        if(predicate(collection[i], i, collection)) {
+          return collection[i].user
+        }
+      }
+    }
   },
   reduce(collection, iteratee = identity, accumulator) {
-
+    let res = accumulator
+    iteratee = this.iteratee(iteratee)
+    if(Array.isArray(collection)) {
+      for(let i = 0; i < collection.length; i++) {
+        res = iteratee(res, collection[i], i, collection)
+      }
+    } else {
+      for(let key in collection) {
+        res = iteratee(res, collection[key], key, collection)
+      }
+    }
+    return res
   },
   reduceRight(collection, iteratee = identity, accumulator) {
-
+    let res = accumulator
+    iteratee = this.iteratee(iteratee)
+    if(Array.isArray(collection)) {
+      for(let i = collection.length - 1; i >= 0; i--) {
+        res = iteratee(res, collection[i], i, collection)
+      }
+    } else {
+      let keys = Object.keys(collection)
+      for(let i = keys.length - 1; i >= 0; i--) {
+        let key = keys[i]
+        res = iteratee(res, collection[key], key, collection)
+      }
+    }
+    return res
   },
   size(collection) {
-
+    if(collection === null) {
+      return 0
+    }
+    if (Array.isArray(collection)) {
+      return collection.length
+    }
+    if (typeof collection === "object" && collection !== null) {
+      let keys = Object.keys(collection)
+      return keys.length
+    }
+    if (typeof collection === "string") {
+      return collection.length
+    }
+    return 0
   },
   sortBy(collection, iteratees= identity) {
-
+    if(!Array.isArray(collection)) {
+      collection = [collection]
+    }
+    iteratees = iteratees.map(it => this.iteratee(it))
+    let indexed = collection.map((item, index) => ({item, index}))
+    indexed.sort((a, b) => {
+      for(let f of iteratees) {
+        let valA = f(a.item)
+        let valB = f(b.item)
+        if(valA < valB) {
+          return -1
+        }
+        if(valA > valB) {
+          return 1
+        }
+      }
+      return a.index - b.index
+    })
+    return indexed.map(({item}) => item)
   },
+
 }
