@@ -345,8 +345,8 @@ var admuskgit = {
       }
     } else {
       for(let key in collection) {
-        if(predicate(collection[i], i, collection)) {
-          return collection[i].user
+        if(predicate(collection[ket], key, collection)) {
+          return collection[key].user
         }
       }
     }
@@ -417,6 +417,43 @@ var admuskgit = {
       return a.index - b.index
     })
     return indexed.map(({item}) => item)
+  },
+  sample(collection) {
+    if(Array.isArray(collection)) {
+      let randomIndex = Math.floor(Math.random() * collection.length)
+      return collection[randomIndex]
+    } else {
+      let values = Object.values(collection)
+      let randomIndex = Math.floor(Math.random() * values.length)
+      return values[randomIndex]
+    }
+  },
+  isUndefined(value) {
+
+  },
+  isNull(value) {
+
+  },
+  isNil(value) {
+
+  },
+  max(array) {
+
+  },
+  min(array) {
+
+  },
+  maxBy(array, [iteratee = identity]) {
+
+  },
+  minBy(array, [iteratee = identity]) {
+
+  },
+  round(number, [precision = 0]) {
+
+  },
+  sumBy(array, [iteratee = identity]) {
+
   },
 
 }
