@@ -429,19 +429,37 @@ var admuskgit = {
     }
   },
   isUndefined(value) {
-
+    return value === undefined
   },
   isNull(value) {
-
+    return value === null
   },
   isNil(value) {
-
+    return value === null || value === undefined
   },
   max(array) {
-
+    if(array.length === 0) {
+      return undefined
+    }
+    let max = array[0]
+    for(let i = 0; i < array.length; i++) {
+      if(array[i] > max) {
+        max = array[i]
+      }
+    }
+    return max
   },
   min(array) {
-
+    if(array.length === 0) {
+      return undefined
+    }
+    let min = array[0]
+    for(let i = 0; i < array.length; i++) {
+      if(array[i] < min) {
+        min = array[i]
+      }
+    }
+    return min
   },
   maxBy(array, [iteratee = identity]) {
 
