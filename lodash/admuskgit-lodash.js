@@ -510,5 +510,26 @@ var admuskgit = {
     }
     return sum
   },
+  flatMap(collection, iteratee = identity) {
+
+  },
+  flatMapDepth(collection, iteratee = identity, depth=1) {
+
+  },
+  get(object, path, defaultValue) {
+
+  },
+  has(object, path) {
+
+  },
+  mapKeys(object, iteratee = identity) {
+
+  },
+  mapValues(object, iteratee = identity) {
+
+  },
+  range(start=0, end, step=1) {
+
+  },
 
 }
