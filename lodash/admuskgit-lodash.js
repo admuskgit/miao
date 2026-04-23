@@ -476,13 +476,39 @@ var admuskgit = {
     return maxitem
   },
   minBy(array, iteratee = identity) {
-
+    iteratee = this.iteratee(iteratee)
+    if(!array || array.length === 0) {
+      return undefined
+    }
+    let minitem = array[0]
+    let minvalue = iteratee(array[0])
+    for(let i = 1; i < array.length; i++) {
+      let item = array[i]
+      let value = iteratee(item)
+      if(value < minvalue) {
+        minvalue = value
+        minitem = item
+      }
+    }
+    return minitem
   },
   round(number, precision = 0) {
-
+    let n = number * (10 ** precision)
+    n = Math.round(n)
+    return n / (10 ** precision)
   },
   sumBy(array, iteratee = identity) {
-
+    iteratee = this.iteratee(iteratee)
+    if(!array || array.length === 0) {
+      return undefined
+    }
+    let sum = 0
+    for(let i = 0; i < array.length; i++) {
+      let item = array[i]
+      let value = iteratee(item)
+      sum += value
+    }
+    return sum
   },
 
 }
