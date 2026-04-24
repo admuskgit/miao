@@ -511,25 +511,124 @@ var admuskgit = {
     return sum
   },
   flatMap(collection, iteratee = identity) {
-
+    let res = []
+    iteratee = this.iteratee(iteratee)
+    if(Array.isArray(collection)) {
+      for(let i = 0; i < collection.length; i++) {
+        let value = iteratee(collection[i], i, collection)
+        for(let item of value) {
+          res.push(item)
+        }
+      }
+    } else {
+      for(let key in collection) {
+        let value = iteratee(collection[key], key, collection)
+        for(let item of value) {
+          res.push(item)
+        }
+      }
+    }
+    return res
   },
-  flatMapDepth(collection, iteratee = identity, depth=1) {
+  flattenDepth(array, depth = 1) {
+    let res = []
+    for(let i = 0; i < array.length; i++) {
+      if(Array.isArray(array[i]) && depth > 0) {
+        let flat = this.flattenDepth(array[i], depth - 1)
+        for(let v of flat) {
+          res.push(v)
+        }
+      } else {
+        res.push(array[i])
+      }
+    }
+    return res
+  },
+  flatMapDepth(collection, iteratee = identity, depth = 1) {
+    let res = []
+    iteratee = this.iteratee(iteratee)
+      if(Array.isArray(collection)) {
+      for(let i = 0; i < collection.length; i++) {
+        let value = iteratee(collection[i], i, collection)
+        res.push(value)
 
+      }
+    } else {
+      for(let key in collection) {
+        let value = iteratee(collection[key], key, collection)
+          res.push(value)
+      }
+    }
+    return this.flattenDepth(res, depth)
   },
   get(object, path, defaultValue) {
-
+    if(typeof path === 'string') {
+      path = path.replace(/\[(\d+)\]/g, '.$1').split('.')
+    }
+    let res = object
+    for(let i = 0; i < path.length; i++) {
+      if(res == null) {
+        return defaultValue
+      }
+      res = res[path[i]]
+    }
+    return res === undefined ? defaultValue : res
   },
   has(object, path) {
-
+    if(typeof path === 'string') {
+      path = path.replace(/\[(\d+)\]/g, '.$1').split('.')
+    }
+    let res = object
+    for(let i = 0; i < path.length; i++) {
+      if(res == null) {
+        return false
+      }
+      res = res[path[i]]
+    }
+    return true
   },
   mapKeys(object, iteratee = identity) {
-
+    let obj = {}
+    iteratee = this.iteratee(iteratee)
+    for(let key in object) {
+      let keys = iteratee(object[key], key, object)
+      obj[keys] = object[key]
+    }
+    return obj
   },
   mapValues(object, iteratee = identity) {
-
+    let obj = {}
+    iteratee = this.iteratee(iteratee)
+    for(let key in object) {
+      let values = iteratee(object[key], key, object)
+      obj[key] = values
+    }
+    return obj
   },
-  range(start=0, end, step=1) {
-
+  range(start = 0, end, step = 1) {
+  let arr = []
+  if(end === undefined) {
+    end = start
+    start = 0
+  }
+  if(step === undefined) {
+    step = start < end ? 1 : -1
+  }
+  if(step > 0) {
+    for(let i = start; i < end; i += step) {
+      arr.push(i)
+    }
+  } else if(step < 0) {
+    for(let i = start; i > end; i += step) {
+      arr.push(i)
+    }
+  }
+  if(step === 0) {
+    for(let i = start; i < end; i++) {
+      arr.push(start)
+    }
+  }
+  return arr
   },
 
 }
