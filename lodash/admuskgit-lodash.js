@@ -79,6 +79,9 @@ var admuskgit = {
       return obj
     }
   },
+  identity(value) {
+    return value
+  },
   findIndex(array, predicate = identity, fromIndex = 0) {
     predicate = this.iteratee(predicate)
     for (let i = fromIndex; i < array.length; i++) {
@@ -153,6 +156,7 @@ var admuskgit = {
         return i
       }
     }
+    return -1
   },
   lastIndexOf(array, value, fromIndex=array.length-1) {
     for(let i = fromIndex; i >= 0; i--) {
@@ -229,7 +233,7 @@ var admuskgit = {
   some(collection, predicate = identity) {
     predicate = this.iteratee(predicate)
     if(collection === null) {
-      return true
+      return false
     }
     if(Array.isArray(collection)) {
       for(let i = 0; i < collection.length; i++) {
@@ -287,7 +291,7 @@ var admuskgit = {
         if(!obj[key]){
           obj[key] = []
         }
-        obj[key].push(collection[i])
+        obj[key].push(collection[key])
       }
     }
     return obj
@@ -337,19 +341,21 @@ var admuskgit = {
   },
   filter(collection, predicate = identity) {
     predicate = this.iteratee(predicate)
+    let res = []
     if(Array.isArray(collection)) {
       for(let i = 0; i < collection.length; i++) {
         if(predicate(collection[i], i, collection)) {
-          return collection[i].user
+          res.push(collection[i])
         }
       }
     } else {
       for(let key in collection) {
-        if(predicate(collection[ket], key, collection)) {
-          return collection[key].user
+        if(predicate(collection[key], key, collection)) {
+          res.push(collection[key])
         }
       }
     }
+    return res
   },
   reduce(collection, iteratee = identity, accumulator) {
     let res = accumulator
@@ -629,6 +635,68 @@ var admuskgit = {
     }
   }
   return arr
+  },
+  stringifyJSON(value) {
+    if(value === null) {
+      return 'null'
+    }
+    if(typeof value === 'number' || typeof value === 'boolean') {
+      return `${value}`
+    }
+    if(typeof value === 'string') {
+      return `"${value}"`
+    }
+    if(Array.isArray(value)) {
+      let str = '['
+      for(let i = 0; i < value.length; i++) {
+        let s = this.stringifyJSON(value[i])
+        str += (s === undefined ? 'null' : s)
+        if(i < value.length - 1) {
+          str += ","
+        }
+      }
+      str += ']'
+      return str
+    }
+    if(typeof value === 'object' && value !== null) {
+      let pairs = []
+      for(let key in value) {
+        let val = value[key]
+        let s = this.stringifyJSON(val)
+        if(s !== undefined) {
+          pairs.push(`"${key}":${s}`)
+        }
+      }
+      return `{${pairs.join(',')}}`
+    }
+    return undefined
+  },
+  concat(array, values) {
+
+  },
+  isEqual(value, other) {
+
+  },
+  repeat(string='', n = 1) {
+
+  },
+  padStart(string='', length=0, chars=' ') {
+
+  },
+  padEnd(string='', length=0, chars=' ') {
+
+  },
+  pad(string='', length=0, chars=' ') {
+
+  },
+  keys(object) {
+
+  },
+  values(object) {
+
+  },
+  random(lower=0, upper = 1, floating) {
+
   },
 
 }
