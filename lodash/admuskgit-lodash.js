@@ -672,7 +672,21 @@ var admuskgit = {
     return undefined
   },
   concat(array, values) {
-
+    let res = []
+    for(let j = 0; j < array.length; j++) {
+      res.push(array[j])
+    }
+    for(let i = 1; i < arguments.length; i++) {
+      let val = arguments[i]
+      if(Array.isArray(val)) {
+        for(let k = 0; k < val.length; k++) {
+          res.push(val[k])
+        }
+      } else {
+        res.push(val)
+      }
+    }
+    return res
   },
   isEqual(value, other) {
 
