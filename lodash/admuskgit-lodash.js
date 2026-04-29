@@ -689,7 +689,24 @@ var admuskgit = {
     return res
   },
   isEqual(value, other) {
-
+    if(value === other) {
+      return true
+    }
+    if(typeof value !== 'object' || typeof other !== 'object' || value == null || other == null) {
+      return false
+    }
+    let valuekeys = 0
+    let otherkeys = 0
+    for(let key in value) {
+      valuekeys++
+      if(!(key in other) || !this.isEqual(value[key], other[key])) {
+        return false
+      }
+    }
+    for(let key in other) {
+      otherkeys++
+    }
+    return valuekeys === otherkeys
   },
   repeat(string='', n = 1) {
 
