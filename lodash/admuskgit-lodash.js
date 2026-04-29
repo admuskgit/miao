@@ -708,8 +708,12 @@ var admuskgit = {
     }
     return valuekeys === otherkeys
   },
-  repeat(string='', n = 1) {
-
+  repeat(string = '', n = 1) {
+    let res = ''
+    for(let i = 0; i < n; i++) {
+      res += string
+    }
+    return res
   },
   padStart(string='', length=0, chars=' ') {
 
