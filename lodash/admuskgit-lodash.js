@@ -716,7 +716,17 @@ var admuskgit = {
     return res
   },
   padStart(string='', length=0, chars=' ') {
-
+    if(string.length === length) {
+      return string
+    }
+    chars = chars === undefined ? ' ' : String(chars)
+    let need = length - string.length
+    let pad = chars.repeat(Math.ceil(need / chars.length))
+    if(string.length > length) {
+      return string.slice(0, length)
+    } else {
+      return pad.slice(0, need) + string
+    }
   },
   padEnd(string='', length=0, chars=' ') {
 
@@ -733,5 +743,7 @@ var admuskgit = {
   random(lower=0, upper = 1, floating) {
 
   },
+  round(number, precision=0) {
 
+  },
 }
