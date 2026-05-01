@@ -729,7 +729,17 @@ var admuskgit = {
     }
   },
   padEnd(string='', length=0, chars=' ') {
-
+    if(string.length === length) {
+      return string
+    }
+    chars = chars === undefined ? ' ' : String(chars)
+    let need = length - string.length
+    let pad = chars.repeat(Math.ceil(need / chars.length))
+    if(string.length > length) {
+      return string.slice(string.length - length, length)
+    } else {
+      return string + pad.slice(0, need)
+    }
   },
   pad(string='', length=0, chars=' ') {
 
