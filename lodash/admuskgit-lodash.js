@@ -742,7 +742,13 @@ var admuskgit = {
     }
   },
   pad(string='', length=0, chars=' ') {
-
+    if(string.length === length) {
+      return string
+    }
+    chars = chars === undefined ? ' ' : String(chars)
+    let need = length - string.length
+    let pad = chars.repeat(Math.ceil(need / chars.length))
+    return pad.slice(0, Math.floor(need / 2)) + string + pad.slice(0, Math.ceil(need / 2))
   },
   keys(object) {
 
