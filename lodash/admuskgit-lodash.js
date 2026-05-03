@@ -751,15 +751,33 @@ var admuskgit = {
     return pad.slice(0, Math.floor(need / 2)) + string + pad.slice(0, Math.ceil(need / 2))
   },
   keys(object) {
-
+    let res = []
+    for(let key in object) {
+      if(Object.prototype.hasOwnProperty.call(object, key)) {
+        res.push(key)
+      }
+    }
+    return res
   },
   values(object) {
-
+    let res = []
+    for(let key in object) {
+      if(Object.prototype.hasOwnProperty.call(object, key)) {
+        res.push(object[key])
+      }
+    }
+    return res
   },
   random(lower=0, upper = 1, floating) {
-
+    if(lower > upper) {
+      [lower, upper] = [upper, lower]
+    }
+    if(floating || lower % 1 !== 0 || upper % 1 !== 0) {
+      return Math.random() * (upper - lower) + lower
+    }
+    return Math.floor(Math.random() * (upper - lower + 1)) + lower
   },
   round(number, precision=0) {
-
+    return Math.floor(number * (10 ** precision) + 0.5) / (10 ** precision)
   },
 }
