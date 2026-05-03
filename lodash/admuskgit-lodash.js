@@ -780,4 +780,40 @@ var admuskgit = {
   round(number, precision=0) {
     return Math.floor(number * (10 ** precision) + 0.5) / (10 ** precision)
   },
+  ceil(number, precision=0) {
+    return Math.floor(number * (10 ** precision) + 1) / (10 ** precision)
+  },
+  floor(number, precision=0) {
+    return Math.floor(number * (10 ** precision)) / (10 ** precision)
+  },
+  cloneDeep(value) {
+    if(typeof(value) == 'number' ||  typeof(value) == 'string') {
+      return value
+    }
+    if(Array.isArray(value)) {
+      return value.map(it => this.cloneDeep(it))
+    }
+    let res = {}
+    if(typeof(value) == 'object') {
+      for(let key in value) {
+        res[key] = this.cloneDeep(value[key])
+      }
+    }
+    return res
+  },
+  trim(string='', hars=whitespace) {
+
+  },
+  trimStart(string='', chars=whitespace) {
+
+  },
+  trimEnd(string='', chars=whitespace) {
+
+  },
+  assign(object, sources) {
+
+  },
+  merge(object, sources) {
+
+  },
 }
