@@ -801,19 +801,103 @@ var admuskgit = {
     }
     return res
   },
-  trim(string='', hars=whitespace) {
-
+  trim(string='', chars = ' \t\n\r') {
+    if(typeof chars !== 'string') {
+      chars = ' \t\n\r'
+    }
+    let start = 0
+    let end = 0
+    for(let i = 0; i < string.length; i++) {
+      let found = false
+      for(let j = 0; j < chars.length; j++) {
+        if(string[i] == chars[j]) {
+          found = true
+          break
+        }
+      }
+      if(found == false) {
+        start = i
+        break
+      }
+    }
+    for(let i = string.length - 1; i >= 0; i--) {
+      let found = false
+      for(let j = 0; j < chars.length; j++) {
+        if(string[i] == chars[j]) {
+          found = true
+          break
+        }
+      }
+      if(found == false) {
+        end = i
+        break
+      }
+    }
+    return string.slice(start, end + 1)
   },
-  trimStart(string='', chars=whitespace) {
-
+  trimStart(string='', chars = ' \t\n\r') {
+    if(typeof chars !== 'string') {
+      chars = ' \t\n\r'
+    }
+    let start = 0
+    for(let i = 0; i < string.length; i++) {
+      let found = false
+      for(let j = 0; j < chars.length; j++) {
+        if(string[i] == chars[j]) {
+          found = true
+          break
+        }
+      }
+      if(found == false) {
+        start = i
+        break
+      }
+    }
+    return string.slice(start)
   },
-  trimEnd(string='', chars=whitespace) {
-
+  trimEnd(string='', chars = ' \t\n\r') {
+    if(typeof chars !== 'string') {
+      chars = ' \t\n\r'
+    }
+    let end = 0
+    for(let i = string.length - 1; i >= 0; i--) {
+      let found = false
+      for(let j = 0; j < chars.length; j++) {
+        if(string[i] == chars[j]) {
+          found = true
+          break
+        }
+      }
+      if(found == false) {
+        end = i
+        break
+      }
+    }
+    return string.slice(0, end + 1)
   },
-  assign(object, sources) {
-
+  assign(object, ...sources) {
+    for(let source of sources) {
+      let keys = Object.keys(source)
+      for(let key of keys) {
+        object[key] = source[key]
+      }
+    }
+    return object
   },
-  merge(object, sources) {
-
+  merge(object, ...sources) {
+    for(let source of sources) {
+      let keys = Object.keys(source)
+      for(let key of keys) {
+        if(typeof(source[key]) == 'object') {
+          if(!object[key]) {
+            object[key] = {}
+          }
+          this.merge(object[key], source[key])
+        } else if(source[key] !== undefined) {
+          object[key] = source[key]
+        }
+      }
+    }
+    return object
   },
 }
