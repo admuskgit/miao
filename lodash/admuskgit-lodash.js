@@ -801,7 +801,7 @@ var admuskgit = {
     }
     return res
   },
-  trim(string='', chars = ' \t\n\r') {
+  trim(string='', chars= ' \t\n\r') {
     if(typeof chars !== 'string') {
       chars = ' \t\n\r'
     }
