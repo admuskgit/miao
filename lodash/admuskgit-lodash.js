@@ -806,7 +806,7 @@ var admuskgit = {
       chars = ' \t\n\r'
     }
     let start = 0
-    let end = 0
+    let end = string.length - 1
     for(let i = 0; i < string.length; i++) {
       let found = false
       for(let j = 0; j < chars.length; j++) {
