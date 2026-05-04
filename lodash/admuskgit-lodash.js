@@ -801,9 +801,9 @@ var admuskgit = {
     }
     return res
   },
-  trim(string='', chars= ' \t\n\r') {
+  trim(string='', chars= ' ') {
     if(typeof chars !== 'string' || chars.length === 0) {
-      chars = ' \t\n\r'
+      chars = ' '
     }
     let start = 0
     let end = string.length - 1
@@ -835,9 +835,9 @@ var admuskgit = {
     }
     return string.slice(start, end + 1)
   },
-  trimStart(string='', chars = ' \t\n\r') {
+  trimStart(string='', chars = ' ') {
     if(typeof chars !== 'string') {
-      chars = ' \t\n\r'
+      chars = ' '
     }
     let start = 0
     for(let i = 0; i < string.length; i++) {
@@ -855,9 +855,9 @@ var admuskgit = {
     }
     return string.slice(start)
   },
-  trimEnd(string='', chars = ' \t\n\r') {
+  trimEnd(string='', chars = ' ') {
     if(typeof chars !== 'string') {
-      chars = ' \t\n\r'
+      chars = ' '
     }
     let end = 0
     for(let i = string.length - 1; i >= 0; i--) {
