@@ -900,4 +900,125 @@ var admuskgit = {
     }
     return object
   },
+  parseJSON(value) {
+    let i = 0
+    let skip = () => {
+      while(/\s/.test(value[i])) i++
+    }
+    let parseValue = () => {
+      skip()
+      let ch = value[i]
+      if(ch == '{') {
+        return parseObject()
+      }
+      if(ch == '[') {
+        return parseArray()
+      }
+      if(ch == '"') {
+        return parseString()
+      }
+      if(ch == 't') {
+        return parseTrue()
+      }
+      if(ch == 'f') {
+        return parseFalse()
+      }
+      if(ch == 'n') {
+        return parseNull()
+      }
+      return parseNumber()
+    }
+    let parseObject = () => {
+      let obj = {}
+      i++
+      skip()
+      if(value[i] == '}') {
+        i++
+        return obj
+      }
+      while(true) {
+        let key = parseString()
+        skip()
+        i++
+        skip()
+        let val = parseValue()
+        obj[key] = val
+        skip()
+        if(value[i] == '}') {
+          i++
+        return obj
+        }
+        i++
+      }
+    }
+    let parseArray = () => {
+      let arr = []
+      i++
+      skip()
+      if(value[i] == ']') {
+        i++
+        return arr
+      }
+      while(true) {
+        skip()
+        let val = parseValue()
+        arr.push(val)
+        skip()
+        if(value[i] == ']') {
+          i++
+        return arr
+        }
+        if(value[i] == ',') {
+          i++
+        }
+      }
+    }
+    let parseString = () => {
+      let str = ""
+      i++
+      while(i < value.length && value[i] !== '"') {
+        if(value[i] == '\\') {
+          i++
+          if(i < value.length) {
+            str += value[i]
+          }
+        } else {
+          str += value[i]
+        }
+        i++
+      }
+      i++
+      return str
+    }
+    let parseTrue = () => {
+      if(value.slice(i, i + 4) == 'true') {
+        i += 4
+        return true
+      }
+    }
+    let parseFalse = () => {
+      if(value.slice(i, i + 5) == 'false') {
+        i += 5
+        return false
+      }
+    }
+    let parseNull = () => {
+      if(value.slice(i, i + 4) == 'null') {
+        i += 4
+        return null
+      }
+    }
+    let parseNumber = () => {
+      let start = i
+      if(value[i] == '-') {
+        i++
+      }
+      while(i < value.length && /[\d.]/.test(value[i])) {
+        i++
+      }
+      let numStr = value.slice(start, i)
+      return Number(numStr)
+    }
+    return parseValue()
+  },
 }
