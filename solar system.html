@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>solar system</title>
+  <style>
+    .sun {
+      width: 120px;
+      height: 120px;
+      border-radius: 999999px;
+      background-color: rgb(207, 79, 79);
+      position: fixed;
+    }
+    .earth {
+      width: 60px;
+      height: 60px;
+      border-radius: 999999px;
+      background-color: blueviolet;
+      position: fixed;
+    }
+    .moon {
+      width: 30px;
+      height: 30px;
+      border-radius: 999999px;
+      background-color: green;
+      position: fixed;
+    }
+    .line {
+      width: 400px;
+      height: 400px;
+      border-radius: 999999px;
+      background: #000;
+      margin: auto;
+      margin-top: 272px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sun"></div>
+  <div class="earth"></div>
+  <div class="moon"></div>
+  <div class="line"></div>
+</body>
+</html>
+<script>
+  let sun = document.querySelector(".sun")
+  let earth = document.querySelector(".earth")
+  let moon = document.querySelector(".moon")
+  let angleearth = 0
+  let anglemoon = 0
+  let lastTime = null
+  function animate(time) {
+    if (lastTime != null) {
+      angleearth += (time - lastTime) * 0.001
+      anglemoon += (time - lastTime) * 0.002
+    }
+    lastTime = time
+    let x0 = window.innerWidth / 2 - 60
+    let y0 = window.innerHeight / 2 - 60
+    sun.style.top = x0 + "px"
+    sun.style.left = y0 + "px"
+    let x1 = (Math.sin(angleearth) * 200) + 60 - 30
+    let y1 = (Math.cos(angleearth) * 200) + 60 - 30
+    earth.style.top = x1 + x0 + "px"
+    earth.style.left = y1 + y0 + "px"
+    let x2 = (Math.sin(anglemoon) * 50) + 30 - 15
+    let y2 = (Math.cos(anglemoon) * 50) + 30 - 15
+    moon.style.top = x2 + x1 + x0 + "px"
+    moon.style.left = y2 + y1 + y0 + "px"
+    requestAnimationFrame(animate)
+  }
+  requestAnimationFrame(animate)
+</script>
