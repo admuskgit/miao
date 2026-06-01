@@ -7,31 +7,35 @@
     .sun {
       width: 120px;
       height: 120px;
-      border-radius: 999999px;
+      border-radius: 50%;
       background-color: rgb(207, 79, 79);
       position: fixed;
+      box-shadow: 0 0 50px #ff9900;
     }
     .earth {
       width: 60px;
       height: 60px;
-      border-radius: 999999px;
+      border-radius: 50%;
       background-color: blueviolet;
       position: fixed;
     }
     .moon {
       width: 30px;
       height: 30px;
-      border-radius: 999999px;
+      border-radius: 50%;
       background-color: green;
       position: fixed;
     }
     .line {
+      box-sizing: border-box;
       width: 400px;
       height: 400px;
-      border-radius: 999999px;
-      background: #000;
-      margin: auto;
-      margin-top: 272px;
+      border: 2px solid #666;
+      border-radius: 50%;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
   </style>
 </head>
@@ -51,22 +55,23 @@
   let lastTime = null
   function animate(time) {
     if (lastTime != null) {
-      angleearth += (time - lastTime) * 0.001
-      anglemoon += (time - lastTime) * 0.002
+      angleearth += (time - lastTime) * 0.0005
+      anglemoon += (time - lastTime) * 0.003
     }
     lastTime = time
-    let x0 = window.innerWidth / 2 - 60
-    let y0 = window.innerHeight / 2 - 60
-    sun.style.top = x0 + "px"
-    sun.style.left = y0 + "px"
-    let x1 = (Math.sin(angleearth) * 200) + 60 - 30
-    let y1 = (Math.cos(angleearth) * 200) + 60 - 30
-    earth.style.top = x1 + x0 + "px"
-    earth.style.left = y1 + y0 + "px"
-    let x2 = (Math.sin(anglemoon) * 50) + 30 - 15
-    let y2 = (Math.cos(anglemoon) * 50) + 30 - 15
-    moon.style.top = x2 + x1 + x0 + "px"
-    moon.style.left = y2 + y1 + y0 + "px"
+    let x0 = window.innerWidth / 2
+    let y0 = window.innerHeight / 2
+    sun.style.left = x0  - 60 + "px"
+    sun.style.top = y0  - 60 + "px"
+    // 关于初次太阳布局不居中的问题：top应该对应高度y，left应该对应宽度x,我写反了，以下同理。
+    let x1 = Math.cos(angleearth) * 200
+    let y1 = Math.sin(angleearth) * 200
+    earth.style.left = x1 + x0  - 30 + "px"
+    earth.style.top = y1 + y0 - 30 + "px"
+    let x2 = Math.cos(anglemoon) * 45
+    let y2 = Math.sin(anglemoon) * 45
+    moon.style.left = x2 + x1 + x0 - 15 + "px"
+    moon.style.top = y2 + y1 + y0 - 15 + "px"
     requestAnimationFrame(animate)
   }
   requestAnimationFrame(animate)
