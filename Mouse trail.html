@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse trail</title>
+  <style>
+    body {
+      background: gray;
+    }
+    div {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: greenyellow;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+</body>
+</html>
+<script>
+  document.addEventListener("mousemove", (e) => {
+    let x = e.clientX
+    let y = e.clientY
+    let div = document.createElement("div")
+    div.style.left = x + "px"
+    div.style.top = y + "px"
+    document.body.appendChild(div)
+    setTimeout(() => {
+      div.remove()
+    }, 500)
+  })
+</script>
