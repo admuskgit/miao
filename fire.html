@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fire</title>
+  <style>
+    body {
+      background: gray;
+    }
+
+    div {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #00ffcc;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    let trails = []
+    let index = 0
+    let ballCount = 0
+    for (let i = 0; i < 3; i++) {
+      ballCount++
+      let div = document.createElement("div")
+      document.body.appendChild(div)
+      trails.push(div)
+    }
+    document.addEventListener("mousemove", (e) => {
+      x = e.clientX
+      y = e.clientY
+    })
+    let x = window.innerWidth / 2
+    let y = window.innerHeight / 2
+    let angle = 0
+    let speed = 0.05
+    let radius = 100
+    function animate() {
+      angle += speed
+      trails.forEach((div, index) => {
+        let ballAngle = angle + index * (Math.PI * 2 / ballCount)
+        let ox = x + Math.cos(ballAngle) * radius
+        let oy = y + Math.sin(ballAngle) * radius
+        div.style.left = ox + "px"
+        div.style.top = oy + "px"
+      })
+
+      requestAnimationFrame(animate)
+    }
+    animate()
+  </script>
+</body>
+
+</html>

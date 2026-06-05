@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Censored keyboard</title>
+</head>
+
+<body>
+  <input type="text">
+  <script>
+    let input = document.querySelector("input")
+    input.addEventListener("input", (e) => {
+      e.target.value = e.target.value.replace(/[qwx]/gi, "")
+    })
+  </script>
+</body>
+
+</html>

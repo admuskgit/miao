@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs</title>
+</head>
+
+<body>
+  <div id="tab">
+    <div data-tabname="one">第一个</div>
+    <div data-tabname="two">第二个</div>
+    <div data-tabname="three">第三个</div>
+  </div>
+  <script>
+    function asTabs(node) {
+      let children = Array.from(node.children)
+      let clickedIndex = 0
+      let buttonBar = document.createElement("div")
+      children.forEach((child, i) => {
+        let name = child.getAttribute("data-tabname")
+        let button = document.createElement("button")
+        buttonBar.appendChild(button)
+        button.textContent = name
+        button.addEventListener("click", () => {
+          clickedIndex = i
+          update()
+        })
+        node.insertBefore(buttonBar, node.firstChild)
+      })
+
+      function update() {
+        children.forEach((child, i) => {
+          child.style.display = i === clickedIndex ? "" : "none"
+        })
+      }
+
+      update()
+      
+    }
+    asTabs(document.querySelector("#tab"))
+  </script>
+</body>
+
+</html>
