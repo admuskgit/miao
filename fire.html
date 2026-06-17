@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,6 @@
     body {
       background: gray;
     }
-
     div {
       position: absolute;
       width: 10px;
@@ -20,11 +18,9 @@
     }
   </style>
 </head>
-
 <body>
   <script>
     let trails = []
-    let index = 0
     let ballCount = 0
     for (let i = 0; i < 3; i++) {
       ballCount++
@@ -42,7 +38,7 @@
     let speed = 0.1
     let radius = 100
     function animate() {
-      angle += speed
+      angle += speed //每一帧递增的角度
       trails.forEach((div, index) => {
         let ballAngle = angle + index * (Math.PI * 2 / ballCount)
         let ox = x + Math.cos(ballAngle) * radius
@@ -50,11 +46,9 @@
         div.style.left = ox + "px"
         div.style.top = oy + "px"
       })
-
       requestAnimationFrame(animate)
     }
     animate()
   </script>
 </body>
-
 </html>

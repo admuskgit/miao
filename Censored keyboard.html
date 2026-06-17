@@ -12,13 +12,15 @@
   <script>
     let input = document.querySelector("input")
     input.addEventListener("input", (e) => {
-      e.target.value = e.target.value.replace(/[qwx]/gi, "")
+      e.target.value = e.target.value.replace(/[qwx]/gi, "*")
     })
-    /* input.addEventListener("keypress", (e) => {
+    /*
+    input.addEventListener("keypress", (e) => {
       if(e.key == "W" || e.key == "Q" || e.key == "X") {
         e.preventDefault
       }
-    }) */
+    })
+    */
    
   </script>
 </body>
