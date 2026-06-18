@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>游戏方块移动</title>
+  <style>
+    body {
+      background-color: gray;
+    }
+
+    .box {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      background-color: yellow;
+      font-size: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      top: 100px;
+      left: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">卒</div>
+  <script>
+    let box = document.querySelector(".box")
+    let x = 100
+    let y = 100
+    let step = 50
+    document.addEventListener('keydown', (e) => {
+
+      if (e.key == 'ArrowUp') {
+        y -= step
+      } else if (e.key == 'ArrowDown') {
+        y += step
+      } else if (e.key == 'ArrowLeft') {
+        x -= step
+      } else if (e.key == 'ArrowRight') {
+        x += step
+      }
+      box.style.left = x + 'px'
+      box.style.top = y + 'px'
+    })
+
+
+  </script>
+</body>
+
+</html>

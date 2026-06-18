@@ -27,9 +27,10 @@
     let lastTime = 0
     document.addEventListener("mousemove", (e) => {
       let now = Date.now()
-      if(now - lastTime < 15) {
+      if(now - lastTime < 50) {
         return
       }
+      console.log(now - lastTime)
       lastTime = now
       let div = document.createElement("div")
       div.style.left = e.clientX + "px"
