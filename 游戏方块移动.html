@@ -20,8 +20,8 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      top: 100px;
-      left: 100px;
+      left: 0;
+      top: 0;
     }
   </style>
 </head>
@@ -30,25 +30,73 @@
   <div class="box">卒</div>
   <script>
     let box = document.querySelector(".box")
-    let x = 100
-    let y = 100
-    let step = 50
-    document.addEventListener('keydown', (e) => {
-
-      if (e.key == 'ArrowUp') {
-        y -= step
-      } else if (e.key == 'ArrowDown') {
-        y += step
-      } else if (e.key == 'ArrowLeft') {
-        x -= step
-      } else if (e.key == 'ArrowRight') {
-        x += step
-      }
+    let x = 0
+    let y = 0
+    let vx = 0
+    let vy = 0
+    let speed = 2
+    function ain() {
+      x += vx * speed
+      y += vy * speed
       box.style.left = x + 'px'
       box.style.top = y + 'px'
+      requestAnimationFrame(ain)
+    }
+    ain()
+    let ArrowUpPressing = false
+    let ArrowDownPressing = false
+    let ArrowLeftPressing = false
+    let ArrowRightPressing = false
+    document.addEventListener('keydown', (e) => {
+      if (e.key == 'Shift') {
+        speed = 4
+      } else if (e.key == 'ArrowUp') {
+        vy = - 1
+        ArrowUpPressing = true
+      } else if (e.key == 'ArrowDown') {
+        vy = 1
+        ArrowDownPressing = true
+      } else if (e.key == 'ArrowLeft') {
+        vx = - 1
+        ArrowLeftPressing = true
+      } else if (e.key == 'ArrowRight') {
+        vx = 1
+        ArrowRightPressing = true
+      }
     })
-
-
+    document.addEventListener('keyup', (e) => {
+      if (e.key == 'Shift') {
+        speed = 2
+      } else if (e.key == 'ArrowUp') {
+        ArrowUpPressing = false
+        if (ArrowDownPressing) {
+          vy = 1
+        } else {
+          vy = 0
+        }
+      } else if (e.key == 'ArrowDown') {
+        ArrowDownPressing = false
+        if (ArrowUpPressing) {
+          vy = - 1
+        } else {
+          vy = 0
+        }
+      } else if (e.key == 'ArrowLeft') {
+        ArrowLeftPressing = false
+        if (ArrowRightPressing) {
+          vx = 1
+        } else {
+          vx = 0
+        }
+      } else if (e.key == 'ArrowRight') {
+        ArrowRightPressing = false
+        if (ArrowLeftPressing) {
+          vx = - 1
+        } else {
+          vx = 0
+        }
+      }
+    })
   </script>
 </body>
 
