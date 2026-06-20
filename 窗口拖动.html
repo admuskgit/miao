@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>窗口拖动</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      position: fixed;
+      display: flex;
+      align-items: 10px;
+      justify-content: center;
+      border-radius: 50%;
+      outline: 1px solid black;
+      user-select: none;
+
+      .title {
+        height: 20px;
+        margin: 0;
+        padding-top: 0;
+        font-size: 15px;
+        background-color: #fff;
+        cursor: move;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" style="left: 180px;top: 72px;background-color: yellow;">
+    <div>
+      <h1 class="title">小球1</h1>
+    </div>
+  </div>
+  <div class="box" style="left: 150px;top: 120px;background-color: red;">
+    <h1 class="title">小球2</h1>
+  </div>
+  <div class="box" style="left: 220px;top: 120px;background-color: blue;">
+    <h1 class="title">小球3</h1>
+  </div>
+  <script>
+    let mouseX
+    let mouseY
+    let movingtag = null
+    let originX
+    let originY
+    let maxZ = 1
+    document.addEventListener('mousedown', (e) => {
+      movingtag = e.target.closest('.box')
+      if (movingtag) {
+        maxZ++
+        movingtag.style.zIndex = maxZ
+      }
+      if (e.target.matches('.box .title')) {
+        mouseX = e.clientX
+        mouseY = e.clientY
+        movingtag = e.target.closest('.box')
+        originX = parseFloat(movingtag.style.left)
+        originY = parseFloat(movingtag.style.top)
+        document.addEventListener('mousemove', move)
+      }
+    })
+    function move(e) {
+      if (e.which === 0 || e.buttons === 0) {
+        document.removeEventListener('mousemove', move)
+      } else {
+        let newX = e.clientX - mouseX
+        let newY = e.clientY - mouseY
+        let totalX = originX + newX
+        let totalY = originY + newY
+        if (totalX < 0) {
+          totalX = 0
+        }
+        /* 吸附功能
+        if (totalX < 20) {
+          totalX = 0
+        } 
+        */
+        if (totalX > window.innerWidth - movingtag.offsetWidth) {
+          totalX = window.innerWidth - movingtag.offsetWidth
+        }
+        if (totalY < 0) {
+          totalY = 0
+        }
+        if (totalY > window.innerHeight - movingtag.offsetHeight) {
+          totalY = window.innerHeight - movingtag.offsetHeight
+        }
+        movingtag.style.left = totalX + 'px'
+        movingtag.style.top = totalY + 'px'
+      }
+    }
+  </script>
+</body>
+
+</html>
