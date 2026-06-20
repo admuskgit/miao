@@ -6,9 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>窗口拖动</title>
   <style>
+    body {
+      background-color: gray;
+    }
+
     .box {
-      width: 100px;
-      height: 100px;
       position: fixed;
       display: flex;
       align-items: 10px;
@@ -19,27 +21,41 @@
 
       .title {
         height: 20px;
-        margin: 0;
+        margin: 5px;
         padding-top: 0;
         font-size: 15px;
         background-color: #fff;
         cursor: move;
+        border-radius: 50%;
+      }
+
+      .zoom {
+        position: absolute;
+        bottom: 11px;
+        right: 11px;
+        width: 5px;
+        height: 5px;
+        background-color: black;
+        cursor: nwse-resize;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="box" style="left: 180px;top: 72px;background-color: yellow;">
+  <div class="box" style="left: 200px;top: 100px;background-color: yellow;width: 100px;height: 100px;">
     <div>
-      <h1 class="title">小球1</h1>
+      <h1 class="title">托1</h1>
+      <span class="zoom"></span>
     </div>
   </div>
-  <div class="box" style="left: 150px;top: 120px;background-color: red;">
-    <h1 class="title">小球2</h1>
+  <div class="box" style="left: 100px;top: 120px;background-color: red;width: 100px;height: 100px;">
+    <h1 class="title">托2</h1>
+    <span class="zoom"></span>
   </div>
-  <div class="box" style="left: 220px;top: 120px;background-color: blue;">
-    <h1 class="title">小球3</h1>
+  <div class="box" style="left: 220px;top: 200px;background-color: blue;width: 200px;height: 200px;">
+    <h1 class="title">托3</h1>
+    <span class="zoom"></span>
   </div>
   <script>
     let mouseX
@@ -47,6 +63,8 @@
     let movingtag = null
     let originX
     let originY
+    let originW
+    let originH
     let maxZ = 1
     document.addEventListener('mousedown', (e) => {
       movingtag = e.target.closest('.box')
@@ -62,7 +80,27 @@
         originY = parseFloat(movingtag.style.top)
         document.addEventListener('mousemove', move)
       }
+      if (e.target.matches('.box .zoom')) {
+        mouseX = e.clientX
+        mouseY = e.clientY
+        movingtag = e.target.closest('.box')
+        originW = parseFloat(movingtag.style.width)
+        originH = parseFloat(movingtag.style.height)
+        document.addEventListener('mousemove', zoom)
+      }
     })
+    function zoom(e) {
+      if (e.which === 0 || e.buttons === 0) {
+        document.removeEventListener('mousemove', zoom)
+      } else {
+        let newX = e.clientX - mouseX
+        let newY = e.clientY - mouseY
+        let totalw = originW + newX
+        let totalh = originH + newY
+        movingtag.style.width = totalw + 'px'
+        movingtag.style.height = totalh + 'px'
+      }
+    }
     function move(e) {
       if (e.which === 0 || e.buttons === 0) {
         document.removeEventListener('mousemove', move)
