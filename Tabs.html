@@ -6,12 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tabs</title>
 </head>
+<style>
+  body {
+    background-color: gray;
+  }
+</style>
 
 <body>
   <div id="tab">
-    <div data-tabname="one">第一个</div>
-    <div data-tabname="two">第二个</div>
-    <div data-tabname="three">第三个</div>
+    <div data-tabname="one">第一个Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia consequuntur explicabo
+      ducimus error laborum velit quisquam beatae quia illo iste quae, perferendis, ut quam modi nisi odio architecto.
+      Animi, eius?</div>
+    <div data-tabname="two">第二个Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis ea repellat,
+      veritatis repellendus illum magnam ullam, maxime velit quas error libero, adipisci saepe neque commodi. Velit
+      magnam corporis temporibus incidunt.</div>
+    <div data-tabname="three">第三个Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ut tempora non
+      soluta ea et! Recusandae voluptatem suscipit dolorem reprehenderit fuga facere obcaecati numquam quia dolores!
+      Ipsam magni error officiis.</div>
   </div>
   <script>
     function asTabs(node) {
@@ -23,21 +34,20 @@
         let button = document.createElement("button")
         buttonBar.appendChild(button)
         button.textContent = name
-        button.addEventListener("click", () => {
+        button.addEventListener("click", (e) => {
           clickedIndex = i
           update()
         })
-        node.insertBefore(buttonBar, node.firstChild)
       })
-
+      node.prepend(buttonBar)
+      buttonBar.children[0].style.color = 'green'
       function update() {
         children.forEach((child, i) => {
           child.style.display = i === clickedIndex ? "" : "none"
+          buttonBar.children[i].style.color = i === clickedIndex ? 'green' : ''
         })
       }
-
       update()
-      
     }
     asTabs(document.querySelector("#tab"))
   </script>
