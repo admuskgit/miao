@@ -56,8 +56,8 @@ var admuskgit = {
       return predicate
     }
     if (Array.isArray(predicate)) {
-      let key = predicate[0];
-      let val = predicate[1];
+      let key = predicate[0]
+      let val = predicate[1]
       return function(obj) {
         return obj[key] === val
       }
@@ -1022,9 +1022,12 @@ var admuskgit = {
     return parseValue()
   },
   isMatch(object, source) {
+    if(typeof object !== 'object' || source === null) {
+      return object === source
+    }
     let keys = Object.keys(source)
     for(let key of keys) {
-      if(object[key] !== source[key]) {
+      if(!this.isMatch(object[key], source[key])) {
         return false
       }
     }
