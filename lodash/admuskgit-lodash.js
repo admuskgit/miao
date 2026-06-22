@@ -1021,5 +1021,13 @@ var admuskgit = {
     }
     return parseValue()
   },
-  
+  isMatch(object, source) {
+    let keys = Object.keys(source)
+    for(let key of keys) {
+      if(object[key] !== source[key]) {
+        return false
+      }
+    }
+    return true
+  },
 }
