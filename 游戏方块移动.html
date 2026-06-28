@@ -34,10 +34,22 @@
     let y = 0
     let vx = 0
     let vy = 0
-    let speed = 2
-    function ain() {
-      x += vx * speed
-      y += vy * speed
+    let speed = 0.2
+    let lastTime = null
+    function ain(time) {
+      let diff
+      if(lastTime == null) {
+        diff = 0
+      } else {
+        diff = time - lastTime //每次调用之间的时间间隔
+      }
+      console.log(diff)
+      lastTime = time
+      //高刷新，时间切的碎，调用多但是diff也会变小
+      //低刷新，时间切的粗，调用少但是diff也会变大
+      x += vx * speed * diff
+      y += vy * speed * diff
+
       box.style.left = x + 'px'
       box.style.top = y + 'px'
       requestAnimationFrame(ain)
@@ -49,7 +61,7 @@
     let ArrowRightPressing = false
     document.addEventListener('keydown', (e) => {
       if (e.key == 'Shift') {
-        speed = 4
+        speed = 0.5
       } else if (e.key == 'ArrowUp') {
         vy = - 1
         ArrowUpPressing = true
@@ -66,7 +78,7 @@
     })
     document.addEventListener('keyup', (e) => {
       if (e.key == 'Shift') {
-        speed = 2
+        speed = 0.2
       } else if (e.key == 'ArrowUp') {
         ArrowUpPressing = false
         if (ArrowDownPressing) {
