@@ -11,10 +11,19 @@
   </style>
 </head>
 <body>
-
+  <div style="display: flex;">
+    <button id="creatBtn">新建笔记</button>
+    <select name="notes" id="noteSelect"></select>
+    <textarea name="content" id="contentArea" style="width: 400px;height: 40px;"></textarea>
+  </div>
+  
   <script>
-    let obj = {}
-
+    let creatBtn = document.getElementById('creatBtn')
+    let noteSelect = document.getElementById('noteSelect')
+    let contentArea = document.getElementById('contentArea')
+    let notes = []
+    let currentNoteId = null
+    
   </script>
 </body>
 </html>
