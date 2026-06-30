@@ -1,72 +1,171 @@
 <!doctype html>
 <html lang="zh-CN">
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>flex-oald</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        .A{
+
+        .A {
             display: flex;
             height: 100vh;
         }
-        .a{
+
+        .a {
             flex: 1;
             background-color: lightblue;
-             overflow: auto;
+            overflow: auto;
         }
-        .B{
+
+        .B {
             flex: 3;
             display: flex;
             flex-direction: column;
             background-color: lightgreen;
             overflow: auto;
         }
-        .header{
+
+        .header {
             flex: 1;
             background-color: lightcoral;
             overflow: auto;
         }
-        .main{
+
+        .main {
             flex: 3;
             background-color: lightgoldenrodyellow;
             overflow: auto;
         }
-        .b{
+
+        .b {
             flex: 1;
             background-color: lightpink;
             overflow: auto;
         }
-        .c{
+
+        .c {
             flex: 1;
             background-color: lightgray;
             overflow: auto;
         }
     </style>
 </head>
+
 <body>
     <div class="A">
-	    <aside class="a">
-             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit, officiis dolorem a pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae repellat quisquam in tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit, officiis dolorem a pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae repellat quisquam in tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.
+        <aside class="a">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sit porro praesentium maxime id cupiditate
+            sed aspernatur fugit, officiis dolorem a pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error
+            ab dolore quae repellat quisquam in tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor
+            sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus,
+            magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam.
+            Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+            quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.Lorem ipsum dolor sit amet, consectetur
+            adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit, officiis dolorem a
+            pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae repellat quisquam in
+            tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam,
+            quidem. Repellendus, magnam.
         </aside>
-    <div class="B">
-        <header class="header">
-        nsectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit, officiis dolorem a pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae repellat quisquam in tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qunsectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit, officiis dolorem a pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae repellat quisquam in tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qu
-        </header>
-        <main class="main">
-        nsectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit, officiis dolorem a pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae repellat quisquam in tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qunsectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit, officiis dolorem a pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae repellat quisquam in tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qu
-        </main>
-    </div>
-    <aside class="b">
-        nsectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit, officiis dolorem a pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae repellat quisquam in tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qunsectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit, officiis dolorem a pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae repellat quisquam in tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qu
-    </aside>
-    <aside class="c">
-        nsectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit, officiis dolorem a pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae repellat quisquam in tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.
-    </aside>
+        <div class="B">
+            <header class="header">
+                nsectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus,
+                magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam.
+                Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit,
+                officiis dolorem a pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor
+                sit amet consectetur adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae
+                repellat quisquam in tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus,
+                magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam.
+                Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Qunsectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus,
+                magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam.
+                Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit,
+                officiis dolorem a pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor
+                sit amet consectetur adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae
+                repellat quisquam in tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus,
+                magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam.
+                Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qu
+            </header>
+            <main class="main">
+                nsectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus,
+                magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam.
+                Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit,
+                officiis dolorem a pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor
+                sit amet consectetur adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae
+                repellat quisquam in tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus,
+                magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam.
+                Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Qunsectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus,
+                magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam.
+                Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit,
+                officiis dolorem a pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor
+                sit amet consectetur adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae
+                repellat quisquam in tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus,
+                magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam.
+                Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qu
+            </main>
+        </div>
+        <aside class="b">
+            nsectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam,
+            quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.
+            Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.Lorem ipsum dolor sit amet, consectetur
+            adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit, officiis dolorem a
+            pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae repellat quisquam in
+            tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qunsectetur adipisicing elit. Quisquam, quidem.
+            Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem.
+            Repellendus, magnam.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sit porro praesentium
+            maxime id cupiditate sed aspernatur fugit, officiis dolorem a pariatur rerum? Hic quo perspiciatis nemo
+            temporibus aliquid est! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, dolores deserunt at
+            eius modi rem vero error ab dolore quae repellat quisquam in tenetur enim ratione molestiae recusandae id
+            porro! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam.
+            Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+            quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Qu
+        </aside>
+        <aside class="c">
+            nsectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam,
+            quidem. Repellendus, magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.
+            Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.Lorem ipsum dolor sit amet, consectetur
+            adipisicing elit. Beatae sit porro praesentium maxime id cupiditate sed aspernatur fugit, officiis dolorem a
+            pariatur rerum? Hic quo perspiciatis nemo temporibus aliquid est! Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ipsa, dolores deserunt at eius modi rem vero error ab dolore quae repellat quisquam in
+            tenetur enim ratione molestiae recusandae id porro! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam, quidem. Repellendus, magnam.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. Repellendus, magnam. Quisquam,
+            quidem. Repellendus, magnam.
+        </aside>
     </div>
 </body>
+
 </html>
