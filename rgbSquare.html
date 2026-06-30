@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>rgb</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		div {
+			width: 150px;
+			height: 150px;
+			border: 2px solid red;
+			transition: 7s;
+			transform-style: preserve-3d;
+			margin: 100px auto;
+			transform: perspective(800px);
+		}
+		div:hover {
+			transform: perspective(800px) rotateZ(360deg) rotateX(360deg) rotateY(360deg);
+		}
+		span {
+			width: 100px;
+			height: 100px;
+			border: 1px solid green;
+			position: absolute;
+			margin: auto;
+			inset: 0;
+			text-align: center;
+			line-height: 100px;
+		}
+		span:nth-child(1) {
+			background-color: rgb(223, 94, 94);
+			transform: rotateY(90deg) translateZ(50px);
+		}
+		span:nth-child(2) {
+			background-color: rgb(92, 185, 92);
+			transform: rotateY(-90deg) translateZ(50px);
+		}
+		span:nth-child(3) {
+			background-color: rgb(104, 104, 211);
+			transform: rotateX(90deg) translateZ(50px);
+		}
+		span:nth-child(4) {
+			background-color: rgb(235, 235, 102);
+			transform: rotateX(-90deg) translateZ(50px);
+		}
+		span:nth-child(5) {
+			background:linear-gradient(45deg,black,rgb(235, 235, 53),rgb(73, 233, 73),red,purple);
+			background-color: rgb(99, 224, 224);
+			transform: translateZ(50px);
+		}
+		span:nth-child(6) {
+			background-color: rgb(77, 177, 52);
+			transform: rotateY(180deg) translateZ(50px);
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		<span>4</span>
+		<span>5</span>
+		<span>6</span>
+	</div>
+</body>
