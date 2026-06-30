@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,20 +11,46 @@
     }
   </style>
 </head>
+
 <body>
   <div style="display: flex;">
     <button id="creatBtn">新建笔记</button>
-    <select name="notes" id="noteSelect"></select>
-    <textarea name="content" id="contentArea" style="width: 400px;height: 40px;"></textarea>
+    <select name="notes" id="noteSelect" style="width: 70px;padding-right: 18px;background-color: green;"></select>
+    <textarea name="content" id="contentArea" style="width: 300px;height: 40px;"></textarea>
   </div>
-  
   <script>
     let creatBtn = document.getElementById('creatBtn')
     let noteSelect = document.getElementById('noteSelect')
     let contentArea = document.getElementById('contentArea')
     let notes = []
-    let currentNoteId = null
-    
+    let currentId = null
+    function addToSelect(name, id) {
+      let opt = document.createElement('option')
+      opt.value = id
+      opt.textContent = name
+      noteSelect.appendChild(opt)
+    }
+    creatBtn.addEventListener('click', function () {
+      let noteName = prompt('请输入日记名字')
+      let newNote = {
+        id: Date.now(),
+        name: noteName,
+        content: "",
+      }
+      notes.push(newNote)
+      addToSelect(noteName, newNote.id)
+    })
+    noteSelect.addEventListener('change', function () {
+      let selectId = Number(noteSelect.value)
+      let target = notes.find(note => note.id === selectId)
+      currentId = selectId
+      contentArea.value = target.content
+    })
+    contentArea.addEventListener('input', function () {
+      let target = notes.find(note => note.id === currentId)
+      target.content = contentArea.value
+    })
   </script>
 </body>
+
 </html>
