@@ -13,32 +13,60 @@
 </head>
 
 <body>
-  <div style="display: flex;">
-    <button id="creatBtn">新建笔记</button>
-    <select name="notes" id="noteSelect" style="width: 70px;padding-right: 18px;background-color: green;"></select>
-    <textarea name="content" id="contentArea" style="width: 300px;height: 40px;"></textarea>
+  <div>
+    <div style="display: flex;">
+      <button id="createBtn">新建笔记</button>
+      <select name="notes" id="noteSelect" style="width: 70px;padding-right: 18px;background-color: green;"></select>
+    </div>
+    <textarea name="content" id="contentArea" style="width: 300px;height: 100px;"></textarea>
   </div>
   <script>
-    let creatBtn = document.getElementById('creatBtn')
+    let createBtn = document.getElementById('createBtn')
     let noteSelect = document.getElementById('noteSelect')
     let contentArea = document.getElementById('contentArea')
     let notes = []
     let currentId = null
+    function loadStorage() {
+      let data = localStorage.getItem('notes')
+      notes = JSON.parse(data)
+    }
+    function renderAddToSelect() {
+      noteSelect.innerHTML = ''
+      notes.forEach(item => {
+        addToSelect(item.name, item.id)
+      })
+    }
+    function saveToStorage() {
+      localStorage.setItem('notes', JSON.stringify(notes))
+    }
     function addToSelect(name, id) {
       let opt = document.createElement('option')
       opt.value = id
       opt.textContent = name
       noteSelect.appendChild(opt)
     }
-    creatBtn.addEventListener('click', function () {
+    loadStorage()
+    renderAddToSelect()
+    let firstId = Number(noteSelect.options[0].value)
+    let target = notes.find(item => item.id == firstId)
+    currentId = firstId
+    contentArea.value = target.content
+    createBtn.addEventListener('click', function () {
       let noteName = prompt('请输入日记名字')
+      if (!noteName) {
+        return
+      }
       let newNote = {
         id: Date.now(),
         name: noteName,
         content: "",
       }
       notes.push(newNote)
-      addToSelect(noteName, newNote.id)
+      saveToStorage()
+      renderAddToSelect()
+      noteSelect.value = newNote.id
+      currentId = newNote.id
+      contentArea = ''
     })
     noteSelect.addEventListener('change', function () {
       let selectId = Number(noteSelect.value)
@@ -47,8 +75,12 @@
       contentArea.value = target.content
     })
     contentArea.addEventListener('input', function () {
+      if (currentId == null) {
+        return
+      }
       let target = notes.find(note => note.id === currentId)
       target.content = contentArea.value
+      saveToStorage()
     })
   </script>
 </body>

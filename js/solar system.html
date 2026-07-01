@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
       position: fixed;
       box-shadow: 0 0 50px #ff9900;
     }
+
     .earth {
       width: 60px;
       height: 60px;
@@ -19,6 +21,7 @@
       background-color: blueviolet;
       position: fixed;
     }
+
     .moon {
       width: 30px;
       height: 30px;
@@ -26,6 +29,7 @@
       background-color: green;
       position: fixed;
     }
+
     .line {
       box-sizing: border-box;
       width: 400px;
@@ -39,12 +43,14 @@
     }
   </style>
 </head>
+
 <body>
   <div class="sun"></div>
   <div class="earth"></div>
   <div class="moon"></div>
   <div class="line"></div>
 </body>
+
 </html>
 <script>
   let sun = document.querySelector(".sun")
@@ -56,17 +62,17 @@
   function animate(time) {
     if (lastTime != null) {
       angleearth += (time - lastTime) * 0.0005
-      anglemoon += (time - lastTime) * 0.003
+      anglemoon += (time - lastTime) * 0.01
     }
     lastTime = time
     let x0 = window.innerWidth / 2
     let y0 = window.innerHeight / 2
-    sun.style.left = x0  - 60 + "px"
-    sun.style.top = y0  - 60 + "px"
-    // 关于初次太阳布局不居中的问题：top应该对应高度y，left应该对应宽度x,我写反了，以下同理。
+    sun.style.left = x0 - 60 + "px"
+    sun.style.top = y0 - 60 + "px"
+    // 关于初次太阳布局不居中的问题：top应该对应高度y，left应该对应宽度x,写反了，以下同理。
     let x1 = Math.cos(angleearth) * 200
     let y1 = Math.sin(angleearth) * 200
-    earth.style.left = x1 + x0  - 30 + "px"
+    earth.style.left = x1 + x0 - 30 + "px"
     earth.style.top = y1 + y0 - 30 + "px"
     let x2 = Math.cos(anglemoon) * 45
     let y2 = Math.sin(anglemoon) * 45
