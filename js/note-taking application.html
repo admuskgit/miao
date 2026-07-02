@@ -15,35 +15,68 @@
 <body>
   <div>
     <div style="display: flex;">
-      <button id="createBtn">新建笔记</button>
-      <select name="notes" id="noteSelect" style="width: 70px;padding-right: 18px;background-color: green;"></select>
+      <button id="createBtn" style="cursor: pointer;">新建笔记</button>
+      <select name="notes" id="noteSelect" style="width: 70px;padding-right: 18px;"></select>
+      <div style="display: flex;">
+        <label for="fileInput" style="background-color: red;">导入</label>
+        <input type="file" name="" id="fileInput" style="display: none;">
+        <label for="" onclick="exportNotes()" style="background-color: tan;">导出</label>
+      </div>
     </div>
-    <textarea name="content" id="contentArea" style="width: 300px;height: 100px;"></textarea>
+    <textarea name="content" id="contentArea" style="width: 200px;height: 100px;"></textarea>
   </div>
   <script>
     let createBtn = document.getElementById('createBtn')
     let noteSelect = document.getElementById('noteSelect')
     let contentArea = document.getElementById('contentArea')
+    let fileInput = document.querySelector('#fileInput')
     let notes = []
     let currentId = null
     function loadStorage() {
       let data = localStorage.getItem('notes')
       notes = JSON.parse(data)
+      return notes
     }
     function renderAddToSelect() {
+      let notes = loadStorage()
+      console.log('旧的notes：',notes)
       noteSelect.innerHTML = ''
       notes.forEach(item => {
         addToSelect(item.name, item.id)
       })
     }
-    function saveToStorage() {
-      localStorage.setItem('notes', JSON.stringify(notes))
+    function saveToStorage(dat) {
+      console.log('等待存储新的：', dat)
+      localStorage.setItem('notes', JSON.stringify(dat))
+
+      renderAddToSelect()
     }
     function addToSelect(name, id) {
       let opt = document.createElement('option')
       opt.value = id
       opt.textContent = name
       noteSelect.appendChild(opt)
+    }
+    function importNotes(e) {
+      let file = e.target.files[0]
+      if(!file) return
+      let read = new FileReader()
+      read.onload = event => {
+        let da = JSON.parse(event.target.result)
+        console.log('导入da：', da)
+        saveToStorage(da)
+      }
+      read.readAsText(file)
+      e.target.value = ""
+    }
+    function exportNotes() {
+      let arr = loadStorage()
+      let text = JSON.stringify(arr)
+      let blob = new Blob([text], {type:'application/json'})
+      let a = document.createElement('a')
+      a.href = URL.createObjectURL(blob)
+      a.download = "note.json"
+      a.click()
     }
     loadStorage()
     renderAddToSelect()
@@ -66,7 +99,7 @@
       renderAddToSelect()
       noteSelect.value = newNote.id
       currentId = newNote.id
-      contentArea = ''
+      contentArea.value = ''
     })
     noteSelect.addEventListener('change', function () {
       let selectId = Number(noteSelect.value)
@@ -81,6 +114,9 @@
       let target = notes.find(note => note.id === currentId)
       target.content = contentArea.value
       saveToStorage()
+    })
+    fileInput.addEventListener('change', function (e) {
+      importNotes(e)
     })
   </script>
 </body>
