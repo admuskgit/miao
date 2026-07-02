@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,26 +9,52 @@
     body {
       background-color: gray;
     }
+
+    div {
+      position: relative;
+    }
+
+    #selectList {
+      display: none;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      left: 0;
+    }
+    #selectList li {
+      margin: 0;
+      padding: 2px 2px;
+      border: 1px solid greenyellow;
+    }
+    #selectList li:hover {
+      background-color: orange;
+    }
   </style>
 </head>
+
 <body>
-  <input type="text" name="" id="input">
-  <ul style="display:none;" name="" id="selectList"></ul>
+  <div>
+    <input type="text" name="" id="input">
+    <ul name="" id="selectList"></ul>
+  </div>
+
   <script>
-    let list = ["acgsdgre","aasfafa","swUKYSD","sSsa"]
+    let list = ["acgsdgre", "aasfafa", "swUKYSD", "sSsa", "zasfaa", "xsfafa", "dasfaa", "cafafa", "easfafa", "zfafa", "xasafa", "dafafa", "casfafa", "easafa", "zafaf", "xasfaf", "dasfafa", "casfaf", "easfaoa"]
     let input = document.querySelector("#input")
     let select = document.querySelector("#selectList")
     function getMatchs(text) {
-      if(!text) return[]
+      if (!text) return []
       return list.filter(item => item.startsWith(text))
     }
     function renderList(matches) {
       select.innerHTML = ""
-      if(matches === 0) {
+      if (matches === 0) {
         select.style.display = "none"
         return
       }
       select.style.display = "block"
+      select.style.cursor = "pointer"
       matches.forEach(element => {
         let li = document.createElement("li")
         li.textContent = element
@@ -46,4 +73,5 @@
     })
   </script>
 </body>
+
 </html>
