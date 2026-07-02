@@ -1,11 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A JavaScript workbench</title>
 </head>
+<style>
+  body {
+    background-color: gray;
+  }
+</style>
+
 <body>
-  
+  <button onclick="runCode()" style="width: 60px;">RUN</button>
+  <div style="display: flex;">
+    <textarea name="" id="codeInput" style="width: 300px;"></textarea>
+    <div id="output" style="border: 1px solid red; height: 800px; width: 300px;box-sizing: border-box;"></div>
+  </div>
+
+  <script>
+    function runCode() {
+      let textarea = document.querySelector("#codeInput")
+      let userCode = textarea.value
+      let output = document.querySelector('#output')
+      if (!userCode) {
+        output.textContent = "请输入代码"
+        return
+      }
+      try {
+        let evalAndReturn = new Function(userCode)
+        let result = evalAndReturn()
+        output.textContent = "运行结果:" + String(result)
+      } catch (error) {
+        output.textContent = "代码错误:" + String(error)
+      }
+    }
+  </script>
 </body>
+
 </html>

@@ -1,36 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mouse trail</title>
   <style>
-    body {
-      xbackground: gray;
-    }
     div {
       position: absolute;
       background-image: url(https://www.shutterstock.com/image-vector/mouse-cursor-260nw-643645441.jpg);
       background-size: contain;
       width: 25px;
       height: 25px;
-      xbackground-color: #00ffcc;
       border-radius: 50%;
-      xtransform: translate(-50%, -50%);
       opacity: 1;
-      transition: opacity 0.2s linear;
+      transition: opacity 0.4s linear;
     }
   </style>
 </head>
+
 <body>
   <script>
     let lastTime = 0
     document.addEventListener("mousemove", (e) => {
       let now = Date.now()
-      if(now - lastTime < 50) {
+      if (now - lastTime < 40) {
         return
       }
-      console.log(now - lastTime)
       lastTime = now
       let div = document.createElement("div")
       div.style.left = e.clientX + "px"
@@ -41,8 +37,9 @@
       })
       setTimeout(() => {
         div.remove()
-      }, 200)
+      }, 400)
     })
   </script>
 </body>
+
 </html>
