@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,49 @@
     body {
       background-color: gray;
     }
+    #selectList.show {
+      display: block;
+    }
   </style>
 </head>
+
 <body>
+  <div style="position: relative;">
+    <input placeholder="输入搜索" type="text" name="" id="input"
+      style="height: 40px;width: 400px;box-sizing: border-box;background-color: greenyellow;border-radius: 4px;border: 1px solid rebeccapurple;">
+    <select style="position: absolute;width: 400px;left: 0;top: 100%;height: 30px;border-radius: 4px;" name=""
+      id="selectList">
+    </select>
+  </div>
   <script>
-    
+    let list = [
+      "AbCgsgre",
+      "aBcgsgs",
+      "acgsdgre",
+      "lasfafa",
+      "lrtthfg",
+      "lerte",
+      "pwSSS",
+      "pwUKYSD",
+      "rSsa",
+      "rhegs",
+      "rswss",
+    ]
+    let input = document.querySelector("#input")
+    let select = document.querySelector("#selectList")
+    input.addEventListener("input", (e) => {
+      let currentValue = e.target.value
+      let lowerValue = currentValue.toLowerCase()
+      select.innerHTML = ""
+
+      let listSelect = list.filter(item => item.startsWith(lowerValue))
+      listSelect.forEach((item, index) => {
+        let opt = document.createElement("option")
+        opt.innerText = item
+        select.appendChild(opt)
+      })
+    })
   </script>
 </body>
+
 </html>
