@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,49 +8,42 @@
     body {
       background-color: gray;
     }
-    #selectList.show {
-      display: block;
-    }
   </style>
 </head>
-
 <body>
-  <div style="position: relative;">
-    <input placeholder="输入搜索" type="text" name="" id="input"
-      style="height: 40px;width: 400px;box-sizing: border-box;background-color: greenyellow;border-radius: 4px;border: 1px solid rebeccapurple;">
-    <select style="position: absolute;width: 400px;left: 0;top: 100%;height: 30px;border-radius: 4px;" name=""
-      id="selectList">
-    </select>
-  </div>
+  <input type="text" name="" id="input">
+  <ul style="display:none;" name="" id="selectList"></ul>
   <script>
-    let list = [
-      "AbCgsgre",
-      "aBcgsgs",
-      "acgsdgre",
-      "lasfafa",
-      "lrtthfg",
-      "lerte",
-      "pwSSS",
-      "pwUKYSD",
-      "rSsa",
-      "rhegs",
-      "rswss",
-    ]
+    let list = ["acgsdgre","aasfafa","swUKYSD","sSsa"]
     let input = document.querySelector("#input")
     let select = document.querySelector("#selectList")
+    function getMatchs(text) {
+      if(!text) return[]
+      return list.filter(item => item.startsWith(text))
+    }
+    function renderList(matches) {
+      select.innerHTML = ""
+      if(matches === 0) {
+        select.style.display = "none"
+        return
+      }
+      select.style.display = "block"
+      matches.forEach(element => {
+        let li = document.createElement("li")
+        li.textContent = element
+        li.onclick = () => {
+          input.value = li.textContent
+          select.style.display = "none"
+        }
+        select.appendChild(li)
+      });
+    }
     input.addEventListener("input", (e) => {
       let currentValue = e.target.value
       let lowerValue = currentValue.toLowerCase()
-      select.innerHTML = ""
-
-      let listSelect = list.filter(item => item.startsWith(lowerValue))
-      listSelect.forEach((item, index) => {
-        let opt = document.createElement("option")
-        opt.innerText = item
-        select.appendChild(opt)
-      })
+      let matches = getMatchs(lowerValue)
+      renderList(matches)
     })
   </script>
 </body>
-
 </html>
