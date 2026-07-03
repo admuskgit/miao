@@ -17,8 +17,8 @@
 
     input[type="checkbox"] {
       margin: 0;
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
     }
   </style>
 </head>
@@ -29,8 +29,9 @@
   <button id="stop">stop</button>
   <div id="box"></div>
   <script>
-    let rows = 50
-    let cols = 50
+    let time = null
+    let rows = 60
+    let cols = 60
     let grids = []
     for (let i = 0; i < rows; i++) {
       grids[i] = []
@@ -111,9 +112,18 @@
     let nextBtn = document.querySelector("#next")
     nextBtn.addEventListener("click", () => {
       grids = nextGrids()
-
       render()
-
+    })
+    let auto = document.querySelector("#auto")
+    auto.addEventListener("click", () => {
+      time = setInterval(() => {
+        grids = nextGrids()
+        render()
+      }, 500)
+    })
+    let stop = document.querySelector("#stop")
+    stop.addEventListener("click", () => {
+      clearInterval(time)
     })
   </script>
 </body>
