@@ -20,16 +20,16 @@
   </div>
 
   <script>
+    let textarea = document.querySelector("#codeInput")
+    let output = document.querySelector('#output')
     function runCode() {
-      let textarea = document.querySelector("#codeInput")
       let userCode = textarea.value
-      let output = document.querySelector('#output')
       if (!userCode) {
         output.textContent = "请输入代码"
         return
       }
       try {
-        let evalAndReturn = new Function(userCode)
+        let evalAndReturn = new Function(`return (${userCode})`)
         let result = evalAndReturn()
         output.textContent = "运行结果:" + String(result)
       } catch (error) {
