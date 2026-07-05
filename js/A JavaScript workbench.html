@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +10,11 @@
     background-color: gray;
   }
 </style>
-
 <body>
   <button onclick="runCode()" style="width: 60px;">RUN</button>
   <div style="display: flex;">
     <textarea name="" id="codeInput" style="width: 300px;"></textarea>
-    <div id="output" style="border: 1px solid red; height: 800px; width: 300px;box-sizing: border-box;"></div>
+    <div id="output" style="border: 1px solid red; height: 400px; width: 300px;box-sizing: border-box;"></div>
   </div>
   <script>
     let textarea = document.querySelector("#codeInput")
@@ -28,14 +26,12 @@
         return
       }
       try {
-        let evalAndReturn = new Function(userCode)
-        let result = evalAndReturn()
-        output.textContent = String(result)
+        let evalAndReturn = eval(userCode)
+        output.textContent = evalAndReturn
       } catch (error) {
         output.textContent = String(error)
       }
     }
   </script>
 </body>
-
 </html>
