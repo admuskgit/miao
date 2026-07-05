@@ -18,7 +18,6 @@
     <textarea name="" id="codeInput" style="width: 300px;"></textarea>
     <div id="output" style="border: 1px solid red; height: 800px; width: 300px;box-sizing: border-box;"></div>
   </div>
-
   <script>
     let textarea = document.querySelector("#codeInput")
     let output = document.querySelector('#output')
@@ -29,11 +28,11 @@
         return
       }
       try {
-        let evalAndReturn = new Function(`return (${userCode})`)
+        let evalAndReturn = new Function(userCode)
         let result = evalAndReturn()
-        output.textContent = "运行结果:" + String(result)
+        output.textContent = String(result)
       } catch (error) {
-        output.textContent = "代码错误:" + String(error)
+        output.textContent = String(error)
       }
     }
   </script>
