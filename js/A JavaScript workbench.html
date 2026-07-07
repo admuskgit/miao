@@ -29,7 +29,7 @@
       }
       try {
         let evalAndReturn = eval(userCode)
-        output.textContent = evalAndReturn
+        output.textContent = String(evalAndReturn)
       } catch (error) {
         output.textContent = String(error)
       }
