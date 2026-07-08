@@ -5,36 +5,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A JavaScript workbench</title>
+  <style>
+    body {
+      background-color: gray;
+    }
+  </style>
 </head>
-<style>
-  body {
-    background-color: gray;
-  }
-</style>
 
 <body>
   <button onclick="runCode()" style="width: 60px;">RUN</button>
   <div style="display: flex;">
     <textarea name="" id="codeInput" style="width: 300px;"></textarea>
-    <div id="output" style="border: 1px solid red; height: 400px; width: 300px;box-sizing: border-box;"></div>
+    <!-- 使用pre标签，让换行生效 -->
+    <pre id="output" style="border: 1px solid red; height: 400px; width: 300px;box-sizing: border-box;"></pre>
   </div>
   <script>
     let textarea = document.querySelector("#codeInput")
     let output = document.querySelector('#output')
+    function dateTime() {
+      let time = new Date().toTimeString().slice(0, 8)
+      return time
+    }
     function runCode() {
       let userCode = textarea.value
       if (!userCode) {
         output.textContent = "请输入代码"
         return
       }
+      const console = {
+        log(...args) {
+          output.textContent += ">>> " + dateTime() + " " + args.join(" ") + "\n"
+        }
+      }
       try {
         let evalAndReturn = eval(userCode)
-        output.textContent = String(evalAndReturn)
+
+        output.textContent += "\n<<< " + dateTime() + " " + String(evalAndReturn)
+
       } catch (error) {
-        output.textContent = String(error)
+        output.textContent += "\n<<< " + dateTime() + " " + String(error)
       }
     }
   </script>
 </body>
+<!-- 不能让用户的代码直接在我的代码的环境里运行 必须独立创建一个运行空间 ifram or worker -->
 
 </html>
