@@ -22,11 +22,13 @@
       position: absolute;
       left: 0;
     }
+
     #selectList li {
       margin: 0;
       padding: 2px 2px;
       border: 1px solid greenyellow;
     }
+
     #selectList li:hover {
       background-color: orange;
     }
@@ -38,9 +40,8 @@
     <input type="text" name="" id="input">
     <ul name="" id="selectList"></ul>
   </div>
-
   <script>
-    let list = ["acgsdgre", "aasfafa", "swUKYSD", "sSsa", "zasfaa", "xsfafa", "dasfaa", "cafafa", "easfafa", "zfafa", "xasafa", "dafafa", "casfafa", "easafa", "zafaf", "xasfaf", "dasfafa", "casfaf", "easfaoa"]
+    let list = []
     let input = document.querySelector("#input")
     let select = document.querySelector("#selectList")
     function getMatchs(text) {
