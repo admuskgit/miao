@@ -80,7 +80,7 @@
       let fname = "foo" + Math.random().toString().slice(2)
       window[fname] = function(obj){
         let res = obj.g.map(it => it.q)
-        callback(res)
+        callback(text,res)
       }
       let link = `https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&imod=2&sugsid=63142,67862,68165,69294,71138,71266,71289,71300,71309,71353,71363,71358,71370,71236,71403,71428,71463,71480,71451,71447,71438,71413,71243,71515,71538,71536,71531,71543,71561,71564,71555,71557,71566,71618,71577,71636,71595,71639,71649,71657,71499,71677,71685,71772,71702,71731,71783,71749,71804,71818,71826,71897&wd=${text}&his=%5B%7B%22time%22%3A1780550765%2C%22kw%22%3A%22%E5%A5%B3%E5%AD%90%E5%80%9F%E7%BD%91%E8%B4%B7%E7%BB%99%E7%94%B7%E5%8F%8B%E5%90%8E%E8%87%AA%E6%9D%80%22%7D%2C%7B%22time%22%3A1780550814%2C%22kw%22%3A%22%E6%9D%8E%E8%80%81%E5%B8%88%E4%B8%8D%E6%98%AF%E4%BD%A0%E8%80%83%E8%AF%95%22%7D%2C%7B%22time%22%3A1782535097%2C%22kw%22%3A%22%E7%BB%9D%E5%91%BD%E6%AF%92%E5%B8%88%E7%AC%AC%E4%B8%80%E5%AD%A3%22%7D%5D&usegosug=1&csor=2&pwd=ni%27hao&cb=${fname}&_=1783696455153`
       let script = document.createElement("script")
