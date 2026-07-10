@@ -10,23 +10,16 @@
       background-color: gray;
     }
 
-    div {
-      position: relative;
-    }
-
     #selectList {
-      display: none;
-      list-style: none;
       margin: 0;
       padding: 0;
-      position: absolute;
-      left: 0;
     }
 
     #selectList li {
       margin: 0;
-      padding: 2px 2px;
+      padding: 2px;
       border: 1px solid greenyellow;
+      list-style: none;
     }
 
     #selectList li:hover {
@@ -41,38 +34,62 @@
     <ul name="" id="selectList"></ul>
   </div>
   <script>
-    let list = []
     let input = document.querySelector("#input")
     let select = document.querySelector("#selectList")
-    function getMatchs(text) {
-      if (!text) return []
-      return list.filter(item => item.startsWith(text))
+    let timer = null
+    let lastValue = ""
+    function getMatches(text, callback) {
+      let list = []
+      for (let i = 0; i < 10; i++) {
+        list.push(text + i)
+      }
+      setTimeout(() => {
+        callback(text, list)
+      }, 500 + 5000 * Math.random())
     }
     function renderList(matches) {
       select.innerHTML = ""
-      if (matches === 0) {
-        select.style.display = "none"
-        return
-      }
-      select.style.display = "block"
-      select.style.cursor = "pointer"
       matches.forEach(element => {
         let li = document.createElement("li")
         li.textContent = element
-        li.onclick = () => {
-          input.value = li.textContent
-          select.style.display = "none"
-        }
         select.appendChild(li)
-      });
+      })
     }
     input.addEventListener("input", (e) => {
       let currentValue = e.target.value
-      let lowerValue = currentValue.toLowerCase()
-      let matches = getMatchs(lowerValue)
-      renderList(matches)
+      lastValue = currentValue
+      if (timer) {
+        clearTimeout(timer)
+        timer = null
+      }
+      if (currentValue === "") {
+        select.innerHTML = ""
+        return
+      }
+      timer = setTimeout(() => {
+        getMatches(currentValue, (requestValue, matches) => {
+          if (lastValue !== requestValue) {
+            return
+          }
+          renderList(matches)
+        })
+        timer = null
+      }, 500)
     })
   </script>
+  <!-- 
+   竞态问题（Race Condition）:异步请求返回顺序不确定，如何保证只有最新输入产生的结果显示？ 请求发出的顺序 ≠ 请求返回的顺序
+   方法1：比较字符串(本方法)
+   方法2：比较时间戳 记录输入的时间，返回的时候比较输入的时间
+   第三种：请求编号
+   4. AbortController（取消已经发送但不再需要的请求）
+   异步控制还有：Promise
+                  async/await
+                fetch
+                AbortController
+                防抖节流
+                闭包
+   -->
 </body>
 
 </html>

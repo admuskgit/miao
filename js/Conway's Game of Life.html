@@ -30,13 +30,13 @@
   <div id="box"></div>
   <script>
     let time = null
-    let rows = 50
-    let cols = 50
+    let rows = 80
+    let cols = 100
     let grids = []
     for (let i = 0; i < rows; i++) {
       grids[i] = []
       for (let j = 0; j < cols; j++) {
-        grids[i][j] = Math.random() > 0.5
+        grids[i][j] = Math.random() > 0.4
       }
     }
     let box = document.querySelector("#box")
