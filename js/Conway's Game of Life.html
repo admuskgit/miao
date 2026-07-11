@@ -17,8 +17,8 @@
 
     input[type="checkbox"] {
       margin: 0;
-      width: 10px;
-      height: 10px;
+      width: 20px;
+      height: 20px;
     }
   </style>
 </head>
@@ -30,13 +30,13 @@
   <div id="box"></div>
   <script>
     let time = null
-    let rows = 80
-    let cols = 100
+    let rows = 30
+    let cols = 30
     let grids = []
     for (let i = 0; i < rows; i++) {
       grids[i] = []
       for (let j = 0; j < cols; j++) {
-        grids[i][j] = Math.random() > 0.4
+        grids[i][j] = Math.random() > 0.7
       }
     }
     let box = document.querySelector("#box")
