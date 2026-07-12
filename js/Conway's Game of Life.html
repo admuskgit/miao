@@ -30,98 +30,71 @@
   <div id="box"></div>
   <script>
     let time = null
-    let rows = 30
-    let cols = 30
-    let grids = []
-    for (let i = 0; i < rows; i++) {
-      grids[i] = []
-      for (let j = 0; j < cols; j++) {
-        grids[i][j] = Math.random() > 0.7
-      }
-    }
     let box = document.querySelector("#box")
-    function render() {
-      box.innerHTML = ""
-      for (let m = 0; m < rows; m++) {
-        let div = document.createElement("div")
-        div.className = "row"
-        let row = grids[m]
-        for (let n = 0; n < cols; n++) {
-          let checkbox = document.createElement("input")
-          checkbox.type = "checkbox"
-          checkbox.dataset.y = m
-          checkbox.dataset.x = n
-          checkbox.checked = row[n]
-          checkbox.addEventListener("change", (event) => {
-            let element = event.currentTarget
-            let Y = Number(element.dataset.y)
-            let X = Number(element.dataset.x)
-            grids[Y][X] = element.checked
-          })
-          div.appendChild(checkbox)
-        }
-        box.appendChild(div)
-      }
-    }
-    render()
-    let dirs = [
-      [-1, -1], [-1, 0], [-1, 1],
-      [0, -1], [0, 1],
-      [1, -1], [1, 0], [1, 1],
-    ]
-    function live(y, x) {
-      let count = 0
-      dirs.forEach(item => {
-        let neighborY = y + item[0]
-        let neighborX = x + item[1]
-        if (neighborY >= 0 && neighborY < rows && neighborX >= 0 && neighborX < cols) {
-          if (grids[neighborY][neighborX]) {
-            count++
-          }
-        }
-      })
-      return count
-    }
-    function nextGrids() {
-      let nextGrid = []
-      for (let y = 0; y < rows; y++) {
-        let row = []
-        for (let x = 0; x < cols; x++) {
-          let num = live(y, x)
-          let cell = grids[y][x]
-          let newcell
-          if (cell) {
-            if (num == 2 || num == 3) {
-              newcell = true
-            } else {
-              newcell = false
-            }
-          } else {
-            if (num == 3) {
-              newcell = true
-            } else {
-              newcell = false
-            }
-          }
-          row.push(newcell)
-        }
-        nextGrid.push(row)
-      }
-      return nextGrid
-    }
     let nextBtn = document.querySelector("#next")
+    let auto = document.querySelector("#auto")
+    let stop = document.querySelector("#stop")
+    class lifeGame {
+      constructor(h, w, grids = null) {
+        this.h = h
+        this.w = w
+        this.grids = grids || Array(h).fill().map(() => Array(w).fill(0))
+      }
+      randomSeed() {
+        let randomGrid = Array(this.h).fill().map(() => Array(this.w).fill(0))
+        for (let i = 0; i < this.h; i++) {
+          for (let j = 0; j < this.w; j++) {
+            if (Math.random() < 0.5) {
+              randomGrid[i][j] = 1
+            }
+          }
+        }
+        this.grids = randomGrid
+        console.log(randomGrid)
+      }
+      live(i, j) {
+        let count = 0
+        for (let k = i - 1; k < i + 2; k++) {
+          for (let l = j - 1; l < j + 2; l++) {
+            if (k === i && l === j) continue
+            count += this.grids[k]?.[l] ?? 0
+          }
+        }
+        return count
+      }
+      nextGrids() {
+        let nextGrid = Array(this.h).fill().map(() => Array(this.w).fill(0))
+        for (let i = 0; i < this.h; i++) {
+          for (let j = 0; j < this.w; j++) {
+            let live = this.live(i, j)
+            let old = this.grids[i][j]
+            if (old === 0) {
+              if(live === 3) {
+                nextGrid[i][j] = 1
+              }
+            } else{
+              if(live < 2 || live > 3) {
+                nextGrid[i][j] = 0
+              } else {
+                nextGrid[i][j] = 1
+              }
+            }
+          }
+        }
+        this.grids = nextGrid
+        return this.grids
+      }
+    }
     nextBtn.addEventListener("click", () => {
       grids = nextGrids()
       render()
     })
-    let auto = document.querySelector("#auto")
     auto.addEventListener("click", () => {
       time = setInterval(() => {
         grids = nextGrids()
         render()
       }, 500)
     })
-    let stop = document.querySelector("#stop")
     stop.addEventListener("click", () => {
       clearInterval(time)
     })
