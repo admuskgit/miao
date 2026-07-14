@@ -13,12 +13,13 @@
     .row {
       display: flex;
       margin: 0;
+
     }
 
     input[type="checkbox"] {
       margin: 0;
-      width: 20px;
-      height: 20px;
+      width: 10px;
+      height: 10px;
     }
   </style>
 </head>
@@ -69,11 +70,11 @@
             let live = this.live(i, j)
             let old = this.grids[i][j]
             if (old === 0) {
-              if(live === 3) {
+              if (live === 3) {
                 nextGrid[i][j] = 1
               }
-            } else{
-              if(live < 2 || live > 3) {
+            } else {
+              if (live < 2 || live > 3) {
                 nextGrid[i][j] = 0
               } else {
                 nextGrid[i][j] = 1
@@ -84,19 +85,52 @@
         this.grids = nextGrid
         return this.grids
       }
+      gameRender() {
+        return this.grids.map((row, i) => {
+          return '<div class="row">' + row.map((cell, j) => {
+            return `<input
+            data-row = ${i}
+            data-col = ${j}
+            type="checkbox"
+            ${cell ? 'checked' : ''}
+            >`
+          }).join('') + '</div>'
+        }).join('\n')
+      }
     }
-    let stage = new lifeGame(10, 10)
+    let stage = new lifeGame(50, 50)
+    stage.randomSeed()
+    box.innerHTML = stage.gameRender()
+    box.addEventListener("change", (event) => {
+      let target = event.target
+      if(target.tagName !== "INPUT") return
+      let r = Number(target.data-row)
+      let c = Number(target.data-col)
+      grids[r][c] = target.checked ? 1 : 0
+    })
+
     nextBtn.addEventListener("click", () => {
-      
+      stage.nextGrids()
+      box.innerHTML = stage.gameRender()
     })
     auto.addEventListener("click", () => {
-      
+      if (time) return
+      time = setInterval(() => {
+        stage.nextGrids()
+        box.innerHTML = stage.gameRender()
+      }, 250)
     })
     stop.addEventListener("click", () => {
-      
+      clearInterval(time)
+      time = null
     })
   </script>
-  <!-- 不能直接dom画出来 考虑适配 迁移 到别的语言-->
+  <!-- 
+   不能直接dom画出来 考虑适配 迁移 到别的语言
+   模板字符串？
+   checked ? 1 : 0  这里的checked怎么用？
+   
+   -->
 </body>
 
 </html>
