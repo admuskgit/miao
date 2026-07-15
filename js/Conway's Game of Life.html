@@ -17,9 +17,14 @@
     }
 
     input[type="checkbox"] {
+      appearance: none;
+      border: 1px solid rgb(206, 78, 184);
       margin: 0;
       width: 10px;
       height: 10px;
+    }
+    input[type="checkbox"]:checked {
+      background-color: #398af3;
     }
   </style>
 </head>
@@ -92,7 +97,7 @@
         }).join('\n')
       }
     }
-    let stage = new lifeGame(10, 10)
+    let stage = new lifeGame(50, 50)
     stage.randomSeed()
     box.innerHTML = stage.gameRender()
     box.addEventListener("change", (event) => {
