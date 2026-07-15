@@ -27,14 +27,12 @@
 <body>
   <button id="next">next</button>
   <button id="auto">auto</button>
-  <button id="stop">stop</button>
   <div id="box"></div>
   <script>
     let time = null
     let box = document.querySelector("#box")
     let nextBtn = document.querySelector("#next")
-    let auto = document.querySelector("#auto")
-    let stop = document.querySelector("#stop")
+    let autoBtn = document.querySelector("#auto")
     class lifeGame {
       constructor(h, w, grids = null) {
         this.h = h
@@ -82,51 +80,53 @@
             }
           }
         }
+        let stable = JSON.stringify(this.grids) === JSON.stringify(nextGrid)
         this.grids = nextGrid
-        return this.grids
+        return stable
       }
       gameRender() {
         return this.grids.map((row, i) => {
           return '<div class="row">' + row.map((cell, j) => {
-            return `<input
-            data-row = ${i}
-            data-col = ${j}
-            type="checkbox"
-            ${cell ? 'checked' : ''}
-            >`
+            return `<input data-row = "${i}" data-col = "${j}" type="checkbox" ${cell ? 'checked' : ''}>`
           }).join('') + '</div>'
         }).join('\n')
       }
     }
-    let stage = new lifeGame(50, 50)
+    let stage = new lifeGame(10, 10)
     stage.randomSeed()
     box.innerHTML = stage.gameRender()
     box.addEventListener("change", (event) => {
       let target = event.target
       if(target.tagName !== "INPUT") return
-      let r = Number(target.data-row)
-      let c = Number(target.data-col)
-      grids[r][c] = target.checked ? 1 : 0
+      let r = Number(target.dataset.row)
+      let c = Number(target.dataset.col)
+      stage.grids[r][c] = target.checked ? 1 : 0
     })
-
     nextBtn.addEventListener("click", () => {
       stage.nextGrids()
       box.innerHTML = stage.gameRender()
     })
-    auto.addEventListener("click", () => {
-      if (time) return
+    autoBtn.addEventListener("click", () => {
+      if (time) {
+        clearInterval(time)
+        time = null
+        autoBtn.textContent = 'auto'
+        return
+      }
       time = setInterval(() => {
-        stage.nextGrids()
+        let sta = stage.nextGrids()
         box.innerHTML = stage.gameRender()
+        if(sta) {
+          clearInterval(time)
+          time = null
+          autoBtn.textContent = 'auto'
+        }
       }, 250)
-    })
-    stop.addEventListener("click", () => {
-      clearInterval(time)
-      time = null
+      autoBtn.textContent = 'stop'
     })
   </script>
   <!-- 
-   不能直接dom画出来 考虑适配 迁移 到别的语言
+   不要想着直接dom画出来 考虑适配 迁移 到别的语言
    模板字符串？
    checked ? 1 : 0  这里的checked怎么用？
    
