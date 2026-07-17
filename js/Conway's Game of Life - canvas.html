@@ -33,10 +33,7 @@
 <body>
   <button id="next">next</button>
   <button id="auto">auto</button>
-  <div id="box"></div>
-  <div><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Game_of_life_blinker.gif" alt=""><img
-      src="https://upload.wikimedia.org/wikipedia/commons/1/12/Game_of_life_toad.gif" alt=""><img
-      src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Game_of_life_beacon.gif" alt=""></div>
+  <canvas id="box"></canvas>
   <label for="model">选择振荡模式：</label>
   <select id="patterns" name="city">
     <option value=""> 请选择</option>
@@ -107,33 +104,48 @@
           }).join('') + '</div>'
         }).join('\n')
       }
+      renderCanvas(context) {
+        let size = 10
+        context.clearRect(0, 0, this.w * size, this.h * size)
+        context.fillStyle = 'purple'
+        for (let r = 0; r < this.h; r++) {
+          for (let c = 0; c < this.w; c++) {
+            if (this.grids[r][c] === 1) {
+              context.fillRect(c * size, r * size, size, size)
+            }
+          }
+        }
+      }
     }
-    let stage = new lifeGame(50, 50)
+    let stage = new lifeGame(1000, 1000)
+    let context = box.getContext("2d")
     stage.randomSeed()
-    box.innerHTML = stage.gameRender()
+    box.width = stage.w * 10
+    box.height = stage.h * 10
+    stage.renderCanvas(context)
     box.addEventListener("change", (event) => {
       let target = event.target
       if (target.tagName !== "INPUT") return
       let r = Number(target.dataset.row)
       let c = Number(target.dataset.col)
       let cell = pattern[selectValue]
-      if(!cell) {
+      if (!cell) {
         stage.grids[r][c] = stage.grids[r][c] ? 0 : 1
-        box.innerHTML = stage.gameRender()
+        stage.renderCanvas(context)
         return
       }
-      for(let i = 0; i < cell.length; i++) {
-        for(let j = 0; j < cell[0].length; j++) {
+      for (let i = 0; i < cell.length; i++) {
+        for (let j = 0; j < cell[0].length; j++) {
           let rowIdx = r + i
           let colIdx = c + j
           stage.grids[rowIdx][colIdx] = cell[i][j]
         }
       }
-      box.innerHTML = stage.gameRender()
+      stage.renderCanvas(context)
     })
     nextBtn.addEventListener("click", () => {
       stage.nextGrids()
-      box.innerHTML = stage.gameRender()
+      stage.renderCanvas(context)
     })
     autoBtn.addEventListener("click", () => {
       if (time) {
@@ -144,7 +156,7 @@
       }
       time = setInterval(() => {
         let sta = stage.nextGrids()
-        box.innerHTML = stage.gameRender()
+        stage.renderCanvas(context)
         if (sta) {
           clearInterval(time)
           time = null
@@ -155,9 +167,9 @@
     })
     let pattern = {
       dot: [[1]],
-      Blinker: [[0, 0, 0],[1, 1, 1],[0, 0, 0]],
-      Toad: [[0, 1, 1, 1],[1, 1, 1, 0]],
-      Beacon:[[1,1,0,0],[1,1,0,0],[0,0,1,1],[0,0,1,1]],
+      Blinker: [[0, 0, 0], [1, 1, 1], [0, 0, 0]],
+      Toad: [[0, 1, 1, 1], [1, 1, 1, 0]],
+      Beacon: [[1, 1, 0, 0], [1, 1, 0, 0], [0, 0, 1, 1], [0, 0, 1, 1]],
     }
     let patterns = document.querySelector("#patterns")
     let selectValue = null
@@ -172,7 +184,7 @@
    申请内存 提升性能
    canvas提升性能
    内存操作数组很快
-   普通数组到Uint32Array 性能 进制 连续二进制内存
+   普通数组到Uint32Array 性能 进制 连续二进制内存 通过一维数组可以表示二维三维数组 预画图片 imagedata
    -->
 </body>
 
