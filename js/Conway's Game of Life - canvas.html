@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conway's Game of Life</title>
+  <style>
+    body {
+      background-color: gray;
+    }
+
+    .row {
+      display: flex;
+      margin: 0;
+
+    }
+
+    input[type="checkbox"] {
+      appearance: none;
+      border: 1px solid rgb(238, 199, 70);
+      margin: 0;
+      width: 10px;
+      height: 10px;
+    }
+
+    input[type="checkbox"]:checked {
+      background-color: #54e447;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="next">next</button>
+  <button id="auto">auto</button>
+  <div id="box"></div>
+  <div><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Game_of_life_blinker.gif" alt=""><img
+      src="https://upload.wikimedia.org/wikipedia/commons/1/12/Game_of_life_toad.gif" alt=""><img
+      src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Game_of_life_beacon.gif" alt=""></div>
+  <label for="model">选择振荡模式：</label>
+  <select id="patterns" name="city">
+    <option value=""> 请选择</option>
+    <option value="Blinker">闪烁器</option>
+    <option value="Toad">蟾蜍</option>
+    <option value="Beacon">灯塔</option>
+  </select>
+  <script>
+    let time = null
+    let box = document.querySelector("#box")
+    let nextBtn = document.querySelector("#next")
+    let autoBtn = document.querySelector("#auto")
+    class lifeGame {
+      constructor(h, w, grids = null) {
+        this.h = h
+        this.w = w
+        this.grids = grids || Array(h).fill().map(() => Array(w).fill(0))
+      }
+      randomSeed() {
+        let randomGrid = Array(this.h).fill().map(() => Array(this.w).fill(0))
+        for (let i = 0; i < this.h; i++) {
+          for (let j = 0; j < this.w; j++) {
+            if (Math.random() < 0.3) {
+              randomGrid[i][j] = 1
+            }
+          }
+        }
+        this.grids = randomGrid
+        console.log(randomGrid)
+      }
+      getNeighborCount(i, j) {
+        let count = 0
+        for (let k = i - 1; k < i + 2; k++) {
+          for (let l = j - 1; l < j + 2; l++) {
+            if (k === i && l === j) continue
+            count += this.grids[k]?.[l] ?? 0
+          }
+        }
+        return count
+      }
+      nextGrids() {
+        let nextGrid = Array(this.h).fill().map(() => Array(this.w).fill(0))
+        for (let i = 0; i < this.h; i++) {
+          for (let j = 0; j < this.w; j++) {
+            let liveCount = this.getNeighborCount(i, j)
+            let old = this.grids[i][j]
+            if (old === 0) {
+              if (liveCount === 3) {
+                nextGrid[i][j] = 1
+              }
+            } else {
+              if (liveCount < 2 || liveCount > 3) {
+                nextGrid[i][j] = 0
+              } else {
+                nextGrid[i][j] = 1
+              }
+            }
+          }
+        }
+        let stable = JSON.stringify(this.grids) === JSON.stringify(nextGrid)
+        this.grids = nextGrid
+        return stable
+      }
+      gameRender() {
+        return this.grids.map((row, i) => {
+          return '<div class="row">' + row.map((cell, j) => {
+            return `<input data-row = "${i}" data-col = "${j}" type="checkbox" ${cell ? 'checked' : ''}>`
+          }).join('') + '</div>'
+        }).join('\n')
+      }
+    }
+    let stage = new lifeGame(50, 50)
+    stage.randomSeed()
+    box.innerHTML = stage.gameRender()
+    box.addEventListener("change", (event) => {
+      let target = event.target
+      if (target.tagName !== "INPUT") return
+      let r = Number(target.dataset.row)
+      let c = Number(target.dataset.col)
+      let cell = pattern[selectValue]
+      if(!cell) {
+        stage.grids[r][c] = stage.grids[r][c] ? 0 : 1
+        box.innerHTML = stage.gameRender()
+        return
+      }
+      for(let i = 0; i < cell.length; i++) {
+        for(let j = 0; j < cell[0].length; j++) {
+          let rowIdx = r + i
+          let colIdx = c + j
+          stage.grids[rowIdx][colIdx] = cell[i][j]
+        }
+      }
+      box.innerHTML = stage.gameRender()
+    })
+    nextBtn.addEventListener("click", () => {
+      stage.nextGrids()
+      box.innerHTML = stage.gameRender()
+    })
+    autoBtn.addEventListener("click", () => {
+      if (time) {
+        clearInterval(time)
+        time = null
+        autoBtn.textContent = 'auto'
+        return
+      }
+      time = setInterval(() => {
+        let sta = stage.nextGrids()
+        box.innerHTML = stage.gameRender()
+        if (sta) {
+          clearInterval(time)
+          time = null
+          autoBtn.textContent = 'auto'
+        }
+      }, 300)
+      autoBtn.textContent = 'stop'
+    })
+    let pattern = {
+      dot: [[1]],
+      Blinker: [[0, 0, 0],[1, 1, 1],[0, 0, 0]],
+      Toad: [[0, 1, 1, 1],[1, 1, 1, 0]],
+      Beacon:[[1,1,0,0],[1,1,0,0],[0,0,1,1],[0,0,1,1]],
+    }
+    let patterns = document.querySelector("#patterns")
+    let selectValue = null
+    patterns.addEventListener("change", (event) => {
+      selectValue = event.target.value
+    })
+  </script>
+  <!-- 
+   不要想着直接dom画出来 考虑适配 迁移 到别的语言
+   模板字符串？
+   checked ? 1 : 0  这里的checked怎么用？
+   申请内存 提升性能
+   canvas提升性能
+   内存操作数组很快
+   普通数组到Uint32Array 性能 进制 连续二进制内存
+   -->
+</body>
+
+</html>
