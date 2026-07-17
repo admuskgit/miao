@@ -20,8 +20,8 @@
       appearance: none;
       border: 1px solid rgb(238, 199, 70);
       margin: 0;
-      width: 20px;
-      height: 20px;
+      width: 10px;
+      height: 10px;
     }
 
     input[type="checkbox"]:checked {
@@ -108,7 +108,7 @@
         }).join('\n')
       }
     }
-    let stage = new lifeGame(15, 15)
+    let stage = new lifeGame(50, 50)
     stage.randomSeed()
     box.innerHTML = stage.gameRender()
     box.addEventListener("change", (event) => {
@@ -172,7 +172,7 @@
    申请内存 提升性能
    canvas提升性能
    内存操作数组很快
-   Uint32Array 性能 十六进制
+   普通数组到Uint32Array 性能 进制 连续二进制内存
    -->
 </body>
 
