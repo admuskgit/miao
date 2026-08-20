@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>qq-mail-position</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background-color: lightblue;
+            overflow: auto;
+        }
+
+        aside {
+            position: absolute;
+            top: 150px;
+            left: 0;
+            width: 200px;
+            height: calc(100% - 150px);
+            background-color: lightgreen;
+            overflow: auto;
+        }
+
+        main {
+            position: absolute;
+            top: 150px;
+            left: 200px;
+            width: calc(100% - 200px);
+            height: calc(100% - 150px);
+            background-color: aqua;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        Lerom ipsum dolor sit amet, consectetur adipiscing elit.Lerom ipsum dolor sit amet, consectetur adipiscing elit.
+    </header>
+    <aside>
+        Lerom ipsum dolor sit amet, consectetur adipiscing elit.Lerom ipsum dolor sit amet, consectetur adipiscing elit.
+    </aside>
+    <main>
+        Lerom ipsum dolor sit amet, consectetur adipiscing elit.Lerom ipsum dolor sit amet, consectetur adipiscing elit.
+    </main>
+</body>
+
+</html>
