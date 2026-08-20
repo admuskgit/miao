@@ -4,12 +4,12 @@ class Vector {
     this.y = y
   }
   plus(params) {
-    return new Vector(this.x + params.x , this.y + params.y)
+    return new Vector(this.x + params.x, this.y + params.y)
   }
   minus(params) {
-    return new Vector(this.x - params.x , this.y - params.y)
+    return new Vector(this.x - params.x, this.y - params.y)
   }
-  get length(){
+  get length() {
     return Math.sqrt(this.x * this.x + this.y * this.y)
   }
 }
@@ -18,32 +18,32 @@ class Complex {
     this.real = real
     this.imag = imag
   }
-  plus (params) {
-    return new Complex(this.real + params.real , this.imag +  params.imag)
+  plus(params) {
+    return new Complex(this.real + params.real, this.imag + params.imag)
   }
-  minus (params) {
-    return new Complex(this.real - params.real , this.imag -  params.imag)
+  minus(params) {
+    return new Complex(this.real - params.real, this.imag - params.imag)
   }
-  multiple (params) {
+  multiple(params) {
     let a = this.real
     let b = this.imag
     let c = params.real
     let d = params.imag
     return new Complex(
-        a * c - b * d, // 实部：ac - bd
-        a * d + b * c  // 虚部：ad + bc
+      a * c - b * d, // stable：ac - bd
+      a * d + b * c  // virtual：ad + bc
     )
   }
-  div (params) {
+  div(params) {
     let helper = new Complex(params.real, -params.imag)
     let fenmu = params.multiple(helper).real
     let fenzi = this.multiple(helper)
     let real = fenzi.real / fenmu
     let imag = fenzi.imag / fenmu
-  return new Complex(real, imag)
+    return new Complex(real, imag)
   }
-  toString (params) {
-    return this.real + (this.imag > 0 ? " + "  : '')+ this.imag + "i "
+  toString(params) {
+    return this.real + (this.imag > 0 ? " + " : '') + this.imag + "i "
   }
 }
 class Node {
@@ -54,10 +54,10 @@ class Node {
 }
 class LinkedList {
   constructor() {
-  this.head = null
-  this.length = 0
+    this.head = null
+    this.length = 0
   }
-  at (idx) {
+  at(idx) {
     if (idx < 0 || idx >= this.length) return undefined
     let p = this.head
     for (let i = 0; i < idx; i++) {
@@ -65,7 +65,7 @@ class LinkedList {
     }
     return p.val
   }
-  set (idx, val) {
+  set(idx, val) {
     if (idx < 0 || idx >= this.length) return undefined
     let p = this.head
     for (let i = 0; i < idx; i++) {
@@ -74,7 +74,7 @@ class LinkedList {
     p.val = val
     return true
   }
-  append (val) {
+  append(val) {
     let node = new Node(val)
     if (!this.head) {
       this.head = node
@@ -85,11 +85,11 @@ class LinkedList {
     while (p.next) {
       p = p.next
     }
-    p.next = node 
+    p.next = node
     this.length++
     return true
-  } 
-  pop () {
+  }
+  pop() {
     if (!this.head) {
       return undefined
     }
@@ -104,14 +104,14 @@ class LinkedList {
     }
     let val = p.next.val
     p.next = null
-    this.length-- 
+    this.length--
     return val
   }
-  prepend (val) {
+  prepend(val) {
     let node = new Node(val)
     node.next = this.head
     this.head = node
-    this.length++ 
+    this.length++
     return true
   }
   shift() {
@@ -139,42 +139,42 @@ class LinkedList {
 class MySet {
   constructor(arr = []) {
     this.items = []
-    for(let v of arr) {
-    if (!this.items.includes(v)) {
-      this.items.push(v)
+    for (let v of arr) {
+      if (!this.items.includes(v)) {
+        this.items.push(v)
+      }
     }
+  }
+  add(item) {
+    if (!this.items.includes(item)) {
+      this.items.push(item)
     }
   }
-  add (item) {
-  if (!this.items.includes(item)) {
-    this.items.push(item)
-  }
-  }
-  delete (item) {
-  let idx = this.items.indexOf(item)
-  if (idx !== -1) {
-    this.items.splice(idx, 1)
-    return true
-  }
-  return false
+  delete(item) {
+    let idx = this.items.indexOf(item)
+    if (idx !== -1) {
+      this.items.splice(idx, 1)
+      return true
+    }
+    return false
   }
   get size() {
     return this.items.length
   }
-  clear () {
-  this.items = []
+  clear() {
+    this.items = []
   }
-  has (item) {
-  let idx = this.items.indexOf(item)
-  if (idx !== -1) {
-    return true
+  has(item) {
+    let idx = this.items.indexOf(item)
+    if (idx !== -1) {
+      return true
+    }
+    return false
   }
-  return false
-  }
-  forEach (callback) {
-  for (let i = 0; i < this.items.length; i++) {
-    callback(this.items[i], i)
-  }
+  forEach(callback) {
+    for (let i = 0; i < this.items.length; i++) {
+      callback(this.items[i], i)
+    }
   }
 }
 class MyMap {
@@ -182,51 +182,51 @@ class MyMap {
     this.items = []
   }
   set(key, val) {
-  for(let i = 0; i < this.items.length; i+=2) {
-    if (this.items[i] === key) {
-      this.items[i + 1] = val
-      return this
+    for (let i = 0; i < this.items.length; i += 2) {
+      if (this.items[i] === key) {
+        this.items[i + 1] = val
+        return this
+      }
     }
-  }
-  this.items.push(key, val)
-  return this
+    this.items.push(key, val)
+    return this
   }
   get(key) {
-  for (let i = 0; i < this.items.length; i += 2) {
-    if (this.items[i] === key) {
-      return this.items[i + 1]
+    for (let i = 0; i < this.items.length; i += 2) {
+      if (this.items[i] === key) {
+        return this.items[i + 1]
+      }
     }
-  }
-  return undefined
+    return undefined
   }
   has(key) {
-  for (let i = 0; i < this.items.length; i += 2) {
-    if (this.items[i] === key) {
-      return true
+    for (let i = 0; i < this.items.length; i += 2) {
+      if (this.items[i] === key) {
+        return true
+      }
     }
-  }
-  return false
+    return false
   }
   clear() {
     this.items = []
   }
   delete(key) {
-  for (let i = 0; i < this.items.length; i += 2) {
-    if (this.items[i] === key) {
-      this.items.splice(i,2)
-      return true
+    for (let i = 0; i < this.items.length; i += 2) {
+      if (this.items[i] === key) {
+        this.items.splice(i, 2)
+        return true
+      }
     }
-  }
-  return false
+    return false
   }
   get size() {
     return this.items.length / 2
   }
   forEach(callback) {
-    for(let i = 0; i < this.items.length; i += 2) {
+    for (let i = 0; i < this.items.length; i += 2) {
       let val = this.items[i + 1]
-       let key = this.items[i]
-       callback(val,key)
+      let key = this.items[i]
+      callback(val, key)
     }
   }
 }
@@ -234,16 +234,16 @@ class Stack {
   constructor() {
     this.items = []
   }
-  push (val) {
-  this.items.push(val)
+  push(val) {
+    this.items.push(val)
   }
-  pop () {
-  if (this.items.length === 0) {
-    return undefined
+  pop() {
+    if (this.items.length === 0) {
+      return undefined
+    }
+    return this.items.pop()
   }
-  return this.items.pop()
-  }
-  peek () {
+  peek() {
     return this.items[this.items.length - 1]
   }
   get size() {
@@ -257,40 +257,40 @@ class Queue {
     this.tail = null
     this.length = 0
   }
-  add (val) {
-  let node = new Node(val)
-  if(!this.tail) {
-    this.head = this.tail = node
-    this.length++
-    return this
-  } else {
-    this.tail.next = node
-    this.tail = node
-    this.length++
-    return this
+  add(val) {
+    let node = new Node(val)
+    if (!this.tail) {
+      this.head = this.tail = node
+      this.length++
+      return this
+    } else {
+      this.tail.next = node
+      this.tail = node
+      this.length++
+      return this
+    }
   }
+  pop() {
+    if (!this.head) {
+      return undefined
+    } else if (this.tail === this.head) {
+      let res = this.head.val
+      this.head = this.tail = null
+      this.length--
+      return res
+    } else {
+      let res = this.head.val
+      this.head = this.head.next
+      this.length--
+      return res
+    }
   }
-  pop () {
-  if(!this.head) {
-    return undefined
-  } else if(this.tail === this.head){
-    let res = this.head.val
-    this.head = this.tail = null
-    this.length--
-    return res
-  } else {
-    let res = this.head.val
-    this.head = this.head.next
-    this.length--
-    return res
-  }
-  }
-  peek () {
-  if(!this.head) {
-    return undefined
-  } else {
-    return this.head
-  }
+  peek() {
+    if (!this.head) {
+      return undefined
+    } else {
+      return this.head
+    }
   }
   get size() {
     return this.length
