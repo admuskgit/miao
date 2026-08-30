@@ -34,21 +34,22 @@
     let currentId = null
     function loadStorage() {
       let data = localStorage.getItem('notes')
-      notes = JSON.parse(data)
+      if (!data) {
+        notes = []
+      } else {
+        notes = JSON.parse(data)
+      }
       return notes
     }
     function renderAddToSelect() {
       let notes = loadStorage()
-      console.log('旧的notes：',notes)
       noteSelect.innerHTML = ''
       notes.forEach(item => {
         addToSelect(item.name, item.id)
       })
     }
     function saveToStorage(dat) {
-      console.log('等待存储新的：', dat)
       localStorage.setItem('notes', JSON.stringify(dat))
-
       renderAddToSelect()
     }
     function addToSelect(name, id) {
@@ -59,11 +60,10 @@
     }
     function importNotes(e) {
       let file = e.target.files[0]
-      if(!file) return
+      if (!file) return
       let read = new FileReader()
       read.onload = event => {
         let da = JSON.parse(event.target.result)
-        console.log('导入da：', da)
         saveToStorage(da)
       }
       read.readAsText(file)
@@ -72,7 +72,7 @@
     function exportNotes() {
       let arr = loadStorage()
       let text = JSON.stringify(arr)
-      let blob = new Blob([text], {type:'application/json'})
+      let blob = new Blob([text], { type: 'application/json' })
       let a = document.createElement('a')
       a.href = URL.createObjectURL(blob)
       a.download = "note.json"
@@ -80,10 +80,12 @@
     }
     loadStorage()
     renderAddToSelect()
-    let firstId = Number(noteSelect.options[0].value)
-    let target = notes.find(item => item.id == firstId)
-    currentId = firstId
-    contentArea.value = target.content
+    if (notes.length > 0) {
+      let firstId = Number(noteSelect.options[0].value)
+      let target = notes.find(item => item.id == firstId)
+      currentId = firstId
+      contentArea.value = target.content
+    }
     createBtn.addEventListener('click', function () {
       let noteName = prompt('请输入日记名字')
       if (!noteName) {
@@ -95,7 +97,7 @@
         content: "",
       }
       notes.push(newNote)
-      saveToStorage()
+      saveToStorage(notes)
       renderAddToSelect()
       noteSelect.value = newNote.id
       currentId = newNote.id
@@ -113,7 +115,7 @@
       }
       let target = notes.find(note => note.id === currentId)
       target.content = contentArea.value
-      saveToStorage()
+      saveToStorage(notes)
     })
     fileInput.addEventListener('change', function (e) {
       importNotes(e)
