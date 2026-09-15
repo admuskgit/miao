@@ -1058,4 +1058,9 @@ var admuskgit = {
     }
     return arr
   },
+  compact(array) {
+    if () {
+
+    }
+  },
 }
