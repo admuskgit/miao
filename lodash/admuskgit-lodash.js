@@ -6,10 +6,14 @@ var admuskgit = {
     }
     return result
   },
+  //let falsyValues =[false, 0, -0, 0n, "", null, undefined, NaN]
   compact(array) {
+    if (!Array.isArray(array)) {
+      return []
+    }
     var result = []
     for (var i = 0; i < array.length; i++) {
-      if (array[i]) {
+      if (Boolean(array[i])) {
         result.push(array[i])
       }
     }
@@ -1057,10 +1061,5 @@ var admuskgit = {
       arr.push(entry)
     }
     return arr
-  },
-  compact(array) {
-    if () {
-
-    }
   },
 }
