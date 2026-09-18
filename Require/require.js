@@ -1,4 +1,4 @@
-function chunk() {}
+function chunk() {console.log(1)}
 exportss.chunk = chunk
-function compact() {}
+function compact() {console.log(2)}
 exportss.compact = compact
